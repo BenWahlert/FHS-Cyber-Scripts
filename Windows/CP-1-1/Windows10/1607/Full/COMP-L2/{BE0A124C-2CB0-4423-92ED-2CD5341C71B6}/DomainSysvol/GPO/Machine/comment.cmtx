@@ -1,0 +1,40 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<policyComments xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://www.microsoft.com/GroupPolicy/CommentDefinitions">
+  <policyNamespaces>
+    <using prefix="ns0" namespace="Microsoft.Policies.AppPrivacy"></using>
+    <using prefix="ns1" namespace="Microsoft.Policies.Appx"></using>
+    <using prefix="ns2" namespace="Microsoft.Policies.AppxRuntime"></using>
+    <using prefix="ns3" namespace="Microsoft.Policies.Camera"></using>
+    <using prefix="ns4" namespace="Microsoft.Policies.CloudContent"></using>
+    <using prefix="ns5" namespace="Microsoft.Policies.Globalization"></using>
+    <using prefix="ns6" namespace="Microsoft.Policies.GroupPolicy"></using>
+    <using prefix="ns7" namespace="Microsoft.Policies.InkWatson"></using>
+    <using prefix="ns8" namespace="Microsoft.Policies.InternetCommunicationManagement"></using>
+    <using prefix="ns9" namespace="Microsoft.Policies.Kerberos"></using>
+    <using prefix="ns10" namespace="Microsoft.Policies.LinkLayerTopology"></using>
+    <using prefix="ns11" namespace="Microsoft.Policies.MSDT"></using>
+    <using prefix="ns12" namespace="Microsoft.Policies.MSI"></using>
+    <using prefix="ns13" namespace="Microsoft.Policies.MSS"></using>
+    <using prefix="ns14" namespace="Microsoft.Policies.MicrosoftEdge"></using>
+    <using prefix="ns15" namespace="Microsoft.Policies.PerformancePerftrack"></using>
+    <using prefix="ns16" namespace="Microsoft.Policies.PlugandPlay"></using>
+    <using prefix="ns17" namespace="Microsoft.Policies.Sensors.WindowsLocationProvider"></using>
+    <using prefix="ns18" namespace="Microsoft.Policies.SoftwareProtectionPlatform"></using>
+    <using prefix="ns19" namespace="Microsoft.Policies.TabletPC.ShapeCollector"></using>
+    <using prefix="ns20" namespace="Microsoft.Policies.TerminalServer"></using>
+    <using prefix="ns21" namespace="Microsoft.Policies.UserProfiles"></using>
+    <using prefix="ns22" namespace="Microsoft.Policies.WindowsConnectNow"></using>
+    <using prefix="ns23" namespace="Microsoft.Policies.WindowsDefender"></using>
+    <using prefix="ns24" namespace="Microsoft.Policies.WindowsInkWorkspace"></using>
+    <using prefix="ns25" namespace="Microsoft.Policies.WindowsRemoteManagement"></using>
+    <using prefix="ns26" namespace="Microsoft.Policies.WindowsRemoteShell"></using>
+    <using prefix="ns27" namespace="Microsoft.Policies.WindowsStore"></using>
+    <using prefix="ns28" namespace="Microsoft.Policies.WindowsTimeService"></using>
+  </policyNamespaces>
+  <comments>
+    <admTemplate></admTemplate>
+  </comments>
+  <resources minRequiredRevision="1.0">
+    <stringTable></stringTable>
+  </resources>
+</policyComments>

@@ -1,0 +1,477 @@
+<oval_definitions xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5" xmlns:ind="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" xmlns:oval="http://oval.mitre.org/XMLSchema/oval-common-5" xmlns:unix="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://oval.mitre.org/XMLSchema/oval-definitions-5 https://github.com/CISecurity/OVALRepo/raw/master/oval_schemas/5.11.2/oval-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-common-5 https://github.com/CISecurity/OVALRepo/raw/master/oval_schemas/5.11.2/oval-common-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5#independent https://github.com/CISecurity/OVALRepo/raw/master/oval_schemas/5.11.2/independent-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5#unix https://github.com/CISecurity/OVALRepo/raw/master/oval_schemas/5.11.2/unix-definitions-schema.xsd">
+	<generator>
+		<oval:product_name>Center for Internet Security</oval:product_name>
+		<oval:schema_version>5.11.2</oval:schema_version>
+		<oval:timestamp>2020-02-12T20:28:38+00:00</oval:timestamp>
+	</generator>
+	<definitions>
+		<definition class="compliance" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:def:73299000" version="1">
+			<metadata>
+				<title>Ensure Authentication is configured</title>
+				<reference ref_id="xccdf_org.cisecurity.benchmarks_rule_2.1_Ensure_Authentication_is_configured" ref_url="http://benchmarks.cisecurity.org" source="xccdf_org.cisecurity.benchmarks_benchmark_1.0.0_CIS_MongoDB_3.6_Benchmark"/>
+				<description>Ensure Authentication is configured</description>
+			</metadata>
+			<criteria negate="false" operator="AND">
+				<criterion negate="false" test_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:tst:73299000"/>
+			</criteria>
+		</definition>
+		<definition class="compliance" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:def:73298800" version="1">
+			<metadata>
+				<title>Ensure that MongoDB does not bypass authentication via the localhost exception</title>
+				<reference ref_id="xccdf_org.cisecurity.benchmarks_rule_2.2_Ensure_that_MongoDB_does_not_bypass_authentication_via_the_localhost_exception" ref_url="http://benchmarks.cisecurity.org" source="xccdf_org.cisecurity.benchmarks_benchmark_1.0.0_CIS_MongoDB_3.6_Benchmark"/>
+				<description>Ensure that MongoDB does not bypass authentication via the localhost exception</description>
+			</metadata>
+			<criteria negate="false" operator="AND">
+				<criterion negate="false" test_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:tst:73298800"/>
+			</criteria>
+		</definition>
+		<definition class="compliance" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:def:73298700" version="1">
+			<metadata>
+				<title>Ensure authentication is enabled in the sharded cluster</title>
+				<reference ref_id="xccdf_org.cisecurity.benchmarks_rule_2.3_Ensure_authentication_is_enabled_in_the_sharded_cluster" ref_url="http://benchmarks.cisecurity.org" source="xccdf_org.cisecurity.benchmarks_benchmark_1.0.0_CIS_MongoDB_3.6_Benchmark"/>
+				<description>Ensure authentication is enabled in the sharded cluster</description>
+			</metadata>
+			<criteria negate="false" operator="AND">
+				<criterion negate="false" test_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:tst:73298700"/>
+			</criteria>
+		</definition>
+		<definition class="compliance" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:def:79737700" version="1">
+			<metadata>
+				<title>Ensure authentication is enabled in the sharded cluster</title>
+				<reference ref_id="xccdf_org.cisecurity.benchmarks_rule_2.3_Ensure_authentication_is_enabled_in_the_sharded_cluster" ref_url="http://benchmarks.cisecurity.org" source="xccdf_org.cisecurity.benchmarks_benchmark_1.0.0_CIS_MongoDB_3.6_Benchmark"/>
+				<description>Ensure authentication is enabled in the sharded cluster</description>
+			</metadata>
+			<criteria negate="false" operator="AND">
+				<criterion negate="false" test_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:tst:79737700"/>
+			</criteria>
+		</definition>
+		<definition class="compliance" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:def:79737800" version="1">
+			<metadata>
+				<title>Ensure authentication is enabled in the sharded cluster</title>
+				<reference ref_id="xccdf_org.cisecurity.benchmarks_rule_2.3_Ensure_authentication_is_enabled_in_the_sharded_cluster" ref_url="http://benchmarks.cisecurity.org" source="xccdf_org.cisecurity.benchmarks_benchmark_1.0.0_CIS_MongoDB_3.6_Benchmark"/>
+				<description>Ensure authentication is enabled in the sharded cluster</description>
+			</metadata>
+			<criteria negate="false" operator="AND">
+				<criterion negate="false" test_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:tst:79737800"/>
+			</criteria>
+		</definition>
+		<definition class="compliance" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:def:79737900" version="1">
+			<metadata>
+				<title>Ensure authentication is enabled in the sharded cluster</title>
+				<reference ref_id="xccdf_org.cisecurity.benchmarks_rule_2.3_Ensure_authentication_is_enabled_in_the_sharded_cluster" ref_url="http://benchmarks.cisecurity.org" source="xccdf_org.cisecurity.benchmarks_benchmark_1.0.0_CIS_MongoDB_3.6_Benchmark"/>
+				<description>Ensure authentication is enabled in the sharded cluster</description>
+			</metadata>
+			<criteria negate="false" operator="AND">
+				<criterion negate="false" test_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:tst:79737900"/>
+			</criteria>
+		</definition>
+		<definition class="compliance" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:def:79738000" version="1">
+			<metadata>
+				<title>Ensure authentication is enabled in the sharded cluster</title>
+				<reference ref_id="xccdf_org.cisecurity.benchmarks_rule_2.3_Ensure_authentication_is_enabled_in_the_sharded_cluster" ref_url="http://benchmarks.cisecurity.org" source="xccdf_org.cisecurity.benchmarks_benchmark_1.0.0_CIS_MongoDB_3.6_Benchmark"/>
+				<description>Ensure authentication is enabled in the sharded cluster</description>
+			</metadata>
+			<criteria negate="false" operator="AND">
+				<criterion negate="false" test_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:tst:79738000"/>
+			</criteria>
+		</definition>
+		<definition class="compliance" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:def:79738100" version="1">
+			<metadata>
+				<title>Ensure that MongoDB only listens for network connections on authorized interfaces</title>
+				<reference ref_id="xccdf_org.cisecurity.benchmarks_rule_3.2_Ensure_that_MongoDB_only_listens_for_network_connections_on_authorized_interfaces" ref_url="http://benchmarks.cisecurity.org" source="xccdf_org.cisecurity.benchmarks_benchmark_1.0.0_CIS_MongoDB_3.6_Benchmark"/>
+				<description>Ensure that MongoDB only listens for network connections on authorized interfaces</description>
+			</metadata>
+			<criteria negate="false" operator="AND">
+				<criterion negate="false" test_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:tst:79738100"/>
+			</criteria>
+		</definition>
+		<definition class="compliance" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:def:73299200" version="1">
+			<metadata>
+				<title>Ensure Encryption of Data in Transit  TLS/SSL (Transport Encryption)</title>
+				<reference ref_id="xccdf_org.cisecurity.benchmarks_rule_4.1_Ensure_Encryption_of_Data_in_Transit__TLSSSL_Transport_Encryption" ref_url="http://benchmarks.cisecurity.org" source="xccdf_org.cisecurity.benchmarks_benchmark_1.0.0_CIS_MongoDB_3.6_Benchmark"/>
+				<description>Ensure Encryption of Data in Transit  TLS/SSL (Transport Encryption)</description>
+			</metadata>
+			<criteria negate="false" operator="AND">
+				<criterion negate="false" test_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:tst:73299200"/>
+			</criteria>
+		</definition>
+		<definition class="compliance" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:def:73299400" version="1">
+			<metadata>
+				<title>Ensure Federal Information Processing Standard (FIPS) is enabled</title>
+				<reference ref_id="xccdf_org.cisecurity.benchmarks_rule_4.2_Ensure_Federal_Information_Processing_Standard_FIPS_is_enabled" ref_url="http://benchmarks.cisecurity.org" source="xccdf_org.cisecurity.benchmarks_benchmark_1.0.0_CIS_MongoDB_3.6_Benchmark"/>
+				<description>Ensure Federal Information Processing Standard (FIPS) is enabled</description>
+			</metadata>
+			<criteria negate="false" operator="AND">
+				<criterion negate="false" test_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:tst:73299400"/>
+			</criteria>
+		</definition>
+		<definition class="compliance" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:def:73297700" version="1">
+			<metadata>
+				<title>Ensure that system activity is audited</title>
+				<reference ref_id="xccdf_org.cisecurity.benchmarks_rule_5.1_Ensure_that_system_activity_is_audited" ref_url="http://benchmarks.cisecurity.org" source="xccdf_org.cisecurity.benchmarks_benchmark_1.0.0_CIS_MongoDB_3.6_Benchmark"/>
+				<description>Ensure that system activity is audited</description>
+			</metadata>
+			<criteria negate="false" operator="AND">
+				<criterion negate="false" test_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:tst:73297700"/>
+			</criteria>
+		</definition>
+		<definition class="compliance" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:def:73297800" version="1">
+			<metadata>
+				<title>Ensure that audit filters are configured properly</title>
+				<reference ref_id="xccdf_org.cisecurity.benchmarks_rule_5.2_Ensure_that_audit_filters_are_configured_properly" ref_url="http://benchmarks.cisecurity.org" source="xccdf_org.cisecurity.benchmarks_benchmark_1.0.0_CIS_MongoDB_3.6_Benchmark"/>
+				<description>Ensure that audit filters are configured properly</description>
+			</metadata>
+			<criteria negate="false" operator="AND">
+				<criterion negate="false" test_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:tst:73297800"/>
+			</criteria>
+		</definition>
+		<definition class="compliance" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:def:73297900" version="1">
+			<metadata>
+				<title>Ensure that logging captures as much information as possible</title>
+				<reference ref_id="xccdf_org.cisecurity.benchmarks_rule_5.3_Ensure_that_logging_captures_as_much_information_as_possible" ref_url="http://benchmarks.cisecurity.org" source="xccdf_org.cisecurity.benchmarks_benchmark_1.0.0_CIS_MongoDB_3.6_Benchmark"/>
+				<description>Ensure that logging captures as much information as possible</description>
+			</metadata>
+			<criteria negate="false" operator="AND">
+				<criterion negate="false" test_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:tst:73297900"/>
+			</criteria>
+		</definition>
+		<definition class="compliance" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:def:73298000" version="1">
+			<metadata>
+				<title>Ensure that new entries are appended to the end of the log file</title>
+				<reference ref_id="xccdf_org.cisecurity.benchmarks_rule_5.4_Ensure_that_new_entries_are_appended_to_the_end_of_the_log_file" ref_url="http://benchmarks.cisecurity.org" source="xccdf_org.cisecurity.benchmarks_benchmark_1.0.0_CIS_MongoDB_3.6_Benchmark"/>
+				<description>Ensure that new entries are appended to the end of the log file</description>
+			</metadata>
+			<criteria negate="false" operator="AND">
+				<criterion negate="false" test_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:tst:73298000"/>
+			</criteria>
+		</definition>
+		<definition class="compliance" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:def:73298100" version="1">
+			<metadata>
+				<title>Ensure that MongoDB uses a non-default port</title>
+				<reference ref_id="xccdf_org.cisecurity.benchmarks_rule_6.1_Ensure_that_MongoDB_uses_a_non-default_port" ref_url="http://benchmarks.cisecurity.org" source="xccdf_org.cisecurity.benchmarks_benchmark_1.0.0_CIS_MongoDB_3.6_Benchmark"/>
+				<description>Ensure that MongoDB uses a non-default port</description>
+			</metadata>
+			<criteria negate="false" operator="AND">
+				<criterion negate="false" test_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:tst:73298100"/>
+			</criteria>
+		</definition>
+		<definition class="compliance" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:def:73298300" version="1">
+			<metadata>
+				<title>Ensure that server-side scripting is disabled if not needed</title>
+				<reference ref_id="xccdf_org.cisecurity.benchmarks_rule_6.3_Ensure_that_server-side_scripting_is_disabled_if_not_needed" ref_url="http://benchmarks.cisecurity.org" source="xccdf_org.cisecurity.benchmarks_benchmark_1.0.0_CIS_MongoDB_3.6_Benchmark"/>
+				<description>Ensure that server-side scripting is disabled if not needed</description>
+			</metadata>
+			<criteria negate="false" operator="AND">
+				<criterion negate="false" test_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:tst:73298300"/>
+			</criteria>
+		</definition>
+		<definition class="compliance" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:def:73298400" version="1">
+			<metadata>
+				<title>Ensure authentication file permissions are set correctly</title>
+				<reference ref_id="xccdf_org.cisecurity.benchmarks_rule_7.1_Ensure_authentication_file_permissions_are_set_correctly" ref_url="http://benchmarks.cisecurity.org" source="xccdf_org.cisecurity.benchmarks_benchmark_1.0.0_CIS_MongoDB_3.6_Benchmark"/>
+				<description>Ensure authentication file permissions are set correctly</description>
+			</metadata>
+			<criteria negate="false" operator="AND">
+				<criterion negate="false" test_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:tst:73298400"/>
+			</criteria>
+		</definition>
+		<definition class="compliance" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:def:73298500" version="1">
+			<metadata>
+				<title>Ensure that database file permissions are set correctly</title>
+				<reference ref_id="xccdf_org.cisecurity.benchmarks_rule_7.2_Ensure_that_database_file_permissions_are_set_correctly" ref_url="http://benchmarks.cisecurity.org" source="xccdf_org.cisecurity.benchmarks_benchmark_1.0.0_CIS_MongoDB_3.6_Benchmark"/>
+				<description>Ensure that database file permissions are set correctly</description>
+			</metadata>
+			<criteria negate="false" operator="AND">
+				<criterion negate="false" test_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:tst:73298500"/>
+			</criteria>
+		</definition>
+	</definitions>
+	<tests>
+		<ind:textfilecontent54_test check="all" check_existence="at_least_one_exists" comment="Ensure the running configuration file includes Authentication Parameter Configured" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:tst:73299000" version="1">
+			<ind:object object_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:obj:73299000"/>
+			<ind:state state_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:ste:73299000"/>
+		</ind:textfilecontent54_test>
+		<ind:textfilecontent54_test check="all" check_existence="at_least_one_exists" comment="Ensure the running configuration file includes a non-commented-out 'enableLocalhostAuthBypass: false'" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:tst:73298800" version="1">
+			<ind:object object_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:obj:73298800"/>
+			<ind:state state_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:ste:73298800"/>
+		</ind:textfilecontent54_test>
+		<ind:textfilecontent54_test check="all" check_existence="at_least_one_exists" comment="Ensure the running configuration file contents Pattern Match PEMKeyFile (string)" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:tst:73298700" version="1">
+			<ind:object object_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:obj:73298700"/>
+		</ind:textfilecontent54_test>
+		<ind:textfilecontent54_test check="all" check_existence="at_least_one_exists" comment="Ensure running configuration file contents Pattern Match CAFile(string)" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:tst:79737700" version="1">
+			<ind:object object_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:obj:79737700"/>
+		</ind:textfilecontent54_test>
+		<ind:textfilecontent54_test check="all" check_existence="at_least_one_exists" comment="Ensure running configuration file contents Pattern Match clusterFile (string)" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:tst:79737800" version="1">
+			<ind:object object_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:obj:79737800"/>
+		</ind:textfilecontent54_test>
+		<ind:textfilecontent54_test check="all" check_existence="at_least_one_exists" comment="Ensure running configuration file contents Pattern Match clusterAuthMode(string)" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:tst:79737900" version="1">
+			<ind:object object_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:obj:79737900"/>
+		</ind:textfilecontent54_test>
+		<ind:textfilecontent54_test check="all" check_existence="at_least_one_exists" comment="Ensure running configuration file contents Pattern Match authenticationMechanisms(string)" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:tst:79738000" version="1">
+			<ind:object object_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:obj:79738000"/>
+		</ind:textfilecontent54_test>
+		<ind:textfilecontent54_test check="all" check_existence="at_least_one_exists" comment="Ensure running configuration file contents Pattern Match bindIp (string)" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:tst:79738100" version="1">
+			<ind:object object_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:obj:79738100"/>
+		</ind:textfilecontent54_test>
+		<ind:textfilecontent54_test check="all" check_existence="at_least_one_exists" comment="Ensure the running configuration file includes a non-commented-out 'mode: requireSSL'" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:tst:73299200" version="1">
+			<ind:object object_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:obj:73299200"/>
+			<ind:state state_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:ste:73299200"/>
+		</ind:textfilecontent54_test>
+		<ind:textfilecontent54_test check="all" check_existence="at_least_one_exists" comment="Ensure the running configuration file includes a non-commented-out 'FIPSMode: true'" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:tst:73299400" version="1">
+			<ind:object object_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:obj:73299400"/>
+			<ind:state state_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:ste:73299400"/>
+		</ind:textfilecontent54_test>
+		<ind:textfilecontent54_test check="all" check_existence="at_least_one_exists" comment="Ensure the running configuration file includes a non-commented-out 'auditLog: destination: syslog'" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:tst:73297700" version="1">
+			<ind:object object_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:obj:73297700"/>
+			<ind:state state_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:ste:73297700"/>
+		</ind:textfilecontent54_test>
+		<ind:textfilecontent54_test check="all" check_existence="at_least_one_exists" comment="Ensure the running configuration file includes a non-commented-out audit filter value" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:tst:73297800" version="1">
+			<ind:object object_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:obj:73297800"/>
+			<ind:state state_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:ste:73297800"/>
+		</ind:textfilecontent54_test>
+		<ind:textfilecontent54_test check="all" check_existence="at_least_one_exists" comment="Ensure the running configuration file includes a non-commented-out 'SystemLog.quiet =False'" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:tst:73297900" version="1">
+			<ind:object object_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:obj:73297900"/>
+			<ind:state state_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:ste:73297900"/>
+		</ind:textfilecontent54_test>
+		<ind:textfilecontent54_test check="all" check_existence="at_least_one_exists" comment="Ensure the running configuration file includes a non-commented-out 'systemLog.logAppend=True'" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:tst:73298000" version="1">
+			<ind:object object_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:obj:73298000"/>
+			<ind:state state_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:ste:73298000"/>
+		</ind:textfilecontent54_test>
+		<ind:textfilecontent54_test check="all" check_existence="at_least_one_exists" comment="Ensure the running configuration file does not include a non-commented out 'port = 27017'" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:tst:73298100" version="1">
+			<ind:object object_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:obj:73298100"/>
+			<ind:state state_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:ste:73298100"/>
+		</ind:textfilecontent54_test>
+		<ind:textfilecontent54_test check="all" check_existence="at_least_one_exists" comment="Ensure the running configuration file includes a non-commented-out 'javascriptEnabled =False'" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:tst:73298300" version="1">
+			<ind:object object_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:obj:73298300"/>
+			<ind:state state_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:ste:73298300"/>
+		</ind:textfilecontent54_test>
+		<unix:file_test check="all" comment="Ensure the Key file permissions are set to mongodb:mongodb:'600'" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:tst:73298400" version="1">
+			<unix:object object_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:obj:73298400"/>
+			<unix:state state_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:ste:73298400"/>
+		</unix:file_test>
+		<unix:file_test check="all" comment="Ensure the database file permissions are set to mongodb:mongodb:'770'" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:tst:73298500" version="1">
+			<unix:object object_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:obj:73298500"/>
+			<unix:state state_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:ste:73298500"/>
+		</unix:file_test>
+	</tests>
+	<objects>
+		<ind:textfilecontent54_object id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:obj:73299000" version="1">
+			<ind:behaviors ignore_case="true" multiline="true"/>
+			<ind:filepath var_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb_all:var:2000000"/>
+			<ind:pattern datatype="string" operation="pattern match">^(?i)\s*authorization:[\s"']*(\w*)[\s*"']*$</ind:pattern>
+			<ind:instance datatype="int" operation="equals">1</ind:instance>
+		</ind:textfilecontent54_object>
+		<ind:textfilecontent54_object id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:obj:73298800" version="1">
+			<ind:behaviors ignore_case="true" multiline="true"/>
+			<ind:filepath var_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb_all:var:2000000"/>
+			<ind:pattern datatype="string" operation="pattern match">^\s*(?i)enableLocalhostAuthBypass\s*:\s*(.*)\s*$</ind:pattern>
+			<ind:instance datatype="int" operation="equals">1</ind:instance>
+		</ind:textfilecontent54_object>
+		<ind:textfilecontent54_object id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:obj:73298700" version="1">
+			<ind:behaviors ignore_case="true" multiline="true"/>
+			<ind:filepath var_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb_all:var:2000000"/>
+			<ind:pattern datatype="string" operation="pattern match">^\s*(?i)ssl:(?:\R.*){1,}PEMKeyFile:.*$</ind:pattern>
+			<ind:instance datatype="int" operation="equals">1</ind:instance>
+		</ind:textfilecontent54_object>
+		<ind:textfilecontent54_object id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:obj:79737700" version="1">
+			<ind:behaviors ignore_case="true" multiline="true"/>
+			<ind:filepath var_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb_all:var:2000000"/>
+			<ind:pattern datatype="string" operation="pattern match">^\s*(?i)ssl:(?:\R.*){1,}CAFile\s*:.+$</ind:pattern>
+			<ind:instance datatype="int" operation="equals">1</ind:instance>
+		</ind:textfilecontent54_object>
+		<ind:textfilecontent54_object id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:obj:79737800" version="1">
+			<ind:behaviors ignore_case="true" multiline="true"/>
+			<ind:filepath var_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb_all:var:2000000"/>
+			<ind:pattern datatype="string" operation="pattern match">^\s*(?i)ssl:(?:\R.*){1,}clusterFile\s*:.+$</ind:pattern>
+			<ind:instance datatype="int" operation="equals">1</ind:instance>
+		</ind:textfilecontent54_object>
+		<ind:textfilecontent54_object id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:obj:79737900" version="1">
+			<ind:behaviors ignore_case="true" multiline="true"/>
+			<ind:filepath var_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb_all:var:2000000"/>
+			<ind:pattern datatype="string" operation="pattern match">^\s*(?i)security:(?:\R.*){1,}clusterAuthMode\s*:.+$</ind:pattern>
+			<ind:instance datatype="int" operation="equals">1</ind:instance>
+		</ind:textfilecontent54_object>
+		<ind:textfilecontent54_object id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:obj:79738000" version="1">
+			<ind:behaviors ignore_case="true" multiline="true"/>
+			<ind:filepath var_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb_all:var:2000000"/>
+			<ind:pattern datatype="string" operation="pattern match">^\s*(?i)setParameter:(?:\R.*){1,}authenticationMechanisms\s*:.+$</ind:pattern>
+			<ind:instance datatype="int" operation="equals">1</ind:instance>
+		</ind:textfilecontent54_object>
+		<ind:textfilecontent54_object id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:obj:79738100" version="1">
+			<ind:behaviors ignore_case="true" multiline="true"/>
+			<ind:filepath var_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb_all:var:2000000"/>
+			<ind:pattern datatype="string" operation="pattern match">^\s*(?i)net\s*:(?:\R.*){1,}bindIp:.*$</ind:pattern>
+			<ind:instance datatype="int" operation="equals">1</ind:instance>
+		</ind:textfilecontent54_object>
+		<ind:textfilecontent54_object id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:obj:73299200" version="1">
+			<ind:behaviors ignore_case="true" multiline="true"/>
+			<ind:filepath var_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb_all:var:2000000"/>
+			<ind:pattern datatype="string" operation="pattern match">^\s*(?i)net:(?:\R.*){1,}ssl:(?:\R.*){1,}\smode:\s*(.*)\s*$</ind:pattern>
+			<ind:instance datatype="int" operation="equals">1</ind:instance>
+		</ind:textfilecontent54_object>
+		<ind:textfilecontent54_object id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:obj:73299400" version="1">
+			<ind:behaviors ignore_case="true" multiline="true"/>
+			<ind:filepath var_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb_all:var:2000000"/>
+			<ind:pattern datatype="string" operation="pattern match">^\s*(?i)net:(?:\R.*){1,}ssl:(?:\R.*){1,}FIPSMode:\s*(.*)\s*$</ind:pattern>
+			<ind:instance datatype="int" operation="equals">1</ind:instance>
+		</ind:textfilecontent54_object>
+		<ind:textfilecontent54_object id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:obj:73297700" version="1">
+			<ind:behaviors ignore_case="true" multiline="true"/>
+			<ind:filepath var_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb_all:var:2000000"/>
+			<ind:pattern datatype="string" operation="pattern match">^\s*(?i)auditLog:(?:\R.*){1,}(destination\s*:.*)$</ind:pattern>
+			<ind:instance datatype="int" operation="equals">1</ind:instance>
+		</ind:textfilecontent54_object>
+		<ind:textfilecontent54_object id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:obj:73297800" version="1">
+			<ind:behaviors ignore_case="true" multiline="true"/>
+			<ind:filepath var_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb_all:var:2000000"/>
+			<ind:pattern datatype="string" operation="pattern match">^\s*(?i)auditLog:(?:\R.*){1,}(filter\s*:.*)$</ind:pattern>
+			<ind:instance datatype="int" operation="equals">1</ind:instance>
+		</ind:textfilecontent54_object>
+		<ind:textfilecontent54_object id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:obj:73297900" version="1">
+			<ind:behaviors ignore_case="true" multiline="true"/>
+			<ind:filepath var_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb_all:var:2000000"/>
+			<ind:pattern datatype="string" operation="pattern match">^\s*(?i)systemLog:(?:\R.*){1,}quiet\s*:\s*(.*)\s*$</ind:pattern>
+			<ind:instance datatype="int" operation="equals">1</ind:instance>
+		</ind:textfilecontent54_object>
+		<ind:textfilecontent54_object id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:obj:73298000" version="1">
+			<ind:behaviors ignore_case="true" multiline="true"/>
+			<ind:filepath var_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb_all:var:2000000"/>
+			<ind:pattern datatype="string" operation="pattern match">^\s*(?i)systemLog:(?:\R.*){1,}logAppend\s*:\s*(.*)\s*$</ind:pattern>
+			<ind:instance datatype="int" operation="equals">1</ind:instance>
+		</ind:textfilecontent54_object>
+		<ind:textfilecontent54_object id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:obj:73298100" version="1">
+			<ind:behaviors ignore_case="true" multiline="true"/>
+			<ind:filepath var_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb_all:var:2000000"/>
+			<ind:pattern datatype="string" operation="pattern match">^\s*(?i)net:(?:\R.*){1,}port\s*:\s*([1-9][0-9]*)\s*$</ind:pattern>
+			<ind:instance datatype="int" operation="equals">1</ind:instance>
+		</ind:textfilecontent54_object>
+		<ind:textfilecontent54_object id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:obj:73298300" version="1">
+			<ind:behaviors ignore_case="true" multiline="true"/>
+			<ind:filepath var_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb_all:var:2000000"/>
+			<ind:pattern datatype="string" operation="pattern match">^\s*(?i)security:(?:\R.*){1,}\s*javascriptEnabled\s*:\s*(.*)\s*$</ind:pattern>
+			<ind:instance datatype="int" operation="equals">1</ind:instance>
+		</ind:textfilecontent54_object>
+		<unix:file_object id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:obj:73298400" version="1">
+			<unix:filepath datatype="string" operation="equals" var_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:var:73298400"/>
+		</unix:file_object>
+		<ind:textfilecontent54_object id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:obj:732984001" version="1">
+			<ind:filepath var_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb_all:var:2000000"/>
+			<ind:pattern datatype="string" operation="pattern match">^(?i)\s*(?:ca|PEMKey|key)File\:[\s'"]*(.+)[\s'"]*$</ind:pattern>
+			<ind:instance datatype="int" operation="equals">1</ind:instance>
+		</ind:textfilecontent54_object>
+		<unix:password_object id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:obj:732984002" version="1">
+			<unix:username datatype="string">mongodb</unix:username>
+		</unix:password_object>
+		<ind:textfilecontent54_object id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:obj:732984003" version="1">
+			<ind:filepath datatype="string">/etc/group</ind:filepath>
+			<ind:pattern datatype="string" operation="pattern match">^mongodb[^:]*:[^:]*:([^:]*):</ind:pattern>
+			<ind:instance datatype="int">1</ind:instance>
+		</ind:textfilecontent54_object>
+		<unix:file_object id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:obj:73298500" version="1">
+			<unix:path datatype="string" operation="equals" var_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:var:73298500"/>
+			<unix:filename xsi:nil="true"/>
+		</unix:file_object>
+		<ind:textfilecontent54_object id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:obj:732985001" version="1">
+			<ind:filepath var_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb_all:var:2000000"/>
+			<ind:pattern datatype="string" operation="pattern match">^\s*(?i)storage:\s*(?:\R.*){1,}dbpath[:\s'"=]*(.+)[\s'"]*$</ind:pattern>
+			<ind:instance datatype="int" operation="equals">1</ind:instance>
+		</ind:textfilecontent54_object>
+		<unix:password_object id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:obj:732985002" version="1">
+			<unix:username datatype="string">mongodb</unix:username>
+		</unix:password_object>
+		<ind:textfilecontent54_object id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:obj:732985003" version="1">
+			<ind:filepath datatype="string">/etc/group</ind:filepath>
+			<ind:pattern datatype="string" operation="pattern match">^mongodb[^:]*:[^:]*:([^:]*):</ind:pattern>
+			<ind:instance datatype="int">1</ind:instance>
+		</ind:textfilecontent54_object>
+	</objects>
+	<states>
+		<ind:textfilecontent54_state comment="Ensure the running configuration file includes Authentication Parameter Configured" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:ste:73299000" version="1">
+			<ind:subexpression operation="case insensitive equals" var_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:var:73299000"/>
+		</ind:textfilecontent54_state>
+		<ind:textfilecontent54_state comment="Ensure the running configuration file includes a non-commented-out 'enableLocalhostAuthBypass: false'" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:ste:73298800" version="1">
+			<ind:subexpression operation="case insensitive equals" var_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:var:73298800"/>
+		</ind:textfilecontent54_state>
+		<ind:textfilecontent54_state comment="Ensure the running configuration file includes a non-commented-out 'mode: requireSSL'" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:ste:73299200" version="1">
+			<ind:subexpression operation="case insensitive equals" var_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:var:73299200"/>
+		</ind:textfilecontent54_state>
+		<ind:textfilecontent54_state comment="Ensure the running configuration file includes a non-commented-out 'FIPSMode: true'" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:ste:73299400" version="1">
+			<ind:subexpression operation="case insensitive equals" var_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:var:73299400"/>
+		</ind:textfilecontent54_state>
+		<ind:textfilecontent54_state comment="Ensure the running configuration file includes a non-commented-out 'auditLog: destination: syslog'" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:ste:73297700" version="1">
+			<ind:subexpression operation="pattern match" var_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:var:73297700"/>
+		</ind:textfilecontent54_state>
+		<ind:textfilecontent54_state comment="Ensure the running configuration file includes a non-commented-out audit filter value" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:ste:73297800" version="1">
+			<ind:subexpression operation="pattern match" var_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:var:73297800"/>
+		</ind:textfilecontent54_state>
+		<ind:textfilecontent54_state comment="Ensure the running configuration file includes a non-commented-out 'SystemLog.quiet =False'" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:ste:73297900" version="1">
+			<ind:subexpression operation="case insensitive equals" var_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:var:73297900"/>
+		</ind:textfilecontent54_state>
+		<ind:textfilecontent54_state comment="Ensure the running configuration file includes a non-commented-out 'systemLog.logAppend=True'" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:ste:73298000" version="1">
+			<ind:subexpression operation="equals" var_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:var:73298000"/>
+		</ind:textfilecontent54_state>
+		<ind:textfilecontent54_state comment="Ensure the running configuration file does not include a non-commented out 'port = 27017'" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:ste:73298100" version="1">
+			<ind:subexpression operation="not equal" var_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:var:73298100"/>
+		</ind:textfilecontent54_state>
+		<ind:textfilecontent54_state comment="Ensure the running configuration file includes a non-commented-out 'javascriptEnabled =False'" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:ste:73298300" version="1">
+			<ind:subexpression operation="case insensitive equals" var_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:var:73298300"/>
+		</ind:textfilecontent54_state>
+		<unix:file_state id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:ste:73298400" version="1">
+			<unix:group_id datatype="int" var_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:var:732984002"/>
+			<unix:user_id datatype="int" var_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:var:732984001"/>
+			<unix:uread datatype="boolean">true</unix:uread>
+			<unix:uwrite datatype="boolean">true</unix:uwrite>
+			<unix:uexec datatype="boolean">false</unix:uexec>
+			<unix:gread datatype="boolean">false</unix:gread>
+			<unix:gwrite datatype="boolean">false</unix:gwrite>
+			<unix:gexec datatype="boolean">false</unix:gexec>
+			<unix:oread datatype="boolean">false</unix:oread>
+			<unix:owrite datatype="boolean">false</unix:owrite>
+			<unix:oexec datatype="boolean">false</unix:oexec>
+		</unix:file_state>
+		<unix:file_state id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:ste:73298500" version="1">
+			<unix:group_id datatype="int" var_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:var:732985002"/>
+			<unix:user_id datatype="int" var_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:var:732985001"/>
+			<unix:uread datatype="boolean">true</unix:uread>
+			<unix:uwrite datatype="boolean">true</unix:uwrite>
+			<unix:uexec datatype="boolean">true</unix:uexec>
+			<unix:gread datatype="boolean">true</unix:gread>
+			<unix:gwrite datatype="boolean">true</unix:gwrite>
+			<unix:gexec datatype="boolean">true</unix:gexec>
+			<unix:oread datatype="boolean">false</unix:oread>
+			<unix:owrite datatype="boolean">false</unix:owrite>
+			<unix:oexec datatype="boolean">false</unix:oexec>
+		</unix:file_state>
+	</states>
+	<variables>
+		<external_variable comment="MongoDB configuration file (mongod.conf) location" datatype="string" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb_all:var:2000000" version="1"/>
+		<external_variable comment="Ensure the running configuration file includes Authentication Parameter Configured" datatype="string" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:var:73299000" version="1"/>
+		<external_variable comment="Ensure the running configuration file includes a non-commented-out 'enableLocalhostAuthBypass: false'" datatype="string" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:var:73298800" version="1"/>
+		<external_variable comment="Ensure the running configuration file includes a non-commented-out 'mode: requireSSL'" datatype="string" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:var:73299200" version="1"/>
+		<external_variable comment="Ensure the running configuration file includes a non-commented-out 'FIPSMode: true'" datatype="string" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:var:73299400" version="1"/>
+		<external_variable comment="Ensure the running configuration file includes a non-commented-out 'auditLog: destination: syslog'" datatype="string" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:var:73297700" version="1"/>
+		<external_variable comment="Ensure the running configuration file includes a non-commented-out audit filter value" datatype="string" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:var:73297800" version="1"/>
+		<external_variable comment="Ensure the running configuration file includes a non-commented-out 'SystemLog.quiet =False'" datatype="string" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:var:73297900" version="1"/>
+		<external_variable comment="Ensure the running configuration file includes a non-commented-out 'systemLog.logAppend=True'" datatype="string" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:var:73298000" version="1"/>
+		<external_variable comment="Ensure the running configuration file does not include a non-commented out 'port = 27017'" datatype="string" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:var:73298100" version="1"/>
+		<external_variable comment="Ensure the running configuration file includes a non-commented-out 'javascriptEnabled =False'" datatype="string" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:var:73298300" version="1"/>
+		<local_variable comment="Ensure the Key file permissions are set to mongodb:mongodb:'600'" datatype="string" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:var:73298400" version="1">
+			<object_component item_field="subexpression" object_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:obj:732984001" record_field="variable_value"/>
+		</local_variable>
+		<local_variable comment="Ensure the Key file permissions are set to mongodb:mongodb:'600'" datatype="int" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:var:732984001" version="1">
+			<object_component item_field="user_id" object_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:obj:732984002" record_field="variable_value"/>
+		</local_variable>
+		<local_variable comment="Ensure the Key file permissions are set to mongodb:mongodb:'600'" datatype="int" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:var:732984002" version="1">
+			<object_component item_field="subexpression" object_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:obj:732984003" record_field="variable_value"/>
+		</local_variable>
+		<local_variable comment="Ensure the database file permissions are set to mongodb:mongodb:'770'" datatype="string" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:var:73298500" version="1">
+			<object_component item_field="subexpression" object_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:obj:732985001" record_field="variable_value"/>
+		</local_variable>
+		<local_variable comment="Ensure the database file permissions are set to mongodb:mongodb:'770'" datatype="int" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:var:732985001" version="1">
+			<object_component item_field="user_id" object_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:obj:732985002" record_field="variable_value"/>
+		</local_variable>
+		<local_variable comment="Ensure the database file permissions are set to mongodb:mongodb:'770'" datatype="int" id="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:var:732985002" version="1">
+			<object_component item_field="subexpression" object_ref="oval:org.cisecurity.benchmarks.a_mongodb_mongodb:obj:732985003" record_field="variable_value"/>
+		</local_variable>
+	</variables>
+</oval_definitions>

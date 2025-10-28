@@ -1,0 +1,957 @@
+***Applying Level-1 scored workstation remediation for failures on a fresh Ubuntu 18.04 install***
+Hit:1 http://us.archive.ubuntu.com/ubuntu xenial InRelease
+Reading package lists...
+################################################################################
+#                             RULESET 1                                      #
+################################################################################
+Reading package lists...
+Building dependency tree...
+Reading state information...
+apparmor-utils is already the newest version (2.10.95-0ubuntu2).
+The following package was automatically installed and is no longer required:
+  pure-ftpd-common
+Use 'sudo apt autoremove' to remove it.
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+Execute rule 1.1.1.x
+
+Ensure mounting of jffs2 filesystems is disabled
+
+Ensure mounting of freevxfs filesystems is disabled
+
+Ensure mounting of cramfs filesystems is disabled
+
+Ensure mounting of udf filesystems is disabled
+
+Ensure mounting of hfsplus filesystems is disabled
+
+Ensure mounting of hfs filesystems is disabled
+Execute rule 1.1.3
+
+Ensure nodev option set on /tmp partition
+No /tmp partition present
+Execute rule 1.1.4
+
+Ensure nosuid option set on /tmp partition
+No /tmp partition present
+Execute rule 1.1.7
+
+Ensure nodev option set on /var/tmp partition
+No /var/tmp partition present
+Execute rule 1.1.8
+
+Ensure nosuid option set on /var/tmp partition
+No /var/tmp partition present
+Execute rule 1.1.9
+
+Ensure noexec option set on /var/tmp partition
+No /var/tmp partition present
+Execute rule 1.1.13
+
+Ensure nodev option set on /home partition
+No /home partition present
+Execute rule 1.1.14
+
+Ensure nodev option set on /dev/shm partition
+Execute rule 1.1.15
+
+Ensure nosuid option set on /dev/shm partition
+Execute rule 1.1.16
+
+Ensure noexec option set on /dev/shm partition
+Execute rule 1.1.20
+
+Ensure sticky bit on world-writable directories
+df: /mnt/hgfs: Protocol error
+chmod: cannot access '/home/ballen/Downloads/Allegro': No such file or directory
+chmod: cannot access 'Classical': No such file or directory
+Execute rule 1.3.1
+
+Ensure AIDE is installed
+****** Note this rule installs postfix as well, which requires additional MANUAL configuration ******
+Reading package lists...
+Building dependency tree...
+Reading state information...
+postfix is already the newest version (3.1.0-3).
+The following package was automatically installed and is no longer required:
+  pure-ftpd-common
+Use 'sudo apt autoremove' to remove it.
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+Reading package lists...
+Building dependency tree...
+Reading state information...
+aide is already the newest version (0.16~a2.git20130520-3).
+aide-common is already the newest version (0.16~a2.git20130520-3).
+The following package was automatically installed and is no longer required:
+  pure-ftpd-common
+Use 'sudo apt autoremove' to remove it.
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+Execute rule 1.3.2
+
+Ensure filesystem integrity is regularly checked
+****** /etc/crontab was changed to enable AIDE periodical checks ******
+Execute rule 1.4.1
+
+Ensure permissions on bootloader config are configured
+Execute rule 1.4.2
+
+Ensure bootloader password is set
+Ensure bootloader password is set - requires manual configuration!
+Execute rule 1.4.3
+
+Ensure authentication required for single user mode
+Ensure authentication required for single user mode - requires manual configuration!
+Execute rule 1.5.1
+
+Ensure core dumps are restricted
+fs.suid_dumpable = 0
+apport.service is not a native service, redirecting to systemd-sysv-install
+Executing /lib/systemd/systemd-sysv-install disable apport
+insserv: warning: current start runlevel(s) (empty) of script `apport' overrides LSB defaults (2 3 4 5).
+insserv: warning: current stop runlevel(s) (2 3 4 5) of script `apport' overrides LSB defaults (empty).
+insserv: warning: current start runlevel(s) (empty) of script `apport' overrides LSB defaults (2 3 4 5).
+insserv: warning: current stop runlevel(s) (2 3 4 5) of script `apport' overrides LSB defaults (empty).
+Execute rule 1.5.3
+
+Ensure address space layout randomization (ASLR) is enabled
+kernel.randomize_va_space = 2
+Execute rule 1.5.4
+
+Ensure prelink is disabled
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Package 'prelink' is not installed, so not removed
+The following package was automatically installed and is no longer required:
+  pure-ftpd-common
+Use 'sudo apt autoremove' to remove it.
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+Execute rule 1.7.1.1
+
+Ensure message of the day is configured properly
+sed: can't read /etc/motd: No such file or directory
+Execute rule 1.7.1.2
+
+Ensure local login warning banner is configured properly
+Execute rule 1.7.1.3
+
+Ensure remote login warning banner is configured properly
+Execute rule 1.7.1.4
+
+Ensure permissions on /etc/motd are configured
+chown: cannot access '/etc/motd': No such file or directory
+chmod: cannot access '/etc/motd': No such file or directory
+Execute rule 1.7.1.5
+
+Ensure permissions on /etc/issue are configured
+Execute rule 1.7.1.6
+
+Ensure permissions on /etc/issue.net are configured
+Execute rule 1.7.2
+
+Ensure GDM login banner is configured
+./CIS-ruleset-1.sh: line 435: /etc/gdm3/greeter.dconf-defaults: No such file or directory
+################################################################################
+#                             RULESET 2                                      #
+################################################################################
+Execute rule 2.1.1-9
+
+Ensure time services are not enabled
+sed: can't read /etc/inetd.d/time: No such file or directory
+sed: can't read /etc/xinetd.d/time: No such file or directory
+
+Ensure echo services are not enabled
+sed: can't read /etc/inetd.d/echo: No such file or directory
+sed: can't read /etc/xinetd.d/echo: No such file or directory
+
+Ensure discard services are not enabled
+sed: can't read /etc/inetd.d/discard: No such file or directory
+sed: can't read /etc/xinetd.d/discard: No such file or directory
+
+Ensure daytime services are not enabled
+sed: can't read /etc/inetd.d/daytime: No such file or directory
+sed: can't read /etc/xinetd.d/daytime: No such file or directory
+
+Ensure chargen services are not enabled
+sed: can't read /etc/inetd.d/chargen: No such file or directory
+sed: can't read /etc/xinetd.d/chargen: No such file or directory
+
+Ensure tftp server is not enabled
+sed: can't read /etc/inetd.d/tftp: No such file or directory
+sed: can't read /etc/xinetd.d/tftp: No such file or directory
+
+Ensure telnet server is not enabled
+sed: can't read /etc/inetd.d/telnet: No such file or directory
+sed: can't read /etc/xinetd.d/telnet: No such file or directory
+
+Ensure talk server is not enabled
+sed: can't read /etc/inetd.d/talk: No such file or directory
+sed: can't read /etc/xinetd.d/talk: No such file or directory
+
+Ensure rsh server is not enabled
+sed: can't read /etc/inetd.d/rsh: No such file or directory
+sed: can't read /etc/xinetd.d/rsh: No such file or directory
+Execute rule 2.1.10
+
+Ensure xinetd is not enabled
+Failed to execute operation: No such file or directory
+Failed to stop xinetd.service: Unit xinetd.service not loaded.
+Execute rule 2.1.11
+
+Ensure openbsd-inetd is not installed
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Package 'openbsd-inetd' is not installed, so not removed
+The following package was automatically installed and is no longer required:
+  pure-ftpd-common
+Use 'sudo apt autoremove' to remove it.
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+Execute rule 2.2.1.2
+
+Ensure ntp is configured
+ntp not selected for configuration
+Execute rule 2.2.1.3
+
+Ensure chrony is configured
+chrony not selected for configuration
+Execute rule 2.2.3
+
+Ensure Avahi Server is not enabled
+Synchronizing state of avahi-daemon.service with SysV init with /lib/systemd/systemd-sysv-install...
+Executing /lib/systemd/systemd-sysv-install disable avahi-daemon
+insserv: warning: current start runlevel(s) (empty) of script `avahi-daemon' overrides LSB defaults (2 3 4 5).
+insserv: warning: current stop runlevel(s) (0 1 2 3 4 5 6) of script `avahi-daemon' overrides LSB defaults (0 1 6).
+insserv: warning: current start runlevel(s) (empty) of script `avahi-daemon' overrides LSB defaults (2 3 4 5).
+insserv: warning: current stop runlevel(s) (0 1 2 3 4 5 6) of script `avahi-daemon' overrides LSB defaults (0 1 6).
+insserv: warning: current start runlevel(s) (empty) of script `avahi-daemon' overrides LSB defaults (2 3 4 5).
+insserv: warning: current stop runlevel(s) (0 1 2 3 4 5 6) of script `avahi-daemon' overrides LSB defaults (0 1 6).
+insserv: warning: current start runlevel(s) (empty) of script `avahi-daemon' overrides LSB defaults (2 3 4 5).
+insserv: warning: current stop runlevel(s) (0 1 2 3 4 5 6) of script `avahi-daemon' overrides LSB defaults (0 1 6).
+Warning: Stopping avahi-daemon.service, but it can still be activated by:
+  avahi-daemon.socket
+Execute rule 2.2.4
+
+Ensure CUPS is not enabled
+Synchronizing state of cups.service with SysV init with /lib/systemd/systemd-sysv-install...
+Executing /lib/systemd/systemd-sysv-install disable cups
+insserv: warning: current start runlevel(s) (empty) of script `cups' overrides LSB defaults (2 3 4 5).
+insserv: warning: current stop runlevel(s) (1 2 3 4 5) of script `cups' overrides LSB defaults (1).
+insserv: warning: current start runlevel(s) (empty) of script `cups' overrides LSB defaults (2 3 4 5).
+insserv: warning: current stop runlevel(s) (1 2 3 4 5) of script `cups' overrides LSB defaults (1).
+Warning: Stopping cups.service, but it can still be activated by:
+  cups.path
+  cups.socket
+Execute rule 2.2.5
+
+Ensure DHCP Server is not enabled
+Failed to execute operation: No such file or directory
+Failed to stop isc-dhcp-server.service: Unit isc-dhcp-server.service not loaded.
+Failed to stop isc-dhcp-server6.service: Unit isc-dhcp-server6.service not loaded.
+Execute rule 2.2.6
+
+Ensure LDAP server is not enabled
+Failed to execute operation: No such file or directory
+Failed to stop slapd.service: Unit slapd.service not loaded.
+Execute rule 2.2.7
+
+Ensure NFS and RPC are not enabled
+Failed to execute operation: No such file or directory
+Failed to stop nfs-server.service: Unit nfs-server.service not loaded.
+Failed to stop rpcbind.service: Unit rpcbind.service not loaded.
+Execute rule 2.2.8
+
+Ensure DNS Server is not enabled
+Failed to execute operation: No such file or directory
+Failed to stop bind9.service: Unit bind9.service not loaded.
+Execute rule 2.2.9
+
+Ensure FTP Server is not enabled
+Failed to execute operation: No such file or directory
+Failed to stop vsftpd.service: Unit vsftpd.service not loaded.
+Execute rule 2.2.10
+
+Ensure HTTP server is not enabled
+Failed to execute operation: No such file or directory
+Failed to stop apache2.service: Unit apache2.service not loaded.
+Execute rule 2.2.11
+
+Ensure IMAP and POP3 server is not enabled
+Failed to execute operation: No such file or directory
+Failed to stop dovecot.service: Unit dovecot.service not loaded.
+Execute rule 2.2.12
+
+Ensure Samba is not enabled
+Failed to execute operation: No such file or directory
+Failed to stop smbd.service: Unit smbd.service not loaded.
+Execute rule 2.2.13
+
+Ensure HTTP Proxy Server is not enabled
+Failed to execute operation: No such file or directory
+Failed to stop squid.service: Unit squid.service not loaded.
+Execute rule 2.2.14
+
+Ensure SNMP Server is not enabled
+Failed to execute operation: No such file or directory
+Failed to stop snmpd.service: Unit snmpd.service not loaded.
+Execute rule 2.2.15
+
+Ensure mail transfer agent is configured for local-only mode
+Execute rule 2.2.16
+
+Ensure rsync service is not enabled
+Synchronizing state of rsync.service with SysV init with /lib/systemd/systemd-sysv-install...
+Executing /lib/systemd/systemd-sysv-install disable rsync
+insserv: warning: current start runlevel(s) (empty) of script `rsync' overrides LSB defaults (2 3 4 5).
+insserv: warning: current stop runlevel(s) (2 3 4 5) of script `rsync' overrides LSB defaults (empty).
+insserv: warning: current start runlevel(s) (empty) of script `rsync' overrides LSB defaults (2 3 4 5).
+insserv: warning: current stop runlevel(s) (2 3 4 5) of script `rsync' overrides LSB defaults (empty).
+Execute rule 2.2.17
+
+Ensure NIS Server is not enabled
+Failed to execute operation: No such file or directory
+Failed to stop nis.service: Unit nis.service not loaded.
+Execute rule 2.3.1
+
+Ensure NIS Client is not installed
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Package 'nis' is not installed, so not removed
+The following package was automatically installed and is no longer required:
+  pure-ftpd-common
+Use 'sudo apt autoremove' to remove it.
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+Execute rule 2.3.2
+
+Ensure rsh client is not installed
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Package 'rsh-client' is not installed, so not removed
+Package 'rsh-redone-client' is not installed, so not removed
+The following package was automatically installed and is no longer required:
+  pure-ftpd-common
+Use 'sudo apt autoremove' to remove it.
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+Execute rule 2.3.3
+
+Ensure talk client is not installed
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Package 'talk' is not installed, so not removed
+The following package was automatically installed and is no longer required:
+  pure-ftpd-common
+Use 'sudo apt autoremove' to remove it.
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+Execute rule 2.3.4
+
+Ensure telnet client is not installed
+Package: telnet
+Status: deinstall ok config-files
+Priority: standard
+Section: net
+Installed-Size: 179
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Architecture: i386
+Source: netkit-telnet
+Version: 0.17-40
+Config-Version: 0.17-40
+Replaces: netstd
+Provides: telnet-client
+Depends: netbase, libc6 (>= 2.15), libstdc++6 (>= 4.1.1)
+Description: basic telnet client
+ The telnet command is used for interactive communication with another host
+ using the TELNET protocol.
+ .
+ For the purpose of remote login, the present client executable should be
+ depreciated in favour of an ssh-client, or in some cases with variants like
+ telnet-ssl or Kerberized TELNET clients.  The most important reason is that
+ this implementation exchanges user name and password in clear text.
+ .
+ On the other hand, the present program does satisfy common use cases of
+ network diagnostics, like protocol testing of SMTP services, so it can
+ become handy enough.
+Original-Maintainer: Mats Erik Andersson <mats.andersson@gisladisker.se>
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Package 'telnet' is not installed, so not removed
+The following package was automatically installed and is no longer required:
+  pure-ftpd-common
+Use 'sudo apt autoremove' to remove it.
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+Execute rule 2.3.5
+
+Ensure LDAP client is not installed
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Package 'ldap-utils' is not installed, so not removed
+The following package was automatically installed and is no longer required:
+  pure-ftpd-common
+Use 'sudo apt autoremove' to remove it.
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+################################################################################
+#                             RULESET 3                                      #
+################################################################################
+Reading package lists...
+Building dependency tree...
+Reading state information...
+iptables-persistent is already the newest version (1.0.4).
+The following package was automatically installed and is no longer required:
+  pure-ftpd-common
+Use 'sudo apt autoremove' to remove it.
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+Execute rule 3.1.1
+
+Ensure IP forwarding is disabled
+net.ipv4.ip_forward = 0
+net.ipv4.route.flush = 1
+Execute rule 3.1.2
+
+Ensure packet redirect sending is disabled
+net.ipv4.conf.all.send_redirects = 0
+net.ipv4.conf.default.send_redirects = 0
+net.ipv4.route.flush = 1
+Execute rule 3.2.1
+
+Ensure source routed packets are not accepted
+net.ipv4.conf.all.accept_source_route = 0
+net.ipv4.conf.default.accept_source_route = 0
+net.ipv4.route.flush = 1
+Execute rule 3.2.2
+
+Ensure ICMP redirects are not accepted
+net.ipv4.conf.all.accept_redirects = 0
+net.ipv4.conf.default.accept_redirects = 0
+net.ipv4.route.flush = 1
+Execute rule 3.2.3
+
+Ensure secure ICMP redirects are not accepted
+net.ipv4.conf.all.secure_redirects = 0
+net.ipv4.conf.default.secure_redirects = 0
+net.ipv4.route.flush = 1
+Execute rule 3.2.4
+
+Ensure suspicious packets are logged
+net.ipv4.conf.all.log_martians = 1
+net.ipv4.conf.default.log_martians = 1
+net.ipv4.route.flush = 1
+Execute rule 3.2.5
+
+Ensure broadcast ICMP requests are ignored
+net.ipv4.icmp_echo_ignore_broadcasts = 1
+net.ipv4.route.flush = 1
+Execute rule 3.2.6
+
+Ensure bogus ICMP responses are ignored
+net.ipv4.icmp_ignore_bogus_error_responses = 1
+net.ipv4.route.flush = 1
+Execute rule 3.2.7
+
+Ensure Reverse Path Filtering is enabled
+net.ipv4.conf.all.rp_filter = 1
+net.ipv4.conf.default.rp_filter = 1
+net.ipv4.route.flush = 1
+Execute rule 3.2.8
+
+Ensure TCP SYN Cookies is enabled
+net.ipv4.tcp_syncookies = 1
+net.ipv4.route.flush = 1
+Execute rule 3.4.1
+
+Ensure TCP Wrappers is installed
+Package: tcpd
+Status: install ok installed
+Priority: optional
+Section: net
+Installed-Size: 95
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Architecture: i386
+Multi-Arch: foreign
+Source: tcp-wrappers
+Version: 7.6.q-25
+Replaces: libwrap0 (<< 7.6-8)
+Depends: libc6 (>= 2.4), libwrap0 (>= 7.6-4~)
+Description: Wietse Venema's TCP wrapper utilities
+ Wietse Venema's network logger, also known as TCPD or LOG_TCP.
+ .
+ These programs log the client host name of incoming telnet,
+ ftp, rsh, rlogin, finger etc. requests.
+ .
+ Security options are:
+  - access control per host, domain and/or service;
+  - detection of host name spoofing or host address spoofing;
+  - booby traps to implement an early-warning system.
+Original-Maintainer: Marco d'Itri <md@linux.it>
+Execute rule 3.4.2-3
+
+Ensure /etc/hosts.allow is configured
+
+Ensure /etc/hosts.deny is configured
+Execute rule 3.4.4
+
+Ensure permissions on /etc/hosts.allow are configured
+Execute rule 3.4.5
+
+Ensure permissions on /etc/hosts.deny are configured
+Execute rule 3.6.1
+
+Ensure iptables is installed
+Package: iptables
+Status: install ok installed
+Priority: important
+Section: net
+Installed-Size: 1419
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Architecture: i386
+Version: 1.6.0-2ubuntu3
+Depends: libxtables11 (= 1.6.0-2ubuntu3), libc6 (>= 2.7), libnfnetlink0
+Description: administration tools for packet filtering and NAT
+ iptables is the userspace command line program used to configure
+ the Linux packet filtering ruleset. It is targeted towards system
+ administrators. Since Network Address Translation is also configured
+ from the packet filter ruleset, iptables is used for this, too. The
+ iptables package also includes ip6tables. ip6tables is used for
+ configuring the IPv6 packet filter
+Homepage: http://www.netfilter.org/
+Original-Maintainer: iptables devel team <pkg-netfilter-devel@lists.alioth.debian.org>
+Execute rule 3.6.2
+
+Ensure default deny firewall policy
+Ensure default deny firewall policy - requires manual configuration
+Firewall is active and enabled on system startup
+Execute rule 3.6.3
+
+Ensure loopback traffic is configured
+Execute rule 3.6.5
+
+Ensure firewall rules exist for all open ports
+Ensure firewall rules exist for all open ports - requires manual configuration
+################################################################################
+#                             RULESET 4                                      #
+################################################################################
+Reading package lists...
+Building dependency tree...
+Reading state information...
+auditd is already the newest version (1:2.4.5-1ubuntu2).
+The following package was automatically installed and is no longer required:
+  pure-ftpd-common
+Use 'sudo apt autoremove' to remove it.
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+Reading package lists...
+Building dependency tree...
+Reading state information...
+rsyslog is already the newest version (8.16.0-1ubuntu3).
+The following package was automatically installed and is no longer required:
+  pure-ftpd-common
+Use 'sudo apt autoremove' to remove it.
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+Execute rule 4.2.3
+
+Ensure rsyslog or syslog-ng is installed
+Reading package lists...
+Building dependency tree...
+Reading state information...
+rsyslog is already the newest version (8.16.0-1ubuntu3).
+The following package was automatically installed and is no longer required:
+  pure-ftpd-common
+Use 'sudo apt autoremove' to remove it.
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+Execute rule 4.2.1.1
+
+Ensure rsyslog Service is enabled
+Package: rsyslog
+Status: install ok installed
+Priority: important
+Section: admin
+Installed-Size: 1338
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Architecture: i386
+Version: 8.16.0-1ubuntu3
+Provides: linux-kernel-log-daemon, system-log-daemon
+Depends: libc6 (>= 2.17), libestr0 (>= 0.1.4), libjson-c2 (>= 0.10), libsystemd0, libuuid1 (>= 2.16), zlib1g (>= 1:1.1.4), init-system-helpers (>= 1.18~), lsb-base (>= 4.1+Debian11ubuntu7), adduser, ucf
+Recommends: logrotate
+Suggests: rsyslog-mysql | rsyslog-pgsql, rsyslog-doc, rsyslog-gnutls, rsyslog-gssapi, rsyslog-relp, apparmor (>= 2.8.96~2541-0ubuntu4~)
+Conflicts: linux-kernel-log-daemon, system-log-daemon
+Conffiles:
+ /etc/apparmor.d/usr.sbin.rsyslogd 5726aad9242260f598ae29e5998d2cea
+ /etc/default/rsyslog c7af23c348917e877399baea1849727a
+ /etc/init.d/rsyslog a1ef1bb01ba370040d705c92fc09e92e
+ /etc/init/rsyslog.conf 34b6c083e007bed20e8341486361529b
+ /etc/logcheck/ignore.d.server/rsyslog d77ab13caf836413b9debd906948d761
+ /etc/logrotate.d/rsyslog b995d89ccfe4a83ac3ffc5ab95b80f7b
+ /etc/rsyslog.conf 58080cfa769d03e19f034e0cfa54ba99
+Description: reliable system and kernel logging daemon
+ Rsyslog is a multi-threaded implementation of syslogd (a system utility
+ providing support for message logging), with features that include:
+  * reliable syslog over TCP, SSL/TLS and RELP
+  * on-demand disk buffering
+  * email alerting
+  * writing to MySQL or PostgreSQL databases (via separate output plugins)
+  * permitted sender lists
+  * filtering on any part of the syslog message
+  * on-the-wire message compression
+  * fine-grained output format control
+  * failover to backup destinations
+  * enterprise-class encrypted syslog relaying
+ .
+ It is the default syslogd on Debian systems.
+Homepage: http://www.rsyslog.com/
+Original-Maintainer: Michael Biebl <biebl@debian.org>
+Synchronizing state of rsyslog.service with SysV init with /lib/systemd/systemd-sysv-install...
+Executing /lib/systemd/systemd-sysv-install enable rsyslog
+Execute rule 4.2.1.3
+
+Ensure rsyslog default file permissions configured
+Execute rule 4.2.1.4
+
+Ensure rsyslog is configured to send logs to a remote log host
+Execute rule 4.2.4
+
+Ensure permissions on all logfiles are configured
+################################################################################
+#                             RULESET 5                                      #
+################################################################################
+Execute rule 5.1.1
+
+Ensure cron daemon is enabled
+Package: cron
+Status: install ok installed
+Priority: important
+Section: admin
+Installed-Size: 245
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Architecture: i386
+Version: 3.0pl1-128ubuntu2
+Provides: cron-daemon
+Depends: libc6 (>= 2.7), libpam0g (>= 0.99.7.1), libselinux1 (>= 1.32), init-system-helpers (>= 1.18~), lsb-base (>= 4.1+Debian11ubuntu7), debianutils (>= 1.7), adduser, libpam-runtime (>= 1.0.1-11)
+Pre-Depends: dpkg (>= 1.15.7.2)
+Suggests: anacron (>= 2.0-1), logrotate, checksecurity, exim4 | postfix | mail-transport-agent
+Breaks: dpkg (<< 1.15.4)
+Conffiles:
+ /etc/cron.d/.placeholder e5e12910bf011222160404d7bdb824f2
+ /etc/cron.daily/.placeholder e5e12910bf011222160404d7bdb824f2
+ /etc/cron.hourly/.placeholder e5e12910bf011222160404d7bdb824f2
+ /etc/cron.monthly/.placeholder e5e12910bf011222160404d7bdb824f2
+ /etc/cron.weekly/.placeholder e5e12910bf011222160404d7bdb824f2
+ /etc/crontab 8f111d100ea459f68d333d63a8ef2205
+ /etc/default/cron 7bd39371e1c10e74dd3d37a58cc186f8
+ /etc/init.d/cron 85d7a3783889ea93dcda2fb488420c1c
+ /etc/init/cron.conf 1ed11393cd5e5e45d7d14c0e9d028fde
+ /etc/pam.d/cron 11e788a7f7cd5477b10da2c7fd5ecdf0
+Description: process scheduling daemon
+ The cron daemon is a background process that runs particular programs at
+ particular times (for example, every minute, day, week, or month), as
+ specified in a crontab. By default, users may also create crontabs of
+ their own so that processes are run on their behalf.
+ .
+ Output from the commands is usually mailed to the system administrator
+ (or to the user in question); you should probably install a mail system
+ as well so that you can receive these messages.
+ .
+ This cron package does not provide any system maintenance tasks. Basic
+ periodic maintenance tasks are provided by other packages, such
+ as checksecurity.
+Homepage: http://ftp.isc.org/isc/cron/
+Original-Maintainer: Maintainer: Javier Fernández-Sanguino Peña <jfs@debian.org>
+Synchronizing state of cron.service with SysV init with /lib/systemd/systemd-sysv-install...
+Executing /lib/systemd/systemd-sysv-install enable cron
+Execute rule 5.1.2-7
+
+
+Ensure permissions on /etc/crontab are configured
+
+Ensure permissions on /etc/cron.hourly are configured
+
+Ensure permissions on /etc/cron.daily are configured
+
+Ensure permissions on /etc/cron.weekly are configured
+
+Ensure permissions on /etc/cron.monthly are configured
+
+Ensure permissions on /etc/cron.d are configured
+Execute rule 5.1.8
+
+Ensure at/cron is restricted to authorized users
+Execute rule 5.2.1
+
+Ensure permissions on /etc/ssh/sshd_config are configured
+Execute rule 5.2.2
+
+Ensure SSH Protocol is set to 2
+Execute rule 5.2.3
+
+Ensure SSH LogLevel is set to INFO
+Execute rule 5.2.4
+
+Ensure SSH X11 forwarding is disabled
+Execute rule 5.2.5
+
+Ensure SSH MaxAuthTries is set to 4 or less
+Execute rule 5.2.6
+
+Ensure SSH IgnoreRhosts is enabled
+Execute rule 5.2.7
+
+Ensure SSH HostbasedAuthentication is disabled
+Execute rule 5.2.8
+
+Ensure SSH root login is disabled
+Execute rule 5.2.9
+
+Ensure SSH PermitEmptyPasswords is disabled
+Execute rule 5.2.10
+
+Ensure SSH PermitUserEnvironment is disabled
+Execute rule 5.2.11
+
+Ensure only approved MAC algorithms are used
+Execute rule 5.2.12
+
+Ensure SSH Idle Timeout Interval is configured
+Execute rule 5.2.13
+
+Ensure SSH LoginGraceTime is set to one minute or less
+Execute rule 5.2.14
+
+Ensure SSH access is limited
+Execute rule 5.2.15
+
+Ensure SSH warning banner is configured
+Execute rule 5.3.1
+
+Ensure password creation requirements are configured
+Reading package lists...
+Building dependency tree...
+Reading state information...
+libpam-pwquality is already the newest version (1.3.0-0ubuntu1).
+The following package was automatically installed and is no longer required:
+  pure-ftpd-common
+Use 'sudo apt autoremove' to remove it.
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+Execute rule 5.3.2
+
+Ensure lockout for failed password attempts is configured
+Execute rule 5.3.3
+
+Ensure password reuse is limited
+Execute rule 5.3.4
+
+Ensure password hashing algorithm is SHA-512
+password	[success=1 default=ignore]	pam_unix.so obscure use_authtok try_first_pass sha512
+Execute rule 5.4.1.1
+
+Ensure password expiration is 365 days or less
+Execute rule 5.4.1.2
+
+Ensure minimum days between password changes is 7 or more
+Execute rule 5.4.1.3
+
+Ensure password expiration warning days is 7 or more
+Execute rule 5.4.1.4
+
+Ensure inactive password lock is 30 days or less
+Execute rule 5.4.1.5
+
+Ensure all users last password change date is in the past
+Ensure all users last password change date is in the past - requires manual configuration
+Execute rule 5.4.2
+
+Ensure system accounts are non-login
+usermod: no changes
+usermod: no changes
+usermod: no changes
+usermod: no changes
+usermod: no changes
+usermod: no changes
+usermod: no changes
+usermod: no changes
+usermod: no changes
+usermod: no changes
+usermod: no changes
+usermod: no changes
+usermod: no changes
+usermod: no changes
+usermod: no changes
+usermod: no changes
+usermod: no changes
+usermod: no changes
+usermod: no changes
+usermod: no changes
+usermod: no changes
+usermod: no changes
+usermod: no changes
+usermod: no changes
+usermod: no changes
+usermod: no changes
+usermod: no changes
+usermod: no changes
+usermod: no changes
+usermod: no changes
+usermod: no changes
+usermod: no changes
+usermod: no changes
+usermod: no changes
+usermod: no changes
+usermod: no changes
+usermod: no changes
+usermod: no changes
+Execute rule 5.4.3
+
+Ensure default group for the root account is GID 0
+usermod: no changes
+Execute rule 5.4.4
+
+Ensure default user umask is 027 or more restrictive
+Execute rule 5.6
+
+Ensure access to the su command is restricted
+################################################################################
+#                             RULESET 6                                      #
+################################################################################
+Execute rule 6.1.2
+
+Ensure permissions on /etc/passwd are configured
+Execute rule 6.1.3
+
+Ensure permissions on /etc/shadow are configured
+Execute rule 6.1.4
+
+Ensure permissions on /etc/group are configured
+Execute rule 6.1.5
+
+Ensure permissions on /etc/gshadow are configured
+Execute rule 6.1.6
+
+Ensure permissions on /etc/passwd- are configured
+Execute rule 6.1.7
+
+Ensure permissions on /etc/shadow- are configured
+Execute rule 6.1.8
+
+Ensure permissions on /etc/group- are configured
+Execute rule 6.1.9
+
+Ensure permissions on /etc/gshadow- are configured
+Execute rule 6.1.10
+
+Ensure no world writable files exist
+df: /mnt/hgfs: Protocol error
+Execute rule 6.1.11
+
+Ensure no unowned files or directories exist
+df: /mnt/hgfs: Protocol error
+Execute rule 6.1.12
+
+Ensure no ungrouped files or directories exist
+df: /mnt/hgfs: Protocol error
+Execute rule 6.2.1
+
+Ensure password fields are not empty
+Execute rule 6.2.2-4
+
+Ensure no legacy "+" entries exist in /etc/passwd
+
+Ensure no legacy "+" entries exist in /etc/shadow
+
+Ensure no legacy "+" entries exist in /etc/group
+Execute rule 6.2.5
+
+Ensure root is the only UID 0 account
+Execute rule 6.2.6
+
+Ensure root PATH Integrity
+/snap/bin is not a directory
+Ensure root PATH Integrity - requires manual configuration
+Execute rule 6.2.7
+
+Ensure all users' home directories exist
+/ /media/ballen/Linux/ubuntu 18/ubuntu-scap-security-guides/cis-hardening
+/media/ballen/Linux/ubuntu 18/ubuntu-scap-security-guides/cis-hardening
+/ /media/ballen/Linux/ubuntu 18/ubuntu-scap-security-guides/cis-hardening
+/media/ballen/Linux/ubuntu 18/ubuntu-scap-security-guides/cis-hardening
+/ /media/ballen/Linux/ubuntu 18/ubuntu-scap-security-guides/cis-hardening
+/media/ballen/Linux/ubuntu 18/ubuntu-scap-security-guides/cis-hardening
+/ /media/ballen/Linux/ubuntu 18/ubuntu-scap-security-guides/cis-hardening
+/media/ballen/Linux/ubuntu 18/ubuntu-scap-security-guides/cis-hardening
+/ /media/ballen/Linux/ubuntu 18/ubuntu-scap-security-guides/cis-hardening
+/media/ballen/Linux/ubuntu 18/ubuntu-scap-security-guides/cis-hardening
+/ /media/ballen/Linux/ubuntu 18/ubuntu-scap-security-guides/cis-hardening
+/media/ballen/Linux/ubuntu 18/ubuntu-scap-security-guides/cis-hardening
+/ /media/ballen/Linux/ubuntu 18/ubuntu-scap-security-guides/cis-hardening
+/media/ballen/Linux/ubuntu 18/ubuntu-scap-security-guides/cis-hardening
+/ /media/ballen/Linux/ubuntu 18/ubuntu-scap-security-guides/cis-hardening
+/media/ballen/Linux/ubuntu 18/ubuntu-scap-security-guides/cis-hardening
+/ /media/ballen/Linux/ubuntu 18/ubuntu-scap-security-guides/cis-hardening
+/media/ballen/Linux/ubuntu 18/ubuntu-scap-security-guides/cis-hardening
+/ /media/ballen/Linux/ubuntu 18/ubuntu-scap-security-guides/cis-hardening
+/media/ballen/Linux/ubuntu 18/ubuntu-scap-security-guides/cis-hardening
+/ /media/ballen/Linux/ubuntu 18/ubuntu-scap-security-guides/cis-hardening
+/media/ballen/Linux/ubuntu 18/ubuntu-scap-security-guides/cis-hardening
+/ /media/ballen/Linux/ubuntu 18/ubuntu-scap-security-guides/cis-hardening
+/media/ballen/Linux/ubuntu 18/ubuntu-scap-security-guides/cis-hardening
+/ /media/ballen/Linux/ubuntu 18/ubuntu-scap-security-guides/cis-hardening
+/media/ballen/Linux/ubuntu 18/ubuntu-scap-security-guides/cis-hardening
+/ /media/ballen/Linux/ubuntu 18/ubuntu-scap-security-guides/cis-hardening
+/media/ballen/Linux/ubuntu 18/ubuntu-scap-security-guides/cis-hardening
+/ /media/ballen/Linux/ubuntu 18/ubuntu-scap-security-guides/cis-hardening
+/media/ballen/Linux/ubuntu 18/ubuntu-scap-security-guides/cis-hardening
+/ /media/ballen/Linux/ubuntu 18/ubuntu-scap-security-guides/cis-hardening
+/media/ballen/Linux/ubuntu 18/ubuntu-scap-security-guides/cis-hardening
+/ /media/ballen/Linux/ubuntu 18/ubuntu-scap-security-guides/cis-hardening
+/media/ballen/Linux/ubuntu 18/ubuntu-scap-security-guides/cis-hardening
+/ /media/ballen/Linux/ubuntu 18/ubuntu-scap-security-guides/cis-hardening
+/media/ballen/Linux/ubuntu 18/ubuntu-scap-security-guides/cis-hardening
+/ /media/ballen/Linux/ubuntu 18/ubuntu-scap-security-guides/cis-hardening
+/media/ballen/Linux/ubuntu 18/ubuntu-scap-security-guides/cis-hardening
+/ /media/ballen/Linux/ubuntu 18/ubuntu-scap-security-guides/cis-hardening
+/media/ballen/Linux/ubuntu 18/ubuntu-scap-security-guides/cis-hardening
+/ /media/ballen/Linux/ubuntu 18/ubuntu-scap-security-guides/cis-hardening
+/media/ballen/Linux/ubuntu 18/ubuntu-scap-security-guides/cis-hardening
+/ /media/ballen/Linux/ubuntu 18/ubuntu-scap-security-guides/cis-hardening
+/media/ballen/Linux/ubuntu 18/ubuntu-scap-security-guides/cis-hardening
+Execute rule 6.2.8
+
+Ensure users' home directories permissions are 750 or more restrictive
+Execute rule 6.2.9
+
+Ensure users own their home directories
+Execute rule 6.2.10
+
+Ensure users' dot files are not group or world writable
+Execute rule 6.2.11
+
+Ensure no users have .forward files
+Execute rule 6.2.12
+
+Ensure no users have .netrc files
+Execute rule 6.2.13
+
+Ensure users' .netrc Files are not group or world accessible
+Execute rule 6.2.14
+
+Ensure no users have .rhosts files
+Execute rule 6.2.15
+
+Ensure all groups in /etc/passwd exist in /etc/group
+Execute rule 6.2.16
+
+Ensure no duplicate UIDs exist
+Execute rule 6.2.17
+
+Ensure no duplicate GIDs exist
+Execute rule 6.2.18
+
+Ensure no duplicate user names exist
+Execute rule 6.2.19
+
+Ensure no duplicate group names exist
+Execute rule 6.2.20
+
+Ensure shadow group is empty
+
+Ensure permissions on all logfiles are configured
+
+Ensure permissions on bootloader config are configured

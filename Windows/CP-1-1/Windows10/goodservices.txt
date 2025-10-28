@@ -1,0 +1,11 @@
+wuauserv
+EventLog
+MpsSvc
+WinDefend
+WdNisSvc
+Sense
+Schedule
+SCardSvr
+ScDeviceEnum
+SCPolicySvc
+wscsvc

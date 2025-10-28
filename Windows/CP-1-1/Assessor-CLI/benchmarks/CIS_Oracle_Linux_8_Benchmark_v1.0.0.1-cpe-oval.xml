@@ -1,0 +1,46 @@
+<oval_definitions xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5" xmlns:ind="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" xmlns:linux="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux" xmlns:oval="http://oval.mitre.org/XMLSchema/oval-common-5" xmlns:shell="http://oval.mitre.org/XMLSchema/oval-definitions-5#cmd" xmlns:suse="http://oval.mitre.org/XMLSchema/oval-definitions-5#x-suse" xmlns:unix="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix http://oval.mitre.org/language/version5.11/ovaldefinition/complete/unix-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5#independent http://oval.mitre.org/language/version5.11/ovaldefinition/complete/independent-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5#linux http://oval.mitre.org/language/version5.11/ovaldefinition/complete/linux-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5#cmd x-shellcommand-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5#unix http://oval.mitre.org/language/version5.10/ovaldefinition/complete/unix-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5#independent http://oval.mitre.org/language/version5.10/ovaldefinition/complete/independent-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5 http://oval.mitre.org/language/version5.11/ovaldefinition/complete/oval-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-common-5 http://oval.mitre.org/language/version5.11/ovaldefinition/complete/oval-common-schema.xsd">
+  <generator>
+    <oval:product_name>Center for Internet Security</oval:product_name>
+    <oval:schema_version>5.11</oval:schema_version>
+    <oval:timestamp>2016-06-02T16:06:13-07:00</oval:timestamp>
+  </generator>
+  <definitions>
+    <definition class="inventory" id="oval:org.cisecurity.benchmarks.o_oracle_linux:def:101" version="1">
+      <metadata>
+        <title>Ensure Oracle Linux 8 is installed</title>
+        <affected family="unix">
+          <product>Oracle Linux 8</product>
+        </affected>
+        <description>Ensure Oracle Linux 8 is installed</description>
+      </metadata>
+      <criteria operator="AND">
+        <criterion negate="false" test_ref="oval:org.cisecurity.benchmarks.o_oracle_linux:tst:10001"/>
+        <criterion negate="false" test_ref="oval:org.cisecurity.benchmarks.o_oracle_linux:tst:10002"/>
+      </criteria>
+    </definition>
+  </definitions>
+  <tests>
+    <ind:family_test xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" check="only one" check_existence="at_least_one_exists" comment="installed operating system is part of the Unix family" id="oval:org.cisecurity.benchmarks.o_oracle_linux:tst:10001" version="1">
+      <ind:object object_ref="oval:org.cisecurity.benchmarks.o_oracle_linux:obj:10001"/>
+      <ind:state state_ref="oval:org.cisecurity.benchmarks.o_oracle_linux:ste:10001"/>
+    </ind:family_test>
+    <linux:rpminfo_test check="at least one" check_existence="at_least_one_exists" comment="oraclelinux-release is version 8" id="oval:org.cisecurity.benchmarks.o_oracle_linux:tst:10002" version="1">
+      <linux:object object_ref="oval:org.cisecurity.benchmarks.o_oracle_linux:obj:10002"/>
+      <linux:state state_ref="oval:org.cisecurity.benchmarks.o_oracle_linux:ste:10002"/>
+    </linux:rpminfo_test>
+  </tests>
+  <objects>
+    <ind:family_object xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.cisecurity.benchmarks.o_oracle_linux:obj:10001" version="1"/>
+    <linux:rpminfo_object id="oval:org.cisecurity.benchmarks.o_oracle_linux:obj:10002" version="1">
+      <linux:name operation="pattern match">oraclelinux-release</linux:name>
+    </linux:rpminfo_object>
+  </objects>
+  <states>
+    <ind:family_state id="oval:org.cisecurity.benchmarks.o_oracle_linux:ste:10001" version="1">
+      <ind:family>unix</ind:family>
+    </ind:family_state>
+    <linux:rpminfo_state id="oval:org.cisecurity.benchmarks.o_oracle_linux:ste:10002" version="1">
+      <linux:version operation="pattern match">^8</linux:version>
+    </linux:rpminfo_state>
+  </states>
+</oval_definitions>
