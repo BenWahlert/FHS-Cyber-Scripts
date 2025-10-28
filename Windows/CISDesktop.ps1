@@ -3805,7 +3805,7 @@ Configuration CIS_Windows10_v181 {
             Key        = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU'
             ValueName  = 'NoAutoUpdate'
             ValueType  = 'DWord'
-            ValueData  = '1'
+            ValueData  = '0'
         }
 
         # 18.9.102.3 (L1) Ensure 'Configure Automatic Updates: Scheduled install day' is set to '0 - Every day'
