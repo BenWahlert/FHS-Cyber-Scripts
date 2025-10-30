@@ -12,8 +12,8 @@ refreshenv
 mkdir ~\Downloads\cp
 cd ~\Downloads\cp
 
-& "C:\Program Files\Git\bin\git.exe" clone  https://github.com/wen012235/CP.git .
-cd ~\Downloads\cp\Server
+& "C:\Program Files\Git\bin\git.exe" clone  https://github.com/BenWahlert/FHS-Cyber-Scripts.git .
+cd ~\Downloads\cp\Windows\CP-1-1\Server
 cls
 Add-Type -AssemblyName PresentationFramework
 [System.Windows.MessageBox]::Show('Make sure to set the current user password to something with at least 14 characters, with at least one upper/lower/number/special character before you begin.  Press OK when you have set that password and are ready to continue.')
