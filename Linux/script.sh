@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+shopt -s globstar
+print_status() {
+ echo "Checking $1..."
+}
 {
  l_mname="cramfs" # set module name
  l_mtype="fs" # set module type
@@ -20,22 +24,22 @@
  module_loaded_fix()
  {
  # If the module is currently loaded, unload the module
- if lsmod | grep "$l_mname" > /dev/null 2>&1; then
+ if lsmod | awk '{print $1}' | grep -Fxq "$l_mname"; then
  echo -e "\n - unloading module \"$l_mname\""
  modprobe -r "$l_mname"
  fi
  }
- module_deny_fix()
- {
+module_deny_fix()
+{
  # If the module isn't deny listed, denylist the module
- if ! modprobe --showconfig | grep -Pq -- "^\h*blacklist\h+$l_mpname\b"; then
+ if ! modprobe --showconfig | grep -Eq -- "^[[:space:]]*blacklist[[:space:]]+(${l_mname//-/_}|$l_mname)([[:space:]]|$)"; then
  echo -e "\n - deny listing \"$l_mname\""
  echo -e "blacklist $l_mname" >> /etc/modprobe.d/"$l_mpname".conf
  fi
- }
+}
  # Check if the module exists on the system
  for l_mdir in $l_mpath; do
- if [ -d "$l_mdir/$l_mndir" ] && [ -n "$(ls -A $l_mdir/$l_mndir)" ]; then
+ if [ -d "$l_mdir/$l_mndir" ] && [ -n "$(ls -A "$l_mdir/$l_mndir")" ]; then
  echo -e "\n - module: \"$l_mname\" exists in \"$l_mdir\"\n - checking if disabled..."
  module_deny_fix
  if [ "$l_mdir" = "/lib/modules/$(uname -r)/kernel/$l_mtype" ]; then
@@ -69,7 +73,7 @@
  module_loaded_fix()
  {
  # If the module is currently loaded, unload the module
- if lsmod | grep "$l_mname" > /dev/null 2>&1; then
+ if lsmod | awk '{print $1}' | grep -Fxq "$l_mname"; then
  echo -e "\n - unloading module \"$l_mname\""
  modprobe -r "$l_mname"
  fi
@@ -77,14 +81,14 @@
  module_deny_fix()
  {
  # If the module isn't deny listed, denylist the module
- if ! modprobe --showconfig | grep -Pq -- "^\h*blacklist\h+$l_mpname\b"; then
+ if ! modprobe --showconfig | grep -Eq -- "^[[:space:]]*blacklist[[:space:]]+(${l_mname//-/_}|$l_mname)([[:space:]]|$)"; then
  echo -e "\n - deny listing \"$l_mname\""
  echo -e "blacklist $l_mname" >> /etc/modprobe.d/"$l_mpname".conf
  fi
  }
  # Check if the module exists on the system
  for l_mdir in $l_mpath; do
- if [ -d "$l_mdir/$l_mndir" ] && [ -n "$(ls -A $l_mdir/$l_mndir)" ]; then
+ if [ -d "$l_mdir/$l_mndir" ] && [ -n "$(ls -A "$l_mdir/$l_mndir")" ]; then
  echo -e "\n - module: \"$l_mname\" exists in \"$l_mdir\"\n - checking if disabled..."
  module_deny_fix
  if [ "$l_mdir" = "/lib/modules/$(uname -r)/kernel/$l_mtype" ]; then
@@ -118,7 +122,7 @@
  module_loaded_fix()
  {
  # If the module is currently loaded, unload the module
- if lsmod | grep "$l_mname" > /dev/null 2>&1; then
+ if lsmod | awk '{print $1}' | grep -Fxq "$l_mname"; then
  echo -e "\n - unloading module \"$l_mname\""
  modprobe -r "$l_mname"
  fi
@@ -126,14 +130,14 @@
  module_deny_fix()
  {
  # If the module isn't deny listed, denylist the module
- if ! modprobe --showconfig | grep -Pq -- "^\h*blacklist\h+$l_mpname\b"; then
+ if ! modprobe --showconfig | grep -Eq -- "^[[:space:]]*blacklist[[:space:]]+(${l_mname//-/_}|$l_mname)([[:space:]]|$)"; then
  echo -e "\n - deny listing \"$l_mname\""
  echo -e "blacklist $l_mname" >> /etc/modprobe.d/"$l_mpname".conf
  fi
  }
  # Check if the module exists on the system
  for l_mdir in $l_mpath; do
- if [ -d "$l_mdir/$l_mndir" ] && [ -n "$(ls -A $l_mdir/$l_mndir)" ]; then
+ if [ -d "$l_mdir/$l_mndir" ] && [ -n "$(ls -A "$l_mdir/$l_mndir")" ]; then
  echo -e "\n - module: \"$l_mname\" exists in \"$l_mdir\"\n - checking if disabled..."
  module_deny_fix
  if [ "$l_mdir" = "/lib/modules/$(uname -r)/kernel/$l_mtype" ]; then
@@ -167,7 +171,7 @@
  module_loaded_fix()
  {
  # If the module is currently loaded, unload the module
- if lsmod | grep "$l_mname" > /dev/null 2>&1; then
+ if lsmod | awk '{print $1}' | grep -Fxq "$l_mname"; then
  echo -e "\n - unloading module \"$l_mname\""
  modprobe -r "$l_mname"
  fi
@@ -175,14 +179,14 @@
  module_deny_fix()
  {
  # If the module isn't deny listed, denylist the module
- if ! modprobe --showconfig | grep -Pq -- "^\h*blacklist\h+$l_mpname\b"; then
+ if ! modprobe --showconfig | grep -Eq -- "^[[:space:]]*blacklist[[:space:]]+(${l_mname//-/_}|$l_mname)([[:space:]]|$)"; then
  echo -e "\n - deny listing \"$l_mname\""
  echo -e "blacklist $l_mname" >> /etc/modprobe.d/"$l_mpname".conf
  fi
  }
  # Check if the module exists on the system
  for l_mdir in $l_mpath; do
- if [ -d "$l_mdir/$l_mndir" ] && [ -n "$(ls -A $l_mdir/$l_mndir)" ]; then
+ if [ -d "$l_mdir/$l_mndir" ] && [ -n "$(ls -A "$l_mdir/$l_mndir")" ]; then
  echo -e "\n - module: \"$l_mname\" exists in \"$l_mdir\"\n - checking if disabled..."
  module_deny_fix
  if [ "$l_mdir" = "/lib/modules/$(uname -r)/kernel/$l_mtype" ]; then
@@ -216,7 +220,7 @@
  module_loaded_fix()
  {
  # If the module is currently loaded, unload the module
- if lsmod | grep "$l_mname" > /dev/null 2>&1; then
+ if lsmod | awk '{print $1}' | grep -Fxq "$l_mname"; then
  echo -e "\n - unloading module \"$l_mname\""
  modprobe -r "$l_mname"
  fi
@@ -224,14 +228,14 @@
  module_deny_fix()
  {
  # If the module isn't deny listed, denylist the module
- if ! modprobe --showconfig | grep -Pq -- "^\h*blacklist\h+$l_mpname\b"; then
+ if ! modprobe --showconfig | grep -Eq -- "^[[:space:]]*blacklist[[:space:]]+(${l_mname//-/_}|$l_mname)([[:space:]]|$)"; then
  echo -e "\n - deny listing \"$l_mname\""
  echo -e "blacklist $l_mname" >> /etc/modprobe.d/"$l_mpname".conf
  fi
  }
  # Check if the module exists on the system
  for l_mdir in $l_mpath; do
- if [ -d "$l_mdir/$l_mndir" ] && [ -n "$(ls -A $l_mdir/$l_mndir)" ]; then
+ if [ -d "$l_mdir/$l_mndir" ] && [ -n "$(ls -A "$l_mdir/$l_mndir")" ]; then
  echo -e "\n - module: \"$l_mname\" exists in \"$l_mdir\"\n - checking if disabled..."
  module_deny_fix
  if [ "$l_mdir" = "/lib/modules/$(uname -r)/kernel/$l_mtype" ]; then
@@ -265,7 +269,7 @@
  module_loaded_fix()
  {
  # If the module is currently loaded, unload the module
- if lsmod | grep "$l_mname" > /dev/null 2>&1; then
+ if lsmod | awk '{print $1}' | grep -Fxq "$l_mname"; then
  echo -e "\n - unloading module \"$l_mname\""
  modprobe -r "$l_mname"
  fi
@@ -273,14 +277,14 @@
  module_deny_fix()
  {
  # If the module isn't deny listed, denylist the module
- if ! modprobe --showconfig | grep -Pq -- "^\h*blacklist\h+$l_mpname\b"; then
+ if ! modprobe --showconfig | grep -Eq -- "^[[:space:]]*blacklist[[:space:]]+(${l_mname//-/_}|$l_mname)([[:space:]]|$)"; then
  echo -e "\n - deny listing \"$l_mname\""
  echo -e "blacklist $l_mname" >> /etc/modprobe.d/"$l_mpname".conf
  fi
  }
  # Check if the module exists on the system
  for l_mdir in $l_mpath; do
- if [ -d "$l_mdir/$l_mndir" ] && [ -n "$(ls -A $l_mdir/$l_mndir)" ]; then
+ if [ -d "$l_mdir/$l_mndir" ] && [ -n "$(ls -A "$l_mdir/$l_mndir")" ]; then
  echo -e "\n - module: \"$l_mname\" exists in \"$l_mdir\"\n - checking if disabled..."
  module_deny_fix
  if [ "$l_mdir" = "/lib/modules/$(uname -r)/kernel/$l_mtype" ]; then
@@ -314,7 +318,7 @@
  module_loaded_fix()
  {
  # If the module is currently loaded, unload the module
- if lsmod | grep "$l_mname" > /dev/null 2>&1; then
+ if lsmod | awk '{print $1}' | grep -Fxq "$l_mname"; then
  echo -e "\n - unloading module \"$l_mname\""
  modprobe -r "$l_mname"
  fi
@@ -322,14 +326,14 @@
  module_deny_fix()
  {
  # If the module isn't deny listed, denylist the module
- if ! modprobe --showconfig | grep -Pq -- "^\h*blacklist\h+$l_mpname\b"; then
+ if ! modprobe --showconfig | grep -Eq -- "^[[:space:]]*blacklist[[:space:]]+(${l_mname//-/_}|$l_mname)([[:space:]]|$)"; then
  echo -e "\n - deny listing \"$l_mname\""
  echo -e "blacklist $l_mname" >> /etc/modprobe.d/"$l_mpname".conf
  fi
  }
  # Check if the module exists on the system
  for l_mdir in $l_mpath; do
- if [ -d "$l_mdir/$l_mndir" ] && [ -n "$(ls -A $l_mdir/$l_mndir)" ]; then
+ if [ -d "$l_mdir/$l_mndir" ] && [ -n "$(ls -A "$l_mdir/$l_mndir")" ]; then
  echo -e "\n - module: \"$l_mname\" exists in \"$l_mdir\"\n - checking if disabled..."
  module_deny_fix
  if [ "$l_mdir" = "/lib/modules/$(uname -r)/kernel/$l_mtype" ]; then
@@ -363,22 +367,22 @@
  module_loaded_fix()
  {
  # If the module is currently loaded, unload the module
- if lsmod | grep "$l_mname" > /dev/null 2>&1; then
+ if lsmod | awk '{print $1}' | grep -Fxq "$l_mname"; then
  echo -e "\n - unloading module \"$l_mname\""
  modprobe -r "$l_mname"
  fi
  }
  module_deny_fix()
  {
- # If the module isn't deny listed, denylist the module
- if ! modprobe --showconfig | grep -Pq -- "^\h*blacklist\h+$l_mpname\b"; then
- echo -e "\n - deny listing \"$l_mname\""
- echo -e "blacklist $l_mname" >> /etc/modprobe.d/"$l_mpname".conf
- fi
+# If the module isn't deny listed, denylist the module
+if ! modprobe --showconfig | grep -Eq -- "^[[:space:]]*blacklist[[:space:]]+(${l_mname//-/_}|$l_mname)([[:space:]]|$)"; then
+echo -e "\n - deny listing \"$l_mname\""
+echo -e "blacklist $l_mname" >> /etc/modprobe.d/"$l_mpname".conf
+fi
  }
  # Check if the module exists on the system
  for l_mdir in $l_mpath; do
- if [ -d "$l_mdir/$l_mndir" ] && [ -n "$(ls -A $l_mdir/$l_mndir)" ]; then
+ if [ -d "$l_mdir/$l_mndir" ] && [ -n "$(ls -A "$l_mdir/$l_mndir")" ]; then
  echo -e "\n - module: \"$l_mname\" exists in \"$l_mdir\"\n - checking if disabled..."
  module_deny_fix
  if [ "$l_mdir" = "/lib/modules/$(uname -r)/kernel/$l_mtype" ]; then
@@ -415,6 +419,29 @@ remediate_systemd_tmp_mount() {
     # Enable tmp.mount
     echo "Enabling tmp.mount..."
     sudo systemctl enable tmp.mount
+}
+
+audit_noexec_option() {
+    echo "Auditing /tmp mount for noexec option..."
+    audit_tmp_mount
+    if findmnt -kn /tmp >/dev/null 2>&1; then
+        local options
+        options=$(findmnt -kn /tmp -o OPTIONS)
+        if grep -qw noexec <<< "$options"; then
+            echo "/tmp is mounted with noexec."
+        else
+            echo "Warning: /tmp is missing the noexec mount option."
+        fi
+    else
+        echo "Warning: Unable to detect a dedicated /tmp mount."
+    fi
+
+    if systemctl is-enabled tmp.mount >/dev/null 2>&1; then
+        audit_systemd_tmp_mount
+    else
+        remediate_systemd_tmp_mount
+        audit_systemd_tmp_mount
+    fi
 }
 
 
@@ -467,9 +494,15 @@ echo "Audit and remediation complete."
 # Function to check if AppArmor boot parameters are set in grub.cfg
 check_apparmor_enabled_in_bootloader() {
     echo "Checking if AppArmor is enabled in bootloader configuration..."
+    local grub_cfg="/boot/grub/grub.cfg"
+
+    if [[ ! -f $grub_cfg ]]; then
+        echo "Warning: $grub_cfg not found; cannot verify AppArmor parameters."
+        return 1
+    fi
 
     # Check if apparmor=1 is present in the bootloader configuration
-    if grep -q "^\s*linux" /boot/grub/grub.cfg | grep -v "apparmor=1"; then
+    if ! grep -Eq '^[[:space:]]*linux.*apparmor=1' "$grub_cfg"; then
         echo "AppArmor boot parameter 'apparmor=1' is missing."
         enable_apparmor_in_bootloader
     else
@@ -477,7 +510,7 @@ check_apparmor_enabled_in_bootloader() {
     fi
 
     # Check if security=apparmor is present in the bootloader configuration
-    if grep -q "^\s*linux" /boot/grub/grub.cfg | grep -v "security=apparmor"; then
+    if ! grep -Eq '^[[:space:]]*linux.*security=apparmor' "$grub_cfg"; then
         echo "AppArmor boot parameter 'security=apparmor' is missing."
         enable_apparmor_in_bootloader
     else
@@ -504,80 +537,7 @@ check_apparmor_enabled_in_bootloader
 echo "Audit and remediation complete."
 #!/bin/bash
 
-# Function to audit AppArmor profiles status
-audit_apparmor_profiles() {
-    echo "Auditing AppArmor profiles..."
-
-    # Check if AppArmor profiles are loaded and in enforce or complain mode
-    profiles_status=$(apparmor_status | grep -i 'profiles')
-
-    # Ensure profiles are in either enforce or complain mode
-    enforce_count=$(echo "$profiles_status" | grep -o "enforce" | wc -l)
-    complain_count=$(echo "$profiles_status" | grep -o "complain" | wc -l)
-
-    # Check for unconfined processes
-    unconfined_processes=$(apparmor_status | grep "unconfined" | wc -l)
-
-    # Output profile status for auditing
-    echo "Profiles in enforce mode: $enforce_count"
-    echo "Profiles in complain mode: $complain_count"
-    echo "Unconfined processes: $unconfined_processes"
-
-    # If there are unconfined processes, print a message to take action
-    if [ "$unconfined_processes" -gt 0 ]; then
-        echo "Warning: There are unconfined processes that need attention."
-    fi
-
-    # Ensure there are no unconfined profiles (if any, need to create or activate)
-    if [ "$unconfined_processes" -gt 0 ]; then
-        echo "Please ensure that any unconfined processes have an AppArmor profile activated and restart them."
-    fi
-
-    # If all profiles are in enforce or complain mode and no unconfined processes, proceed with remediation
-    if [ "$unconfined_processes" -eq 0 ]; then
-        echo "All profiles are loaded and in enforce or complain mode."
-    else
-        echo "There are unconfined processes that require remediation."
-    fi
-}
-
-# Function to remediate by setting all profiles to enforce mode
-remediate_apparmor_profiles() {
-    echo "Remediating AppArmor profiles..."
-
-    # Set all AppArmor profiles to enforce mode
-    echo "Setting all AppArmor profiles to enforce mode..."
-    sudo aa-enforce /etc/apparmor.d/*
-
-    # Verify after remediation
-    echo "Verifying AppArmor profiles status..."
-    apparmor_status | grep -i 'profiles'
-}
-
-# Function to remediate by setting all profiles to complain mode
-set_profiles_to_complain() {
-    echo "Setting all AppArmor profiles to complain mode..."
-
-    # Set all AppArmor profiles to complain mode
-    sudo aa-complain /etc/apparmor.d/*
-
-    # Verify after remediation
-    echo "Verifying AppArmor profiles status..."
-    apparmor_status | grep -i 'profiles'
-}
-
-# Main function to perform audit and remediation
-audit_apparmor_profiles
-
-# Optionally remediate by setting profiles to enforce mode
-remediate_apparmor_profiles
-
-# Or set all profiles to complain mode instead (comment the above line to use this)
-# set_profiles_to_complain
-
-echo "Audit and remediation complete."
 #!/bin/bash
-
 # Function to audit AppArmor profiles status
 audit_apparmor_profiles() {
     echo "Auditing AppArmor profiles..."
@@ -590,7 +550,7 @@ audit_apparmor_profiles() {
     complain_count=$(echo "$profiles_status" | grep -o "complain" | wc -l)
 
     # Check for unconfined processes
-    unconfined_processes=$(apparmor_status | grep "unconfined" | wc -l)
+    unconfined_processes=$(apparmor_status | grep -c "unconfined")
 
     # Output profile status for auditing
     echo "Profiles in enforce mode: $enforce_count"
@@ -628,11 +588,20 @@ remediate_apparmor_profiles() {
     apparmor_status | grep -i 'profiles'
 }
 
+set_profiles_to_complain() {
+    echo "Setting all AppArmor profiles to complain mode..."
+
+    sudo aa-complain /etc/apparmor.d/*
+
+    echo "Verifying AppArmor profiles status..."
+    apparmor_status | grep -i 'profiles'
+}
+
 # Function to verify no unconfined processes are running
 verify_no_unconfined_processes() {
     echo "Verifying there are no unconfined processes..."
     
-    unconfined_processes=$(apparmor_status | grep "unconfined" | wc -l)
+    unconfined_processes=$(apparmor_status | grep -c "unconfined")
 
     if [ "$unconfined_processes" -gt 0 ]; then
         echo "There are unconfined processes that need to be addressed."
@@ -661,8 +630,7 @@ GRUB_CFG="/boot/grub/grub.cfg"
 # Check if the GRUB configuration file exists
 if [ ! -f "$GRUB_CFG" ]; then
   echo "ERROR: GRUB configuration file '$GRUB_CFG' not found!"
- 
- 
+  exit 1
 fi
 
 # Audit the current ownership and permissions of the GRUB configuration file
@@ -913,7 +881,10 @@ fi
             echo -e "\n[org/gnome/login-screen]\n# Do not show the user list\ndisable-user-list=true" >> /etc/dconf/db/$l_gdmprofile.d/00-loginscreen
         else
             # Append the setting if the section exists
-            sed -ri '/^\s*\[org/gnome/login-screen\]/ a\# Do not show the user list\ndisable-user-list=true' $(grep -Pil -- '^\h*\[org/gnome/login-screen\]' /etc/dconf/db/$l_gdmprofile.d/*)
+            mapfile -t l_login_files < <(grep -Pil -- '^\h*\[org/gnome/login-screen\]' /etc/dconf/db/"$l_gdmprofile".d/* 2>/dev/null)
+            for l_login_file in "${l_login_files[@]}"; do
+                sed -ri '/^\s*\[org\/gnome\/login-screen\]/ a\# Do not show the user list\ndisable-user-list=true' "$l_login_file"
+            done
         fi
     fi
     
@@ -990,19 +961,19 @@ fi
 
         # Set profile name based on dconf db directory ({PROFILE_NAME}.d)
         if [ -f "$l_kfile" ]; then
-            l_gpname="$(awk -F\/ '{split($(NF-1),a,".");print a[1]}' <<< "$l_kfile")"
+            l_gpname="$(awk -F/ '{split($(NF-1),a,".");print a[1]}' <<< "$l_kfile")"
             echo " - updating dconf profile name to \"$l_gpname\""
         elif [ -f "$l_kfile2" ]; then
-            l_gpname="$(awk -F\/ '{split($(NF-1),a,".");print a[1]}' <<< "$l_kfile2")"
+            l_gpname="$(awk -F/ '{split($(NF-1),a,".");print a[1]}' <<< "$l_kfile2")"
             echo " - updating dconf profile name to \"$l_gpname\""
         fi
 
         # check for consistency (Clean up configuration if needed)
-        if [ -f "$l_kfile" ] && [ "$(awk -F\/ '{split($(NF-1),a,".");print a[1]}' <<< "$l_kfile")" != "$l_gpname" ]; then
+        if [ -f "$l_kfile" ] && [ "$(awk -F/ '{split($(NF-1),a,".");print a[1]}' <<< "$l_kfile")" != "$l_gpname" ]; then
             sed -ri "/^\s*automount\s*=/s/^/# /" "$l_kfile"
             l_kfile="/etc/dconf/db/$l_gpname.d/00-media-automount"
         fi
-        if [ -f "$l_kfile2" ] && [ "$(awk -F\/ '{split($(NF-1),a,".");print a[1]}' <<< "$l_kfile2")" != "$l_gpname" ]; then
+        if [ -f "$l_kfile2" ] && [ "$(awk -F/ '{split($(NF-1),a,".");print a[1]}' <<< "$l_kfile2")" != "$l_gpname" ]; then
             sed -ri "/^\s*automount-open\s*=/s/^/# /" "$l_kfile2"
         fi
 
@@ -1083,19 +1054,19 @@ fi
 
         # Set profile name based on dconf db directory ({PROFILE_NAME}.d)
         if [ -f "$l_kfile" ]; then
-            l_gpname="$(awk -F\/ '{split($(NF-1),a,".");print a[1]}' <<< "$l_kfile")"
+            l_gpname="$(awk -F/ '{split($(NF-1),a,".");print a[1]}' <<< "$l_kfile")"
             echo " - updating dconf profile name to \"$l_gpname\""
         elif [ -f "$l_kfile2" ]; then
-            l_gpname="$(awk -F\/ '{split($(NF-1),a,".");print a[1]}' <<< "$l_kfile2")"
+            l_gpname="$(awk -F/ '{split($(NF-1),a,".");print a[1]}' <<< "$l_kfile2")"
             echo " - updating dconf profile name to \"$l_gpname\""
         fi
 
         # Check for consistency (Clean up configuration if needed)
-        if [ -f "$l_kfile" ] && [ "$(awk -F\/ '{split($(NF-1),a,".");print a[1]}' <<< "$l_kfile")" != "$l_gpname" ]; then
+        if [ -f "$l_kfile" ] && [ "$(awk -F/ '{split($(NF-1),a,".");print a[1]}' <<< "$l_kfile")" != "$l_gpname" ]; then
             sed -ri "/^\s*automount\s*=/s/^/# /" "$l_kfile"
             l_kfile="/etc/dconf/db/$l_gpname.d/00-media-automount"
         fi
-        if [ -f "$l_kfile2" ] && [ "$(awk -F\/ '{split($(NF-1),a,".");print a[1]}' <<< "$l_kfile2")" != "$l_gpname" ]; then
+        if [ -f "$l_kfile2" ] && [ "$(awk -F/ '{split($(NF-1),a,".");print a[1]}' <<< "$l_kfile2")" != "$l_gpname" ]; then
             sed -ri "/^\s*automount-open\s*=/s/^/# /" "$l_kfile2"
         fi
 
@@ -1133,128 +1104,6 @@ fi
     else
         echo -e "\n - GNOME Desktop Manager package is not installed on the system\n - Recommendation is not applicable"
     fi
-}
-#!/usr/bin/env bash
-{
- l_pkgoutput="" l_output="" l_output2=""
- # Check if GNOME Desktop Manager is installed. If package isn't
-installed, recommendation is Not Applicable\n
- # determine system's package manager
- if command -v dpkg-query &> /dev/null; then
- l_pq="dpkg-query -s"
- elif command -v rpm &> /dev/null; then
- l_pq="rpm -q"
- fi
- # Check if GDM is installed
- l_pcl="gdm gdm3" # Space separated list of packages to check
- for l_pn in $l_pcl; do
- $l_pq "$l_pn" &> /dev/null && l_pkgoutput="$l_pkgoutput\n - Package:
-\"$l_pn\" exists on the system\n - checking configuration"
- echo -e "$l_pkgoutput"
- done
- # Check configuration (If applicable)
- if [ -n "$l_pkgoutput" ]; then
- echo -e "$l_pkgoutput"
- # Look for existing settings and set variables if they exist
- l_kfile="$(grep -Prils -- '^\h*autorun-never\b' /etc/dconf/db/*.d)"
- # Set profile name based on dconf db directory ({PROFILE_NAME}.d)
- if [ -f "$l_kfile" ]; then
- l_gpname="$(awk -F\/ '{split($(NF-1),a,".");print a[1]}' <<<
-"$l_kfile")"
- fi
- # If the profile name exist, continue checks
- if [ -n "$l_gpname" ]; then
- l_gpdir="/etc/dconf/db/$l_gpname.d"
- # Check if profile file exists
- if grep -Pq -- "^\h*system-db:$l_gpname\b" /etc/dconf/profile/*;
-then
- l_output="$l_output\n - dconf database profile file \"$(grep -Pl
--- "^\h*system-db:$l_gpname\b" /etc/dconf/profile/*)\" exists"
- else
- l_output2="$l_output2\n - dconf database profile isn't set"
- fi
- # Check if the dconf database file exists
- if [ -f "/etc/dconf/db/$l_gpname" ]; then
- l_output="$l_output\n - The dconf database \"$l_gpname\" exists"
- else
- l_output2="$l_output2\n - The dconf database \"$l_gpname\"
-doesn't exist"
- fi
- # check if the dconf database directory exists
- if [ -d "$l_gpdir" ]; then
- l_output="$l_output\n - The dconf directory \"$l_gpdir\" exitst"
- else
- l_output2="$l_output2\n - The dconf directory \"$l_gpdir\"
-doesn't exist"
- fi
- # check autorun-never setting
- if grep -Pqrs -- '^\h*autorun-never\h*=\h*true\b' "$l_kfile"; then
- l_output="$l_output\n - \"autorun-never\" is set to true in:
-Page 207
-Internal Only - General
-\"$l_kfile\""
- else
- l_output2="$l_output2\n - \"autorun-never\" is not set correctly"
- fi
- else
- # Settings don't exist. Nothing further to check
- l_output2="$l_output2\n - \"autorun-never\" is not set"
- fi
- else
- l_output="$l_output\n - GNOME Desktop Manager package is not installed
-on the system\n - Recommendation is not applicable"
- fi
- # Report results. If no failures output in l_output2, we pass
- if [ -z "$l_output2" ]; then
- echo -e "\n- Audit Result:\n ** PASS **\n$l_output\n"
- else
- echo -e "\n- Audit Result:\n ** FAIL **\n - Reason(s) for audit
-failure:\n$l_output2\n"
- [ -n "$l_output" ] && echo -e "\n- Correctly set:\n$l_output\n"
- fi
-}
-#!/usr/bin/env bash
-{
- # Check if GNOME Desktop Manager is installed. If package isn't
-installed, recommendation is Not Applicable\n
- # determine system's package manager
- l_pkgoutput=""
- if command -v dpkg-query &> /dev/null; then
- l_pq="dpkg-query -s"
- elif command -v rpm &> /dev/null; then
- l_pq="rpm -q"
- fi
- # Check if GDM is installed
- l_pcl="gdm gdm3" # Space separated list of packages to check
- for l_pn in $l_pcl; do
- $l_pq "$l_pn" &> /dev/null && l_pkgoutput="$l_pkgoutput\n - Package:
-\"$l_pn\" exists on the system\n - checking configuration"
- done
- # Search /etc/dconf/db/ for [org/gnome/desktop/media-handling] settings)
- l_desktop_media_handling=$(grep -Psir -- '^\h*\[org/gnome/desktop/mediahandling\]' /etc/dconf/db/*)
- if [[ -n "$l_desktop_media_handling" ]]; then
- l_output="" l_output2=""
- l_autorun_setting=$(grep -Psir -- '^\h*autorun-never=true\b'
-/etc/dconf/db/local.d/*)
- # Check for auto-run setting
- if [[ -n "$l_autorun_setting" ]]; then
- l_output="$l_output\n - \"autorun-never\" setting found"
- else
- l_output2="$l_output2\n - \"autorun-never\" setting not found"
- fi
- else
- l_output="$l_output\n - [org/gnome/desktop/media-handling] setting
-not found in /etc/dconf/db/*"
- fi
- # Report results. If no failures output in l_output2, we pass
-[ -n "$l_pkgoutput" ] && echo -e "\n$l_pkgoutput"
- if [ -z "$l_output2" ]; then
- echo -e "\n- Audit Result:\n ** PASS **\n$l_output\n"
- else
- echo -e "\n- Audit Result:\n ** FAIL **\n - Reason(s) for audit
-failure:\n$l_output2\n"
- [ -n "$l_output" ] && echo -e "\n- Correctly set:\n$l_output\n"
- fi
 }
 #!/usr/bin/env bash
 {
@@ -1732,7 +1581,7 @@ fi
  echo -e " - setting module: \"$l_mname\" to be un-loadable"
  echo -e "install $l_mname /bin/false" >>/etc/modprobe.d/"$l_mname".conf
  fi
- if lsmod | grep "$l_mname" > /dev/null 2>&1; then
+ if lsmod | awk '{print $1}' | grep -Fxq "$l_mname"; then
  echo -e " - unloading module \"$l_mname\""
  modprobe -r "$l_mname"
  fi
@@ -1804,7 +1653,7 @@ fi
  module_loaded_fix()
  {
  # If the module is currently loaded, unload the module
- if lsmod | grep "$l_mname" > /dev/null 2>&1; then
+ if lsmod | awk '{print $1}' | grep -Fxq "$l_mname"; then
  echo -e "\n - unloading module \"$l_mname\""
  modprobe -r "$l_mname"
  fi
@@ -1812,14 +1661,14 @@ fi
  module_deny_fix()
  {
  # If the module isn't deny listed, denylist the module
- if ! modprobe --showconfig | grep -Pq -- "^\h*blacklist\h+$l_mpname\b"; then
+ if ! modprobe --showconfig | grep -Eq -- "^[[:space:]]*blacklist[[:space:]]+(${l_mname//-/_}|$l_mname)([[:space:]]|$)"; then
  echo -e "\n - deny listing \"$l_mname\""
  echo -e "blacklist $l_mname" >> /etc/modprobe.d/"$l_mpname".conf
  fi
  }
  # Check if the module exists on the system
  for l_mdir in $l_mpath; do
- if [ -d "$l_mdir/$l_mndir" ] && [ -n "$(ls -A $l_mdir/$l_mndir)" ]; then
+ if [ -d "$l_mdir/$l_mndir" ] && [ -n "$(ls -A "$l_mdir/$l_mndir")" ]; then
  echo -e "\n - module: \"$l_mname\" exists in \"$l_mdir\"\n - checking if disabled..."
  module_deny_fix
  if [ "$l_mdir" = "/lib/modules/$(uname -r)/kernel/$l_mtype" ]; then
@@ -1854,7 +1703,7 @@ fi
  module_loaded_fix()
  {
  # If the module is currently loaded, unload the module
- if lsmod | grep "$l_mname" > /dev/null 2>&1; then
+ if lsmod | awk '{print $1}' | grep -Fxq "$l_mname"; then
  echo -e "\n - unloading module \"$l_mname\""
  modprobe -r "$l_mname"
  fi
@@ -1862,14 +1711,14 @@ fi
  module_deny_fix()
  {
  # If the module isn't deny listed, denylist the module
- if ! modprobe --showconfig | grep -Pq -- "^\h*blacklist\h+$l_mpname\b"; then
+ if ! modprobe --showconfig | grep -Eq -- "^[[:space:]]*blacklist[[:space:]]+(${l_mname//-/_}|$l_mname)([[:space:]]|$)"; then
  echo -e "\n - deny listing \"$l_mname\""
  echo -e "blacklist $l_mname" >> /etc/modprobe.d/"$l_mpname".conf
  fi
  }
  # Check if the module exists on the system
  for l_mdir in $l_mpath; do
- if [ -d "$l_mdir/$l_mndir" ] && [ -n "$(ls -A $l_mdir/$l_mndir)" ]; then
+ if [ -d "$l_mdir/$l_mndir" ] && [ -n "$(ls -A "$l_mdir/$l_mndir")" ]; then
  echo -e "\n - module: \"$l_mname\" exists in \"$l_mdir\"\n - checking if disabled..."
  module_deny_fix
  if [ "$l_mdir" = "/lib/modules/$(uname -r)/kernel/$l_mtype" ]; then
@@ -1904,22 +1753,22 @@ fi
  module_loaded_fix()
  {
  # If the module is currently loaded, unload the module
- if lsmod | grep "$l_mname" > /dev/null 2>&1; then
+ if lsmod | awk '{print $1}' | grep -Fxq "$l_mname"; then
  echo -e "\n - unloading module \"$l_mname\""
  modprobe -r "$l_mname"
  fi
  }
  module_deny_fix()
  {
- # If the module isn't deny listed, denylist the module
- if ! modprobe --showconfig | grep -Pq -- "^\h*blacklist\h+$l_mpname\b"; then
+# If the module isn't deny listed, denylist the module
+ if ! modprobe --showconfig | grep -Eq -- "^[[:space:]]*blacklist[[:space:]]+(${l_mname//-/_}|$l_mname)([[:space:]]|$)"; then
  echo -e "\n - deny listing \"$l_mname\""
  echo -e "blacklist $l_mname" >> /etc/modprobe.d/"$l_mpname".conf
  fi
  }
  # Check if the module exists on the system
  for l_mdir in $l_mpath; do
- if [ -d "$l_mdir/$l_mndir" ] && [ -n "$(ls -A $l_mdir/$l_mndir)" ]; then
+ if [ -d "$l_mdir/$l_mndir" ] && [ -n "$(ls -A "$l_mdir/$l_mndir")" ]; then
  echo -e "\n - module: \"$l_mname\" exists in \"$l_mdir\"\n - checking if disabled..."
  module_deny_fix
  if [ "$l_mdir" = "/lib/modules/$(uname -r)/kernel/$l_mtype" ]; then
@@ -1955,22 +1804,22 @@ fi
  module_loaded_fix()
  {
  # If the module is currently loaded, unload the module
- if lsmod | grep "$l_mname" > /dev/null 2>&1; then
+ if lsmod | awk '{print $1}' | grep -Fxq "$l_mname"; then
  echo -e "\n - unloading module \"$l_mname\""
  modprobe -r "$l_mname"
  fi
  }
  module_deny_fix()
  {
- # If the module isn't deny listed, denylist the module
- if ! modprobe --showconfig | grep -Pq -- "^\h*blacklist\h+$l_mpname\b"; then
+# If the module isn't deny listed, denylist the module
+ if ! modprobe --showconfig | grep -Eq -- "^[[:space:]]*blacklist[[:space:]]+(${l_mname//-/_}|$l_mname)([[:space:]]|$)"; then
  echo -e "\n - deny listing \"$l_mname\""
  echo -e "blacklist $l_mname" >> /etc/modprobe.d/"$l_mpname".conf
  fi
  }
  # Check if the module exists on the system
  for l_mdir in $l_mpath; do
- if [ -d "$l_mdir/$l_mndir" ] && [ -n "$(ls -A $l_mdir/$l_mndir)" ]; then
+ if [ -d "$l_mdir/$l_mndir" ] && [ -n "$(ls -A "$l_mdir/$l_mndir")" ]; then
  echo -e "\n - module: \"$l_mname\" exists in \"$l_mdir\"\n - checking if disabled..."
  module_deny_fix
  if [ "$l_mdir" = "/lib/modules/$(uname -r)/kernel/$l_mtype" ]; then
@@ -2126,7 +1975,7 @@ sudo nft flush ruleset
 sudo nft add table inet filter
 
 # INPUT Chain: Incoming traffic, with default drop policy
-sudo nft add chain inet filter input { type filter hook input priority 0 \; policy drop \; }
+sudo nft add chain inet filter input '{ type filter hook input priority 0 ; policy drop ; }'
 
 # Allow loopback traffic for localhost (IPv4 and IPv6)
 sudo nft add rule inet filter input iifname "lo" accept
@@ -2137,8 +1986,9 @@ sudo nft add rule inet filter input ct state established,related accept
 # Allow incoming SSH (port 22)
 sudo nft add rule inet filter input tcp dport 22 accept
 
-# Allow incoming HTTP/HTTPS (ports 80, 443)
-sudo nft add rule inet filter input tcp dport {80, 443} accept
+# Allow incoming HTTP/HTTPS (ports 80 and 443)
+sudo nft add rule inet filter input tcp dport 80 accept
+sudo nft add rule inet filter input tcp dport 443 accept
 
 # Allow incoming DNS (UDP port 53)
 sudo nft add rule inet filter input udp dport 53 accept
@@ -2159,7 +2009,7 @@ sudo nft add rule inet filter input ip6 nexthdr icmpv6 icmpv6 type time-exceeded
 sudo nft add rule inet filter input ip6 nexthdr icmpv6 icmpv6 type parameter-problem accept
 
 # Save the ruleset to persist changes
-sudo nft list ruleset > /etc/nftables.rules
+sudo nft list ruleset | sudo tee /etc/nftables.rules > /dev/null
 
 # Include the ruleset in nftables.conf for persistence on reboot
 echo "include \"/etc/nftables.rules\"" | sudo tee -a /etc/nftables.conf > /dev/null
@@ -2207,7 +2057,11 @@ echo "include \"/etc/nftables.rules\"" | sudo tee -a /etc/nftables.conf > /dev/n
             # Update file mode if needed
             if [ $((l_file_mode & l_pmask)) -gt 0 ]; then
                 l_out2="$l_out2\n - Mode: \"$l_file_mode\" should be mode: \"$l_maxperm\" or more restrictive\n - Updating to mode: \"$l_maxperm\""
-                [ "$l_file_group" = "$l_ssh_group_name" ] && chmod u-x,g-wx,o-rwx "$l_file" || chmod u-x,go-rwx "$l_file"
+                if [ "$l_file_group" = "$l_ssh_group_name" ]; then
+                    chmod u-x,g-wx,o-rwx "$l_file"
+                else
+                    chmod u-x,go-rwx "$l_file"
+                fi
             fi
 
             # Update owner if needed
@@ -2796,7 +2650,7 @@ systemctl restart systemd-journald
 # Ensure secure boot is enabled (requires system support and UEFI)
 echo "Checking if Secure Boot is enabled..."
 if [ -d /sys/firmware/efi ]; then
-    if [ "$(mokutil --sb-state | grep 'SecureBoot enabled')" ]; then
+    if mokutil --sb-state | grep -q 'SecureBoot enabled'; then
         echo "Secure Boot is enabled."
     else
         echo "Secure Boot is not enabled. Enable it in BIOS/UEFI settings."
@@ -2825,7 +2679,7 @@ echo "install usb-storage /bin/true" >> /etc/modprobe.d/usb-storage.conf
 
 # Enable auditing for all successful and unsuccessful privileged commands
 echo "Enabling auditing for all privileged commands..."
-for file in $(find / -xdev \( -perm -4000 -o -perm -2000 \)); do
+find / -xdev \( -perm -4000 -o -perm -2000 \) -print0 2>/dev/null | while IFS= read -r -d '' file; do
     echo "-a always,exit -F path=$file -F perm=x -F auid>=1000 -F auid!=4294967295 -k privileged" >> /etc/audit/rules.d/privileged.rules
 done
 
@@ -2874,10 +2728,10 @@ fi
 
 # Lock non-root user accounts with UID 0
 echo "Checking for non-root users with UID 0..."
-for user in $(awk -F: '($3 == 0) {print $1}' /etc/passwd); do
+awk -F: '($3 == 0) {print $1}' /etc/passwd | while read -r user; do
     if [ "$user" != "root" ]; then
         echo "Locking user $user with UID 0..."
-        passwd -l $user
+        passwd -l "$user"
     fi
 done
 
@@ -2976,9 +2830,9 @@ echo "umask 027" >> /etc/profile.d/umask.sh
 
 # Disable shell access for system accounts
 echo "Disabling shell access for system accounts..."
-for user in `awk -F: '($3 < 1000) {print $1}' /etc/passwd`; do
+awk -F: '($3 < 1000) {print $1}' /etc/passwd | while read -r user; do
     if [ "$user" != "root" ]; then
-        usermod -s /usr/sbin/nologin $user
+        usermod -s /usr/sbin/nologin "$user"
     fi
 done
 
@@ -3432,13 +3286,6 @@ find / -xdev \( -nouser -o -nogroup \) -exec rm -rf {} \; -print
 # 7.1.13 - Review SUID and SGID files
 echo "Listing SUID and SGID files for review..."
 find / -xdev \( -perm -4000 -o -perm -2000 \) -type f -exec ls -l {} \;
-#!/bin/bash
-
-# Function to print status messages
-print_status() {
-    echo "Checking $1..."
-}
-
 # 7.2.1 Ensure accounts in /etc/passwd use shadowed passwords
 print_status "Accounts in /etc/passwd using shadowed passwords"
 awk -F: '($2 != "x") { print "User \"" $1 "\" is not using shadowed passwords" }' /etc/passwd
@@ -3517,13 +3364,6 @@ for home_dir in $(awk -F: '($3 >= 1000 && $7 !~ /nologin|false/) { print $6 }' /
         done
     fi
 done
-#!/bin/bash
-
-# Function to print status messages
-print_status() {
-    echo "Checking $1..."
-}
-
 # 5.4.1 Configure Shadow Password Suite Parameters
 # 5.4.1.1 Ensure password expiration is configured
 print_status "Password expiration settings"

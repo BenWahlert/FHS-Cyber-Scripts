@@ -41,235 +41,235 @@ Configuration CIS_Windows10_v181 {
        # 2.2.1 (L1) Ensure 'Access Credential Manager as a trusted caller' is set to 'No One'
         UserRightsAssignment AccessCredentialManagerasatrustedcaller {
             Policy       = 'Access_Credential_Manager_as_a_trusted_caller'
-            Identity     = ''
+            Identity     = @()
         }
 
         # 2.2.2 (L1) Ensure 'Access this computer from the network' is set to 'Administrators, Authenticated Users, ENTERPRISE DOMAIN CONTROLLERS' (DC only)
         UserRightsAssignment Accessthiscomputerfromthenetwork {
             Policy       = 'Access_this_computer_from_the_network'
-            Identity     = 'Administrators, Authenticated Users, ENTERPRISE DOMAIN CONTROLLERS'
+            Identity     = @('Administrators','Authenticated Users','ENTERPRISE DOMAIN CONTROLLERS')
         }
 
         # 2.2.3 (L1) Ensure 'Act as part of the operating system' is set to 'No One'
         UserRightsAssignment Actaspartoftheoperatingsystem {
             Policy       = 'Act_as_part_of_the_operating_system'
-            Identity     = ''
+            Identity     = @()
         }
 
         # 2.2.4 (L1) Ensure 'Adjust memory quotas for a process' is set to 'Administrators, LOCAL SERVICE, NETWORK SERVICE'
         UserRightsAssignment Adjustmemoryquotasforaprocess {
             Policy       = 'Adjust_memory_quotas_for_a_process'
-            Identity     = 'Administrators, LOCAL SERVICE, NETWORK SERVICE'
+            Identity     = @('Administrators','LOCAL SERVICE','NETWORK SERVICE')
         }
 
         # 2.2.5 (L1) Ensure 'Allow log on locally' is set to 'Administrators, Users'
         UserRightsAssignment Allowlogonlocally {
             Policy       = 'Allow_log_on_locally'
-            Identity     = 'Administrators, Users'
+            Identity     = @('Administrators','Users')
         }
 
         # 2.2.6 (L1) Ensure 'Allow log on through Remote Desktop Services' is set to 'Administrators, Remote Desktop Users'
         UserRightsAssignment AllowlogonthroughRemoteDesktopServices {
             Policy       = 'Allow_log_on_through_Remote_Desktop_Services'
-            Identity     = 'Administrators, Remote Desktop Users'
+            Identity     = @('Administrators','Remote Desktop Users')
         }
 
         # 2.2.7 (L1) Ensure 'Back up files and directories' is set to 'Administrators'
         UserRightsAssignment Backupfilesanddirectories {
             Policy       = 'Back_up_files_and_directories'
-            Identity     = 'Administrators'
+            Identity     = @('Administrators')
         }
 
         # 2.2.8 (L1) Ensure 'Change the system time' is set to 'Administrators, LOCAL SERVICE'
         UserRightsAssignment Changethesystemtime {
             Policy       = 'Change_the_system_time'
-            Identity     = 'Administrators, LOCAL SERVICE'
+            Identity     = @('Administrators','LOCAL SERVICE')
         }
 
         # 2.2.9 (L1) Ensure 'Change the time zone' is set to 'Administrators, LOCAL SERVICE, Users'
         UserRightsAssignment Changethetimezone {
             Policy       = 'Change_the_time_zone'
-            Identity     = 'Administrators, LOCAL SERVICE, Users'
+            Identity     = @('Administrators','LOCAL SERVICE','Users')
         }
 
         # 2.2.10 (L1) Ensure 'Create a pagefile' is set to 'Administrators'
         UserRightsAssignment Createapagefile {
             Policy       = 'Create_a_pagefile'
-            Identity     = 'Administrators'
+            Identity     = @('Administrators')
         }
 
         # 2.2.11 (L1) Ensure 'Create a token object' is set to 'No One'
         UserRightsAssignment Createatokenobject {
             Policy       = 'Create_a_token_object'
-            Identity     = ''
+            Identity     = @()
         }
 
         # 2.2.12 (L1) Ensure 'Create global objects' is set to 'Administrators, LOCAL SERVICE, NETWORK SERVICE, SERVICE'
         UserRightsAssignment Createglobalobjects {
             Policy       = 'Create_global_objects'
-            Identity     = 'Administrators, LOCAL SERVICE, NETWORK SERVICE, SERVICE'
+            Identity     = @('Administrators','LOCAL SERVICE','NETWORK SERVICE','SERVICE')
         }
 
         # 2.2.13 (L1) Ensure 'Create permanent shared objects' is set to 'No One'
         UserRightsAssignment Createpermanentsharedobjects {
             Policy       = 'Create_permanent_shared_objects'
-            Identity     = ''
+            Identity     = @()
         }
 
         # 2.2.14 (L1) Configure 'Create symbolic links'
         UserRightsAssignment Createsymboliclinks {
             Policy       = 'Create_symbolic_links'
-            Identity     = 'Administrators, NT VIRTUAL MACHINE\Virtual Machines'
+            Identity     = @('Administrators','NT VIRTUAL MACHINE\Virtual Machines')
         }
 
         # 2.2.15 (L1) Ensure 'Debug programs' is set to 'Administrators'
         UserRightsAssignment Debugprograms {
             Policy       = 'Debug_programs'
-            Identity     = 'Administrators'
+            Identity     = @('Administrators')
         }        
 
         # 2.2.16 (L1) Ensure 'Deny access to this computer from the network' is set to 'Guests, Local account'
         UserRightsAssignment Denyaccesstothiscomputerfromthenetwork {
             Policy       = 'Deny_access_to_this_computer_from_the_network'
-            Identity     = 'Guests, Local account'
+            Identity     = @('Guests','Local account')
         }
 
         # 2.2.17 (L1) Ensure 'Deny log on as a batch job' to include 'Guests'
         UserRightsAssignment Denylogonasabatchjob {
             Policy       = 'Deny_log_on_as_a_batch_job'
-            Identity     = 'Guests'
+            Identity     = @('Guests')
         }
 
         # 2.2.18 (L1) Ensure 'Deny log on as a service' to include 'Guests'
         UserRightsAssignment Denylogonasaservice {
             Policy       = 'Deny_log_on_as_a_service'
-            Identity     = 'Guests'
+            Identity     = @('Guests')
         }
 
         # 2.2.19 (L1) Ensure 'Deny log on locally' to include 'Guests'
         UserRightsAssignment Denylogonlocally {
             Policy       = 'Deny_log_on_locally'
-            Identity     = 'Guests'
+            Identity     = @('Guests')
         }
 
         # 2.2.20 (L1) Ensure 'Deny log on through Remote Desktop Services' is set to 'Guests, Local account'
         UserRightsAssignment DenylogonthroughRemoteDesktopServices {
             Policy       = 'Deny_log_on_through_Remote_Desktop_Services'
-            Identity     = 'Guests, Local account'
+            Identity     = @('Guests','Local account')
         }
 
         # 2.2.21 (L1) Ensure 'Enable computer and user accounts to be trusted for delegation' is set to 'No One'
         UserRightsAssignment Enablecomputeranduseraccountstobetrustedfordelegation {
             Policy       = 'Enable_computer_and_user_accounts_to_be_trusted_for_delegation'
-            Identity     = ''
+            Identity     = @()
         }
 
         # 2.2.22 (L1) Ensure 'Force shutdown from a remote system' is set to 'Administrators'
         UserRightsAssignment Forceshutdownfromaremotesystem {
             Policy       = 'Force_shutdown_from_a_remote_system'
-            Identity     = 'Administrators'
+            Identity     = @('Administrators')
         }
 
         # 2.2.23 (L1) Ensure 'Generate security audits' is set to 'LOCAL SERVICE, NETWORK SERVICE'
         UserRightsAssignment Generatesecurityaudits {
             Policy       = 'Generate_security_audits'
-            Identity     = 'LOCAL SERVICE, NETWORK SERVICE'
+            Identity     = @('LOCAL SERVICE','NETWORK SERVICE')
         }
 
         # 2.2.24 (L1) Ensure 'Impersonate a client after authentication' is set to 'Administrators, LOCAL SERVICE, NETWORK SERVICE, SERVICE'
         UserRightsAssignment Impersonateaclientafterauthentication {
             Policy       = 'Impersonate_a_client_after_authentication'
-            Identity     = 'Administrators, LOCAL SERVICE, NETWORK SERVICE, SERVICE'
+            Identity     = @('Administrators','LOCAL SERVICE','NETWORK SERVICE','SERVICE')
         }
 
         # 2.2.25 (L1) Ensure 'Increase scheduling priority' is set to 'Administrators, Windows Manager\Windows Manager Group'
         UserRightsAssignment Increaseschedulingpriority {
             Policy       = 'Increase_scheduling_priority'
-            Identity     = 'Administrators, Windows Manager\Windows Manager Group'
+            Identity     = @('Administrators','Windows Manager\Windows Manager Group')
         }
 
         # 2.2.26 (L1) Ensure 'Load and unload device drivers' is set to 'Administrators'
         UserRightsAssignment Loadandunloaddevicedrivers {
             Policy       = 'Load_and_unload_device_drivers'
-            Identity     = 'Administrators'
+            Identity     = @('Administrators')
         }
 
         # 2.2.27 (L1) Ensure 'Lock pages in memory' is set to 'No One'
         UserRightsAssignment Lockpagesinmemory {
             Policy       = 'Lock_pages_in_memory'
-            Identity     = ''
+            Identity     = @()
         }
 
         # 2.2.28 (L2) Ensure 'Log on as a batch job' is set to 'Administrators'
         UserRightsAssignment Logonasabatchjob {
             Policy       = 'Log_on_as_a_batch_job'
-            Identity     = 'Administrators'
+            Identity     = @('Administrators')
         }
 
         # 2.2.29 (L2) Configure 'Log on as a service'
         UserRightsAssignment Logonasaservice {
             Policy       = 'Log_on_as_a_service'
-            Identity     = 'NT VIRTUAL MACHINE\Virtual Machines'
+            Identity     = @('NT VIRTUAL MACHINE\Virtual Machines')
         }
 
         # 2.2.30 (L1) Ensure 'Manage auditing and security log' is set to 'Administrators'
         UserRightsAssignment Manageauditingandsecuritylog {
             Policy       = 'Manage_auditing_and_security_log'
-            Identity     = 'Administrators'
+            Identity     = @('Administrators')
         }
 
         # 2.2.31 (L1) Ensure 'Modify an object label' is set to 'No One'
         UserRightsAssignment Modifyanobjectlabel {
             Policy       = 'Modify_an_object_label'
-            Identity     = ''
+            Identity     = @()
         }
 
         # 2.2.32 (L1) Ensure 'Modify firmware environment values' is set to 'Administrators'
         UserRightsAssignment Modifyfirmwareenvironmentvalues {
             Policy       = 'Modify_firmware_environment_values'
-            Identity     = 'Administrators'
+            Identity     = @('Administrators')
         }
 
         # 2.2.33 (L1) Ensure 'Perform volume maintenance tasks' is set to 'Administrators'
         UserRightsAssignment Performvolumemaintenancetasks {
             Policy       = 'Perform_volume_maintenance_tasks'
-            Identity     = 'Administrators'
+            Identity     = @('Administrators')
         }
 
         # 2.2.34 (L1) Ensure 'Profile single process' is set to 'Administrators'
         UserRightsAssignment Profilesingleprocess {
             Policy       = 'Profile_single_process'
-            Identity     = 'Administrators'
+            Identity     = @('Administrators')
         }
 
         # 2.2.35 (L1) Ensure 'Profile system performance' is set to 'Administrators, NT SERVICE\WdiServiceHost'
         UserRightsAssignment Profilesystemperformance {
             Policy       = 'Profile_system_performance'
-            Identity     = 'Administrators, NT SERVICE\WdiServiceHost'
+            Identity     = @('Administrators','NT SERVICE\WdiServiceHost')
         }
 
         # 2.2.36 (L1) Ensure 'Replace a process level token' is set to 'LOCAL SERVICE, NETWORK SERVICE'
         UserRightsAssignment Replaceaprocessleveltoken {
             Policy       = 'Replace_a_process_level_token'
-            Identity     = 'LOCAL SERVICE, NETWORK SERVICE'
+            Identity     = @('LOCAL SERVICE','NETWORK SERVICE')
         }
 
         # 2.2.37 (L1) Ensure 'Restore files and directories' is set to 'Administrators'
         UserRightsAssignment Restorefilesanddirectories {
             Policy       = 'Restore_files_and_directories'
-            Identity     = 'Administrators'
+            Identity     = @('Administrators')
         }
 
         # 2.2.38 (L1) Ensure 'Shut down the system' is set to 'Administrators, Users'
         UserRightsAssignment Shutdownthesystem {
             Policy       = 'Shut_down_the_system'
-            Identity     = 'Administrators'
+            Identity     = @('Administrators','Users')
         }
 
         # 2.2.39 (L1) Ensure 'Take ownership of files or other objects' is set to 'Administrators'
         UserRightsAssignment Takeownershipoffilesorotherobjects {
             Policy       = 'Take_ownership_of_files_or_other_objects'
-            Identity     = 'Administrators'
+            Identity     = @('Administrators')
         }
 
         SecurityOption AccountSecurityOptions {
@@ -366,7 +366,7 @@ Configuration CIS_Windows10_v181 {
                MSFT_RestrictedRemoteSamSecurityDescriptor
                {
                   Permission = 'Allow'
-                  Identity   = 'Administrators'
+                  Identity   = @('Administrators')
                }
             )
             # 2.3.10.11 (L1) Ensure 'Network access: Shares that can be accessed anonymously' is set to 'None' 
