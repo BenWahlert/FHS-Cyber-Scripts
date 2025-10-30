@@ -13,7 +13,7 @@ fi
 sudo apt update
 sudo apt install -y git
 mkdir -p ~/tmp/cp
-cd ~/tmp/cp
+cd ~/tmp/cp || exit
 
 
 
