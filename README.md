@@ -1,1 +1,1 @@
-# CyberPatriot-Script-Linux
+# FHS-Cyber-Scripts
