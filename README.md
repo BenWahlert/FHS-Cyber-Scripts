@@ -33,7 +33,6 @@ Use this document as the field guide for choosing the right assets and executing
 | `Windows/services.ps1`, `Windows/main.ps1`, etc. | Supporting DSC resources referenced by `CISDesktop.ps1`. |
 | `Windows/CP-1-1/` | CyberPatriot (“CP”) automation. Contains Windows and Linux helper scripts, policy backups, and third-party assessor tooling. |
 | `Windows/CP-1-1/Windows10/` | Windows 10 hardening scripts (`main.ps1`, `CPGoodies.ps1`, `services.ps1`, etc.) and Group Policy Object (GPO) backups for each Windows 10 version (folders named `1511`, `1607`, … `2004`). |
-| `AGENTS.md` | Contributor guide describing coding conventions, review expectations, and validation tips. |
 
 > **Tip:** Most Windows scripts expect to be run from inside `~\Downloads\cp` after cloning this repository. Linux scripts assume root access on the local host.
 
