@@ -19,9 +19,12 @@
 Add-Type -AssemblyName System.Windows.Forms
 Add-Type -AssemblyName System.Drawing
 
-$scriptRoot   = Split-Path -Parent $MyInvocation.MyCommand.Definition
+$scriptRoot = if ($PSScriptRoot) { $PSScriptRoot } else { Split-Path -Parent (Get-Item -LiteralPath $MyInvocation.MyCommand.Path).FullName }
+$scriptRoot = [System.IO.Path]::GetFullPath($scriptRoot)
 $logDirectory = Join-Path $scriptRoot 'Logs'
-[void][System.IO.Directory]::CreateDirectory($logDirectory)
+if (-not [System.IO.Directory]::Exists($logDirectory)) {
+    [System.IO.Directory]::CreateDirectory($logDirectory) | Out-Null
+}
 
 $availableScripts = @(
     [PSCustomObject]@{ Name = 'CPGoodies.ps1';    Description = 'Firewall import, telemetry/privacy lockdown';             Path = Join-Path $scriptRoot 'CPGoodies.ps1'    },
