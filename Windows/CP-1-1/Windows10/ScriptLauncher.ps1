@@ -21,16 +21,14 @@ Add-Type -AssemblyName System.Drawing
 
 $scriptRoot   = Split-Path -Parent $MyInvocation.MyCommand.Definition
 $logDirectory = Join-Path $scriptRoot 'Logs'
-if (-not (Test-Path $logDirectory)) {
-    New-Item -ItemType Directory -Path $logDirectory | Out-Null
-}
+[void][System.IO.Directory]::CreateDirectory($logDirectory)
 
 $availableScripts = @(
     [PSCustomObject]@{ Name = 'CPGoodies.ps1';    Description = 'Firewall import, telemetry/privacy lockdown';             Path = Join-Path $scriptRoot 'CPGoodies.ps1'    },
     [PSCustomObject]@{ Name = 'services.ps1';     Description = 'Enable good services, disable unwanted ones';             Path = Join-Path $scriptRoot 'services.ps1'     },
-    [PSCustomObject]@{ Name = 'FeaturesApps.ps1'; Description = 'Disable optional features and remove bloatware apps';      Path = Join-Path $scriptRoot 'FeaturesApps.ps1' },
-    [PSCustomObject]@{ Name = 'harden.ps1';       Description = 'Firewall rules, security policies, registry hardening';    Path = Join-Path $scriptRoot 'harden.ps1'       },
-    [PSCustomObject]@{ Name = 'badprograms.ps1';  Description = 'Remove disallowed software and tools';                     Path = Join-Path $scriptRoot 'badprograms.ps1'  }
+    [PSCustomObject]@{ Name = 'FeaturesApps.ps1'; Description = 'Disable optional features and remove bloatware apps';     Path = Join-Path $scriptRoot 'FeaturesApps.ps1' },
+    [PSCustomObject]@{ Name = 'harden.ps1';       Description = 'Firewall rules, security policies, registry hardening';   Path = Join-Path $scriptRoot 'harden.ps1'       },
+    [PSCustomObject]@{ Name = 'badprograms.ps1';  Description = 'Remove disallowed software and tools';                    Path = Join-Path $scriptRoot 'badprograms.ps1'  }
 )
 
 $form                  = New-Object System.Windows.Forms.Form
@@ -52,7 +50,7 @@ $checkList.Size             = New-Object System.Drawing.Size(575, 230)
 $checkList.CheckOnClick     = $true
 
 foreach ($item in $availableScripts) {
-    $display = "{0} – {1}" -f $item.Name, $item.Description
+    $display = "{0} - {1}" -f $item.Name, $item.Description
     $null = $checkList.Items.Add($display)
 }
 $form.Controls.Add($checkList)
