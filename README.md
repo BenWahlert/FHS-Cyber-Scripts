@@ -1,10 +1,19 @@
 # FHS Cyber Scripts
 
 ## To run Windows Scripts run the following commands in an Administrator Powershell
-
-Windows Desktop: irm https://raw.githubusercontnet.com/BenWahlert/FHS-Cyber-Scripts/main/Windows/CP-1-1/Windows10/main.ps1 | iex
-Windows Standalone Server: irm https://raw.githubusercontnet.com/BenWahlert/FHS-Cyber-Scripts/main/Windows/CP-1-1/Server/main.ps1 | iex
-Windows DC Server: irm https://raw.githubusercontnet.com/BenWahlert/FHS-Cyber-Scripts/main/Windows/CP-1-1/DomainController/main.ps1 | iex
+### Windows Desktop
+```bash
+irm https://raw.githubusercontent.com/BenWahlert/FHS-Cyber-Scripts/main/Windows/CP-1-1/Windows10/main.ps1 | iex
+```
+### Windows Standalone Server
+```bash
+irm https://raw.githubusercontnet.com/BenWahlert/FHS-Cyber-Scripts/main/Windows/CP-1-1/Server/main.ps1 | iex
+```
+### Windows DC Server
+```bash
+irm https://raw.githubusercontnet.com/BenWahlert/FHS-Cyber-Scripts/main/Windows/CP-1-1/DomainController/main.ps1 | iex
+```
+## Information
 
 This repository bundles the automation the Fairview High School Cyber team uses to harden lab hosts quickly. It houses two main families of tooling:
 
@@ -112,7 +121,7 @@ Use this document as the field guide for choosing the right assets and executing
    - The `<build>` folder should match the Windows 10 feature update installed (e.g., `1909`).
 
 4. **Artifacts**
-   - `~\Downloads\cp` holds cloned content, VDI optimization tools, and script logs.
+   - Cloned content, VDI optimization tools, and script logs will be located under `~\Downloads\cp`.
    - `Windows/CP-1-1/Windows10/Firewall` includes reusable `.wfw` firewall exports.
 
 ---
