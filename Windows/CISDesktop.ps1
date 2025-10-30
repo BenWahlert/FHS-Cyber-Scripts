@@ -263,7 +263,7 @@ Configuration CIS_Windows10_v181 {
         # 2.2.38 (L1) Ensure 'Shut down the system' is set to 'Administrators, Users'
         UserRightsAssignment Shutdownthesystem {
             Policy       = 'Shut_down_the_system'
-            Identity     = @('Administrators')
+            Identity     = @('Administrators','Users')
         }
 
         # 2.2.39 (L1) Ensure 'Take ownership of files or other objects' is set to 'Administrators'
