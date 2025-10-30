@@ -13,12 +13,12 @@ mkdir ~\Downloads\cp
 cd ~\Downloads\cp
 
 
-& "C:\Program Files\Git\bin\git.exe" clone  https://github.com/wen012235/CP.git .
+& "C:\Program Files\Git\bin\git.exe" clone  https://github.com/BenWahlert/FHS-Cyber-Scripts.git .
 mkdir ~\Downloads\cp\VDI
 cd ~\Downloads\cp\VDI
 if ((Get-WmiObject Win32_OperatingSystem).BuildNumber -gt 18360) {& "C:\Program Files\Git\bin\git.exe" clone https://github.com/The-Virtual-Desktop-Team/Virtual-Desktop-Optimization-Tool.git .}
 else {& "C:\Program Files\Git\bin\git.exe" clone https://github.com/TheVDIGuys/Windows_10_VDI_Optimize.git . }
-cd ~\Downloads\cp\Windows10
+cd ~\Downloads\cp\Windows\CP-1-1\Windows10
 cls
 Add-Type -AssemblyName PresentationFramework
 [System.Windows.MessageBox]::Show('Make sure to set the current user password to something with at least 14 characters, with at least one upper/lower/number/special character before you begin.  Press OK when you have set that password and are ready to continue.')
@@ -87,7 +87,7 @@ If (Test-Path -Path $firefox32){
 #copy-item -path ~\Downloads\cp\Windows10\blacklist.txt -Destination ~\Desktop\
 #Get-Package -ProviderName "Programs" >> ~/Desktop/programs.rtf
 cls
-Write-Warning "This system has been hardened by Hulstrom Students.  Now continue down the checklist and get those points!"
+Write-Warning "This system has been hardened by Fairview Students.  Now continue down the checklist and get those points!"
 $Answer = [System.Windows.MessageBox]::Show("Reboot to make changes effective?", "Restart Computer", "YesNo", "Question")
 switch ($Answer) {
     "Yes" { Write-Host "Performing Gpupdate"; Gpupdate /force /boot; Get-Job; Write-Warning "Restarting Computer in 15 Seconds"; Start-sleep -seconds 15; Restart-Computer -Force }
