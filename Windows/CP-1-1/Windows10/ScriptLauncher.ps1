@@ -19,11 +19,11 @@
 Add-Type -AssemblyName System.Windows.Forms
 Add-Type -AssemblyName System.Drawing
 
-$scriptRoot = if ($PSScriptRoot) { $PSScriptRoot } else { Split-Path -Parent (Get-Item -LiteralPath $MyInvocation.MyCommand.Path).FullName }
+$scriptRoot = if ($PSCommandPath) { Split-Path -Path $PSCommandPath -Parent } elseif ($PSScriptRoot) { $PSScriptRoot } else { Split-Path -Parent (Get-Item -LiteralPath $MyInvocation.MyCommand.Path).FullName }
 $scriptRoot = [System.IO.Path]::GetFullPath($scriptRoot)
-$logDirectory = Join-Path $scriptRoot 'Logs'
-if (-not [System.IO.Directory]::Exists($logDirectory)) {
-    [System.IO.Directory]::CreateDirectory($logDirectory) | Out-Null
+$logDirectory = [System.IO.Path]::Combine($scriptRoot, 'Logs')
+if (-not (Test-Path -LiteralPath $logDirectory)) {
+    New-Item -ItemType Directory -Path $logDirectory -Force | Out-Null
 }
 
 $availableScripts = @(
