@@ -121,7 +121,7 @@ Use this document as the field guide for choosing the right assets and executing
    - The `<build>` folder should match the Windows 10 feature update installed (e.g., `1909`).
 
 4. **Artifacts**
-   - `~\Downloads\cp` holds cloned content, VDI optimization tools, and script logs.
+   - Cloned content, VDI optimization tools, and script logs will be located under `~\Downloads\cp`.
    - `Windows/CP-1-1/Windows10/Firewall` includes reusable `.wfw` firewall exports.
 
 ---
