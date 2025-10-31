@@ -1,207 +1,255 @@
-
 Copy-Item -Path ~\Downloads\cp\Windows10\LGPO.exe -Destination C:\Windows\System32
 Copy-Item -Path ~\Downloads\cp\Windows10\Firewall -Destination C:\ -Recurse
-    cmd.exe /c 'lgpo /g C:\Firewall'
+cmd.exe /c 'lgpo /g C:\Firewall'
 
+$buildNumber = (Get-WmiObject Win32_OperatingSystem).BuildNumber
 
-if ((Get-WmiObject Win32_OperatingSystem).BuildNumber -gt 19042)
-{
-#~/Downloads/cp/VDI/Win10_VirtualDesktop_Optimize.ps1 -WindowsVersion 2004 -Verbose
-echo "Press 1 for a standard harden and 2 for a full harden"
-$option = Read-Host '
+# --- Windows 11 builds (kept in Windows10 folder for compatibility) ---
+if ($buildNumber -ge 27500) {
+    # Windows 11 25H2 (Build 27500+)
+    echo "Press 1 for a standard harden and 2 for a full harden"
+    $option = Read-Host '
 1. Standard
 2. Full
 '
     if ($option -eq 1) {
-    Copy-Item -Path ~\Downloads\cp\Windows10\21H1\Standard -Destination C:\ -Recurse
-    cmd.exe /c 'lgpo /g C:\Standard' }
-
-    elseif ($option -eq 2) {
-    Copy-Item -Path ~\Downloads\cp\Windows10\21H1\Full -Destination C:\ -Recurse
-    cmd.exe /c 'lgpo /g C:\Full'
+        Copy-Item -Path ~\Downloads\cp\Windows10\25H2\Standard -Destination C:\ -Recurse
+        cmd.exe /c 'lgpo /g C:\Standard'
+    } elseif ($option -eq 2) {
+        Copy-Item -Path ~\Downloads\cp\Windows10\25H2\Full -Destination C:\ -Recurse
+        cmd.exe /c 'lgpo /g C:\Full'
     }
 }
-elseif ((Get-WmiObject Win32_OperatingSystem).BuildNumber -eq 19042)
-{
-#~/Downloads/cp/VDI/Win10_VirtualDesktop_Optimize.ps1 -WindowsVersion 2004 -Verbose
-echo "Press 1 for a standard harden and 2 for a full harden"
-$option = Read-Host '
+elseif ($buildNumber -ge 26100 -and $buildNumber -lt 27500) {
+    # Windows 11 24H2
+    echo "Press 1 for a standard harden and 2 for a full harden"
+    $option = Read-Host '
 1. Standard
 2. Full
 '
     if ($option -eq 1) {
-    Copy-Item -Path ~\Downloads\cp\Windows10\20H2\Standard -Destination C:\ -Recurse
-    cmd.exe /c 'lgpo /g C:\Standard' }
-
-    elseif ($option -eq 2) {
-    Copy-Item -Path ~\Downloads\cp\Windows10\20H2\Full -Destination C:\ -Recurse
-    cmd.exe /c 'lgpo /g C:\Full'
+        Copy-Item -Path ~\Downloads\cp\Windows10\24H2\Standard -Destination C:\ -Recurse
+        cmd.exe /c 'lgpo /g C:\Standard'
+    } elseif ($option -eq 2) {
+        Copy-Item -Path ~\Downloads\cp\Windows10\24H2\Full -Destination C:\ -Recurse
+        cmd.exe /c 'lgpo /g C:\Full'
     }
 }
-elseif ((Get-WmiObject Win32_OperatingSystem).BuildNumber -eq 19041)
-{
-echo "Press 1 for a standard harden and 2 for a full harden"
-$option = Read-Host '
+elseif ($buildNumber -ge 22631 -and $buildNumber -lt 26100) {
+    # Windows 11 23H2
+    echo "Press 1 for a standard harden and 2 for a full harden"
+    $option = Read-Host '
 1. Standard
 2. Full
 '
     if ($option -eq 1) {
-    Copy-Item -Path ~\Downloads\cp\Windows10\2004\Standard -Destination C:\ -Recurse
-    cmd.exe /c 'lgpo /g C:\Standard' }
-
-    elseif ($option -eq 2) {
-    Copy-Item -Path ~\Downloads\cp\Windows10\2004\Full -Destination C:\ -Recurse
-    cmd.exe /c 'lgpo /g C:\Full'
+        Copy-Item -Path ~\Downloads\cp\Windows10\23H2\Standard -Destination C:\ -Recurse
+        cmd.exe /c 'lgpo /g C:\Standard'
+    } elseif ($option -eq 2) {
+        Copy-Item -Path ~\Downloads\cp\Windows10\23H2\Full -Destination C:\ -Recurse
+        cmd.exe /c 'lgpo /g C:\Full'
     }
 }
-elseif ((Get-WmiObject Win32_OperatingSystem).BuildNumber -eq 18363)
-{
-#~/Downloads/cp/VDI/Win10_VirtualDesktop_Optimize.ps1 -WindowsVersion 1909 -Verbose
-echo "Press 1 for a standard harden and 2 for a full harden"
-$option = Read-Host '
+elseif ($buildNumber -ge 22621 -and $buildNumber -lt 22631) {
+    # Windows 11 22H2
+    echo "Press 1 for a standard harden and 2 for a full harden"
+    $option = Read-Host '
 1. Standard
 2. Full
 '
     if ($option -eq 1) {
-    Copy-Item -Path ~\Downloads\cp\Windows10\1909\Standard -Destination C:\ -Recurse
-    cmd.exe /c 'lgpo /g C:\Standard' }
-
-    elseif ($option -eq 2) {
-    Copy-Item -Path ~\Downloads\cp\Windows10\1909\Full -Destination C:\ -Recurse
-    cmd.exe /c 'lgpo /g C:\Full'
+        Copy-Item -Path ~\Downloads\cp\Windows10\22H2\Standard -Destination C:\ -Recurse
+        cmd.exe /c 'lgpo /g C:\Standard'
+    } elseif ($option -eq 2) {
+        Copy-Item -Path ~\Downloads\cp\Windows10\22H2\Full -Destination C:\ -Recurse
+        cmd.exe /c 'lgpo /g C:\Full'
     }
 }
-elseif ((Get-WmiObject Win32_OperatingSystem).BuildNumber -eq 18362)
-{
-~/Downloads/cp/VDI/older/Win10_VirtualDesktop_Optimize.ps1 -WindowsVersion 1903 -Verbose
-echo "Press 1 for a standard harden and 2 for a full harden"
-$option = Read-Host '
+
+# --- Windows 10 builds ---
+elseif ($buildNumber -gt 19042) {
+    # 21H1
+    echo "Press 1 for a standard harden and 2 for a full harden"
+    $option = Read-Host '
 1. Standard
 2. Full
 '
     if ($option -eq 1) {
-    Copy-Item -Path ~\Downloads\cp\Windows10\1903\Standard -Destination C:\ -Recurse
-    cmd.exe /c 'lgpo /g C:\Standard' }
-
-    elseif ($option -eq 2) {
-    Copy-Item -Path ~\Downloads\cp\Windows10\1903\Full -Destination C:\ -Recurse
-    cmd.exe /c 'lgpo /g C:\Full'
+        Copy-Item -Path ~\Downloads\cp\Windows10\21H1\Standard -Destination C:\ -Recurse
+        cmd.exe /c 'lgpo /g C:\Standard'
+    } elseif ($option -eq 2) {
+        Copy-Item -Path ~\Downloads\cp\Windows10\21H1\Full -Destination C:\ -Recurse
+        cmd.exe /c 'lgpo /g C:\Full'
     }
 }
-elseif ((Get-WmiObject Win32_OperatingSystem).BuildNumber -eq 17763)
-{
-echo "Press 1 for a standard harden and 2 for a full harden"
-$option = Read-Host '
+elseif ($buildNumber -eq 19042) {
+    # 20H2
+    echo "Press 1 for a standard harden and 2 for a full harden"
+    $option = Read-Host '
 1. Standard
 2. Full
 '
     if ($option -eq 1) {
-    Copy-Item -Path ~\Downloads\cp\Windows10\1809\Standard -Destination C:\ -Recurse
-    cmd.exe /c 'lgpo /g C:\Standard' }
-
-    elseif ($option -eq 2) {
-    Copy-Item -Path ~\Downloads\cp\Windows10\1809\Full -Destination C:\ -Recurse
-    cmd.exe /c 'lgpo /g C:\Full'
+        Copy-Item -Path ~\Downloads\cp\Windows10\20H2\Standard -Destination C:\ -Recurse
+        cmd.exe /c 'lgpo /g C:\Standard'
+    } elseif ($option -eq 2) {
+        Copy-Item -Path ~\Downloads\cp\Windows10\20H2\Full -Destination C:\ -Recurse
+        cmd.exe /c 'lgpo /g C:\Full'
     }
 }
-elseif ((Get-WmiObject Win32_OperatingSystem).BuildNumber -eq 17134)
-{
-~/Downloads/cp/VDI/older/Win10_VirtualDesktop_Optimize.ps1 -WindowsVersion 1803 -Verbose
-echo "Press 1 for a standard harden and 2 for a full harden"
-$option = Read-Host '
+elseif ($buildNumber -eq 19041) {
+    # 2004
+    echo "Press 1 for a standard harden and 2 for a full harden"
+    $option = Read-Host '
 1. Standard
 2. Full
 '
     if ($option -eq 1) {
-    Copy-Item -Path ~\Downloads\cp\Windows10\1803\Standard -Destination C:\ -Recurse
-    cmd.exe /c 'lgpo /g C:\Standard' }
-
-    elseif ($option -eq 2) {
-    Copy-Item -Path ~\Downloads\cp\Windows10\1803\Full -Destination C:\ -Recurse
-    cmd.exe /c 'lgpo /g C:\Full'
+        Copy-Item -Path ~\Downloads\cp\Windows10\2004\Standard -Destination C:\ -Recurse
+        cmd.exe /c 'lgpo /g C:\Standard'
+    } elseif ($option -eq 2) {
+        Copy-Item -Path ~\Downloads\cp\Windows10\2004\Full -Destination C:\ -Recurse
+        cmd.exe /c 'lgpo /g C:\Full'
     }
 }
-elseif ((Get-WmiObject Win32_OperatingSystem).BuildNumber -eq 16299)
-{
-echo "Press 1 for a standard harden and 2 for a full harden"
-$option = Read-Host '
+elseif ($buildNumber -eq 18363) {
+    # 1909
+    echo "Press 1 for a standard harden and 2 for a full harden"
+    $option = Read-Host '
 1. Standard
 2. Full
 '
     if ($option -eq 1) {
-    Move-Item -Path ~\Downloads\cp\Windows10\1709\Standard -Destination C:\ 
-    cmd.exe /c 'lgpo /g C:\Standard' }
-
-    elseif ($option -eq 2) {
-    Move-Item -Path ~\Downloads\cp\Windows10\1709\Full -Destination C:\ 
-    cmd.exe /c 'lgpo /g C:\Full'
+        Copy-Item -Path ~\Downloads\cp\Windows10\1909\Standard -Destination C:\ -Recurse
+        cmd.exe /c 'lgpo /g C:\Standard'
+    } elseif ($option -eq 2) {
+        Copy-Item -Path ~\Downloads\cp\Windows10\1909\Full -Destination C:\ -Recurse
+        cmd.exe /c 'lgpo /g C:\Full'
     }
 }
-elseif ((Get-WmiObject Win32_OperatingSystem).BuildNumber -eq 15063)
-{
-echo "Press 1 for a standard harden and 2 for a full harden"
-$option = Read-Host '
+elseif ($buildNumber -eq 18362) {
+    # 1903
+    echo "Press 1 for a standard harden and 2 for a full harden"
+    $option = Read-Host '
 1. Standard
 2. Full
 '
     if ($option -eq 1) {
-    Move-Item -Path ~\Downloads\cp\Windows10\1703\Standard -Destination C:\
-    cmd.exe /c 'lgpo /g C:\Standard' }
-
-    elseif ($option -eq 2) {
-    Move-Item -Path ~\Downloads\cp\Windows10\1703\Full -Destination C:\
-    cmd.exe /c 'lgpo /g C:\Full'
+        Copy-Item -Path ~\Downloads\cp\Windows10\1903\Standard -Destination C:\ -Recurse
+        cmd.exe /c 'lgpo /g C:\Standard'
+    } elseif ($option -eq 2) {
+        Copy-Item -Path ~\Downloads\cp\Windows10\1903\Full -Destination C:\ -Recurse
+        cmd.exe /c 'lgpo /g C:\Full'
     }
 }
-elseif ((Get-WmiObject Win32_OperatingSystem).BuildNumber -eq 14393)
-{
-echo "Press 1 for a standard harden and 2 for a full harden"
-$option = Read-Host '
+elseif ($buildNumber -eq 17763) {
+    # 1809
+    echo "Press 1 for a standard harden and 2 for a full harden"
+    $option = Read-Host '
 1. Standard
 2. Full
 '
     if ($option -eq 1) {
-    Move-Item -Path ~\Downloads\cp\Windows10\1607\Standard -Destination C:\
-    cmd.exe /c 'lgpo /g C:\Standard' }
-
-    elseif ($option -eq 2) {
-    Move-Item -Path ~\Downloads\cp\Windows10\1607\Full -Destination C:\
-    cmd.exe /c 'lgpo /g C:\Full'
+        Copy-Item -Path ~\Downloads\cp\Windows10\1809\Standard -Destination C:\ -Recurse
+        cmd.exe /c 'lgpo /g C:\Standard'
+    } elseif ($option -eq 2) {
+        Copy-Item -Path ~\Downloads\cp\Windows10\1809\Full -Destination C:\ -Recurse
+        cmd.exe /c 'lgpo /g C:\Full'
     }
 }
-elseif ((Get-WmiObject Win32_OperatingSystem).BuildNumber -eq 10586)
-{
-echo "Press 1 for a standard harden and 2 for a full harden"
-$option = Read-Host '
+elseif ($buildNumber -eq 17134) {
+    # 1803
+    echo "Press 1 for a standard harden and 2 for a full harden"
+    $option = Read-Host '
 1. Standard
 2. Full
 '
     if ($option -eq 1) {
-    Move-Item -Path ~\Downloads\cp\Windows10\1511\Standard -Destination C:\
-    cmd.exe /c 'lgpo /g C:\Standard' }
-
-    elseif ($option -eq 2) {
-    Move-Item -Path ~\Downloads\cp\Windows10\1511\Full -Destination C:\
-    cmd.exe /c 'lgpo /g C:\Full'
+        Copy-Item -Path ~\Downloads\cp\Windows10\1803\Standard -Destination C:\ -Recurse
+        cmd.exe /c 'lgpo /g C:\Standard'
+    } elseif ($option -eq 2) {
+        Copy-Item -Path ~\Downloads\cp\Windows10\1803\Full -Destination C:\ -Recurse
+        cmd.exe /c 'lgpo /g C:\Full'
     }
 }
-else 
-{
-echo "Press 1 for a standard harden and 2 for a full harden"
-$option = Read-Host '
+elseif ($buildNumber -eq 16299) {
+    # 1709
+    echo "Press 1 for a standard harden and 2 for a full harden"
+    $option = Read-Host '
 1. Standard
 2. Full
 '
     if ($option -eq 1) {
-    Move-Item -Path ~\Downloads\cp\Windows10\Standard -Destination C:\
-    cmd.exe /c 'lgpo /g C:\Standard' }
-
-    elseif ($option -eq 2) {
-    Move-Item -Path ~\Downloads\cp\Windows10\Full -Destination C:\
-    cmd.exe /c 'lgpo /g C:\Full'
+        Move-Item -Path ~\Downloads\cp\Windows10\1709\Standard -Destination C:\
+        cmd.exe /c 'lgpo /g C:\Standard'
+    } elseif ($option -eq 2) {
+        Move-Item -Path ~\Downloads\cp\Windows10\1709\Full -Destination C:\
+        cmd.exe /c 'lgpo /g C:\Full'
+    }
+}
+elseif ($buildNumber -eq 15063) {
+    # 1703
+    echo "Press 1 for a standard harden and 2 for a full harden"
+    $option = Read-Host '
+1. Standard
+2. Full
+'
+    if ($option -eq 1) {
+        Move-Item -Path ~\Downloads\cp\Windows10\1703\Standard -Destination C:\
+        cmd.exe /c 'lgpo /g C:\Standard'
+    } elseif ($option -eq 2) {
+        Move-Item -Path ~\Downloads\cp\Windows10\1703\Full -Destination C:\
+        cmd.exe /c 'lgpo /g C:\Full'
+    }
+}
+elseif ($buildNumber -eq 14393) {
+    # 1607
+    echo "Press 1 for a standard harden and 2 for a full harden"
+    $option = Read-Host '
+1. Standard
+2. Full
+'
+    if ($option -eq 1) {
+        Move-Item -Path ~\Downloads\cp\Windows10\1607\Standard -Destination C:\
+        cmd.exe /c 'lgpo /g C:\Standard'
+    } elseif ($option -eq 2) {
+        Move-Item -Path ~\Downloads\cp\Windows10\1607\Full -Destination C:\
+        cmd.exe /c 'lgpo /g C:\Full'
+    }
+}
+elseif ($buildNumber -eq 10586) {
+    # 1511
+    echo "Press 1 for a standard harden and 2 for a full harden"
+    $option = Read-Host '
+1. Standard
+2. Full
+'
+    if ($option -eq 1) {
+        Move-Item -Path ~\Downloads\cp\Windows10\1511\Standard -Destination C:\
+        cmd.exe /c 'lgpo /g C:\Standard'
+    } elseif ($option -eq 2) {
+        Move-Item -Path ~\Downloads\cp\Windows10\1511\Full -Destination C:\
+        cmd.exe /c 'lgpo /g C:\Full'
+    }
+}
+else {
+    # Fallback
+    echo "Press 1 for a standard harden and 2 for a full harden"
+    $option = Read-Host '
+1. Standard
+2. Full
+'
+    if ($option -eq 1) {
+        Move-Item -Path ~\Downloads\cp\Windows10\Standard -Destination C:\
+        cmd.exe /c 'lgpo /g C:\Standard'
+    } elseif ($option -eq 2) {
+        Move-Item -Path ~\Downloads\cp\Windows10\Full -Destination C:\
+        cmd.exe /c 'lgpo /g C:\Full'
     }
 }
 
-Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" -Name "legalnoticecaption" -Value "This computer has been hardened by Hulstrom Students!"
-Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" -Name "legalnoticetext" -Value "*** Authorized Access Only ***"
-
+# --- Banner text ---
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" `
+    -Name "legalnoticecaption" -Value "This computer has been hardened by Fairview Students!"
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" `
+    -Name "legalnoticetext" -Value "*** Authorized Access Only ***"
