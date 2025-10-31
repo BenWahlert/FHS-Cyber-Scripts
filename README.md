@@ -1,6 +1,7 @@
 # FHS Cyber Scripts
 
-## To run Windows Scripts run the following commands in an Administrator Powershell
+## Script Download Commands for Windows
+Run these in an administrator PowerShell session.
 ### Windows Desktop
 ```bash
 irm https://raw.githubusercontent.com/BenWahlert/FHS-Cyber-Scripts/main/Windows/CP-1-1/Windows10/main.ps1 | iex
@@ -13,7 +14,7 @@ irm https://raw.githubusercontent.com/BenWahlert/FHS-Cyber-Scripts/main/Windows/
 ```bash
 irm https://raw.githubusercontent.com/BenWahlert/FHS-Cyber-Scripts/main/Windows/CP-1-1/DomainController/main.ps1 | iex
 ```
-## Advanced Information - NOT IMPORTANT - JUST RUN THE COMMANDS ABOVE
+# Advanced Information - NOT IMPORTANT - JUST RUN THE COMMANDS ABOVE
 
 This repository bundles the automation the Fairview High School Cyber team uses to harden lab hosts quickly. It houses two main families of tooling:
 
