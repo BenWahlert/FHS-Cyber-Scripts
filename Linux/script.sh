@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 shopt -s globstar
+
+if [[ $EUID -ne 0 ]]; then
+    echo "Please run as root."
+    exit 1
+fi
 print_status() {
  echo "Checking $1..."
 }
@@ -522,13 +527,34 @@ check_apparmor_enabled_in_bootloader() {
 enable_apparmor_in_bootloader() {
     echo "Enabling AppArmor in the bootloader configuration..."
 
-    # Edit the GRUB_CMDLINE_LINUX line in /etc/default/grub to include apparmor=1 and security=apparmor
-    sudo sed -i 's/GRUB_CMDLINE_LINUX="\(.*\)"/GRUB_CMDLINE_LINUX="\1 apparmor=1 security=apparmor"/' /etc/default/grub
+    local default_grub="/etc/default/grub"
+    local updated=0
 
-    # Update GRUB configuration
-    sudo update-grub
+    if [[ ! -f $default_grub ]]; then
+        echo "Warning: $default_grub not found; cannot update AppArmor parameters."
+        return 1
+    fi
 
-    echo "AppArmor parameters have been added to the bootloader configuration and GRUB has been updated."
+    if ! grep -Eq '^[[:space:]]*GRUB_CMDLINE_LINUX=.*\bapparmor=1\b' "$default_grub"; then
+        sed -i -E '/^GRUB_CMDLINE_LINUX=/{/apparmor=1/!s/"$/ apparmor=1"/}' "$default_grub"
+        updated=1
+    fi
+
+    if ! grep -Eq '^[[:space:]]*GRUB_CMDLINE_LINUX=.*\bsecurity=apparmor\b' "$default_grub"; then
+        sed -i -E '/^GRUB_CMDLINE_LINUX=/{/security=apparmor/!s/"$/ security=apparmor"/}' "$default_grub"
+        updated=1
+    fi
+
+    if ((updated)); then
+        if command -v update-grub >/dev/null 2>&1; then
+            update-grub
+            echo "AppArmor parameters have been ensured in the bootloader configuration and GRUB has been updated."
+        else
+            echo "Note: update-grub not found; please update the bootloader manually."
+        fi
+    else
+        echo "AppArmor parameters already present; no update required."
+    fi
 }
 
 # Main function to check and ensure AppArmor is enabled at boot time
@@ -1126,12 +1152,6 @@ fi
 }
 
 #!/bin/bash
-
-# Ensure the script is run with superuser privileges
-if [[ "$EUID" -ne 0 ]]; then
-    echo "Please run as root."
-    
-fi
 
 # 2.1.1 Ensure autofs services are not in use
 systemctl stop autofs
