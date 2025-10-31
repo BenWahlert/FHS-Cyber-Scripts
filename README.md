@@ -1,6 +1,6 @@
 # FHS Cyber Scripts
 
-## To run Windows Scripts run the following commands in an Administrator Powershell
+# To run Windows Scripts run the following commands in an Administrator Powershell
 ### Windows Desktop
 ```bash
 irm https://raw.githubusercontent.com/BenWahlert/FHS-Cyber-Scripts/main/Windows/CP-1-1/Windows10/main.ps1 | iex
