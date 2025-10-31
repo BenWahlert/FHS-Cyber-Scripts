@@ -45,10 +45,14 @@ echo "Would you like some CP Goodness?********removing mp3 and other files, remo
 	#echo 'minclass=4' >> /etc/security/pwquality.conf
 	chmod 644 /etc/security/pwquality.conf
 	chmod 644 /etc/pam.d/common-password
-	cp -f ~/tmp/cp/CP/mozilla.cfg /usr/lib/firefox/mozilla.cfg 
-	chmod 644 /usr/lib/firefox/mozilla.cfg
-	cp -f ~/tmp/cp/CP/autoconfig.js /usr/lib/firefox/defaults/pref/autoconfig.js 
-	chmod 644 /usr/lib/firefox/defaults/pref/autoconfig.js; break;;
+                firefox_root="/usr/lib/firefox"
+                if [ -d "$firefox_root" ]; then
+                    install -m 644 ~/tmp/cp/CP/mozilla.cfg "$firefox_root/mozilla.cfg"
+                    install -D -m 644 ~/tmp/cp/CP/autoconfig.js "$firefox_root/defaults/pref/autoconfig.js"
+                else
+                    echo "Firefox not found at $firefox_root; skipping Firefox configuration copy."
+                fi
+                break;;
 	        No ) echo "ok"; break;;
             esac
         done

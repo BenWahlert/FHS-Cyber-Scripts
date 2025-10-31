@@ -7,11 +7,11 @@ irm https://raw.githubusercontent.com/BenWahlert/FHS-Cyber-Scripts/main/Windows/
 ```
 ### Windows Standalone Server
 ```bash
-irm https://raw.githubusercontnet.com/BenWahlert/FHS-Cyber-Scripts/main/Windows/CP-1-1/Server/main.ps1 | iex
+irm https://raw.githubusercontent.com/BenWahlert/FHS-Cyber-Scripts/main/Windows/CP-1-1/Server/main.ps1 | iex
 ```
 ### Windows DC Server
 ```bash
-irm https://raw.githubusercontnet.com/BenWahlert/FHS-Cyber-Scripts/main/Windows/CP-1-1/DomainController/main.ps1 | iex
+irm https://raw.githubusercontent.com/BenWahlert/FHS-Cyber-Scripts/main/Windows/CP-1-1/DomainController/main.ps1 | iex
 ```
 ## Information
 
@@ -29,7 +29,7 @@ Use this document as the field guide for choosing the right assets and executing
 | Path | Purpose |
 | ---- | ------- |
 | `Linux/` | Bash remediation scripts. `script.sh` is the master runbook for Linux module lockdowns, AppArmor checks, nftables provisioning, and other CIS controls. |
-| `Linux/CP-1-1/` | Legacy CyberPatriot Linux automation (interactive `main.sh`, cleanup helpers, Ubuntu 16/18/20 SCAP content, CIS-CAT assessor bundle, and supporting configs). |
+| `Linux/Old-Ubuntu-Script/` | Legacy CyberPatriot Linux automation (interactive `main.sh`, cleanup helpers, Ubuntu 16/18/20 SCAP content, CIS-CAT assessor bundle, and supporting configs). |
 | `Windows/CISDesktop.ps1` | PowerShell DSC configuration for Windows 10 (v1803+) that enforces CIS Level 1/2 password, audit, and policy settings. |
 | `Windows/services.ps1`, `Windows/main.ps1`, etc. | Supporting DSC resources referenced by `CISDesktop.ps1`. |
 | `Windows/CP-1-1/` | CyberPatriot Windows automation (Windows 10/Server/Domain Controller scripts, GPO backups, VDI prep, ScriptLauncher UI). |
@@ -68,39 +68,39 @@ Use this document as the field guide for choosing the right assets and executing
 
 ---
 
-## Running the Legacy CP Linux Toolkit (`Linux/CP-1-1/`)
+## Running the Legacy CP Linux Toolkit (`Linux/Old-Ubuntu-Script/`)
 
 After `Linux/script.sh` completes, you can optionally layer the older CyberPatriot automation to mirror the original competition workflow.
 
 1. **Clone Legacy CP Content**  
    The toolkit expects a working copy in `~/tmp/cp`. Run the provided wrapper to fetch it:
    ```bash
-   sudo bash Linux/CP-1-1/main.sh
+   sudo bash Linux/Old-Ubuntu-Script/main.sh
    ```
    This script:
    - Ensures `~/tmp/cp` is populated with the upstream CP repository.
    - Prompts for the detected Ubuntu version (16.04 or 18.04) and launches the corresponding CIS hardening script from `~/tmp/cp/CP/ubuntu*/...`.
    - Offers to run `CPgoodies1.sh`, which deletes banned media, removes offensive packages, and copies Firefox/password templates.
 
-   For Ubuntu 20.04, run `sudo bash Linux/CP-1-1/main1.sh`, which adds UFW defaults before invoking the 20.04 hardener (`~/tmp/cp/CP/ubuntu20/UBUNTU2004_LBK.sh`).
+   For Ubuntu 20.04, run `sudo bash Linux/Old-Ubuntu-Script/main1.sh`, which adds UFW defaults before invoking the 20.04 hardener (`~/tmp/cp/CP/ubuntu20/UBUNTU2004_LBK.sh`).
 
 2. **Optional Helpers**
-   - `Linux/CP-1-1/CPgoodies1.sh` — extra cleanup (media purge, package removals, firewall updates).
-   - `Linux/CP-1-1/debloat.sh` — removes known unwanted packages (commented in `main1.sh`; run manually if needed).
-   - `Linux/CP-1-1/lynis.sh` — executes a Lynis audit for reporting.
-   - `Linux/CP-1-1/CIS.sh` — launches the CIS-CAT assessor (uses `Linux/CP-1-1/Assessor-CLI` bundle).
+   - `Linux/Old-Ubuntu-Script/CPgoodies1.sh` — extra cleanup (media purge, package removals, firewall updates).
+   - `Linux/Old-Ubuntu-Script/debloat.sh` — removes known unwanted packages (commented in `main1.sh`; run manually if needed).
+   - `Linux/Old-Ubuntu-Script/lynis.sh` — executes a Lynis audit for reporting.
+   - `Linux/Old-Ubuntu-Script/CIS.sh` — launches the CIS-CAT assessor (uses `Linux/Old-Ubuntu-Script/Assessor-CLI` bundle).
 
 3. **Ubuntu Version Folders (`ubuntu16/`, `ubuntu18/`, `ubuntu20/`)**
    These directories hold the actual CIS/SCAP remediation content. You normally don’t run files inside them directly—`main.sh`/`main1.sh` call into them automatically. If you need a specific control, you can source the scripts manually:
    ```bash
-   sudo bash Linux/CP-1-1/ubuntu18/ubuntu-scap-security-guides/cis-hardening/Canonical_Ubuntu_18.04_CIS_v1.0.0-harden.sh lvl1_workstation
+   sudo bash Linux/Old-Ubuntu-Script/ubuntu18/ubuntu-scap-security-guides/cis-hardening/Canonical_Ubuntu_18.04_CIS_v1.0.0-harden.sh lvl1_workstation
    ```
    Adjust the path/level (`lvl1_workstation`, `lvl2_workstation`, etc.) for your needs.
 
 4. **Configuration Payloads**
-   - `Linux/CP-1-1/common-password`, `pwquality.conf` — PAM/password quality templates copied by the CP scripts.
-   - `Linux/CP-1-1/autoconfig.js`, `mozilla.cfg` — Firefox autoconfig files.
-   - `Linux/CP-1-1/Ubuntu Manual Configuration.docx` — checklist for manual tasks.
+   - `Linux/Old-Ubuntu-Script/common-password`, `pwquality.conf` — PAM/password quality templates copied by the CP scripts.
+   - `Linux/Old-Ubuntu-Script/autoconfig.js`, `mozilla.cfg` — Firefox autoconfig files.
+   - `Linux/Old-Ubuntu-Script/Ubuntu Manual Configuration.docx` — checklist for manual tasks.
 
 > **Tip:** The legacy scripts assume root, network access to GitHub, and Firefox installed at `/usr/lib/firefox`. Review them before use on modern systems.
 
@@ -190,9 +190,9 @@ Keep this map handy when you need to locate a specific script or asset quickly d
 
 ***
 
-## Linux/CP-1-1 Toolkit Map
+## Linux/Old-Ubuntu-Script Toolkit Map
 
-The legacy CyberPatriot Linux kit now lives under `Linux/CP-1-1`. Use these assets when you need the older interactive workflow instead of `Linux/script.sh`.
+The legacy CyberPatriot Linux kit now lives under `Linux/Old-Ubuntu-Script`. Use these assets when you need the older interactive workflow instead of `Linux/script.sh`.
 
 | Item | Description |
 | ---- | ----------- |
