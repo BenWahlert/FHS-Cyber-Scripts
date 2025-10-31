@@ -72,37 +72,43 @@ Use this document as the field guide for choosing the right assets and executing
 
 After `Linux/script.sh` completes, you can optionally layer the older CyberPatriot automation to mirror the original competition workflow.
 
-1. **Clone Legacy CP Content**  
-   The toolkit expects a working copy in `~/tmp/cp`. Run the provided wrapper to fetch it:
-   ```bash
-   sudo bash Linux/Old-Ubuntu-Script/main.sh
-   ```
-   This script:
-   - Ensures `~/tmp/cp` is populated with the upstream CP repository.
-   - Prompts for the detected Ubuntu version (16.04 or 18.04) and launches the corresponding CIS hardening script from `~/tmp/cp/CP/ubuntu*/...`.
-   - Offers to run `CPgoodies1.sh`, which deletes banned media, removes offensive packages, and copies Firefox/password templates.
+1. **Prepare the Repository**  
+   Clone this repository and keep the legacy toolkit inside the tree (default location: `~/FHS-Cyber-Scripts/Linux/Old-Ubuntu-Script`). The wrappers now read from the local copy, so no additional `git clone` into `~/tmp/cp` is necessary.
 
-   For Ubuntu 20.04, run `sudo bash Linux/Old-Ubuntu-Script/main1.sh`, which adds UFW defaults before invoking the 20.04 hardener (`~/tmp/cp/CP/ubuntu20/UBUNTU2004_LBK.sh`).
+2. **Choose the Interactive Wrapper**  
+   - Ubuntu 16.04/18.04 workflow:
+     ```bash
+     sudo bash Linux/Old-Ubuntu-Script/main.sh
+     ```
+   - Extended workflow with UFW defaults and Ubuntu 20.04 support:
+     ```bash
+     sudo bash Linux/Old-Ubuntu-Script/main1.sh
+     ```
 
-2. **Optional Helpers**
-   - `Linux/Old-Ubuntu-Script/CPgoodies1.sh` — extra cleanup (media purge, package removals, firewall updates).
-   - `Linux/Old-Ubuntu-Script/debloat.sh` — removes known unwanted packages (commented in `main1.sh`; run manually if needed).
-   - `Linux/Old-Ubuntu-Script/lynis.sh` — executes a Lynis audit for reporting.
-   - `Linux/Old-Ubuntu-Script/CIS.sh` — launches the CIS-CAT assessor (uses `Linux/Old-Ubuntu-Script/Assessor-CLI` bundle).
+   Both scripts:
+   - Require root (`sudo`) and ensure `apt` metadata is current.
+   - Discover the Ubuntu release and launch the matching CIS remediation under `Linux/Old-Ubuntu-Script/ubuntu*/`.
+   - Offer to run `CPgoodies1.sh`, which removes banned media/programs, refreshes PAM templates, and applies Firefox hardening (skipping Firefox copy steps automatically when `/usr/lib/firefox` is missing).
 
-3. **Ubuntu Version Folders (`ubuntu16/`, `ubuntu18/`, `ubuntu20/`)**
-   These directories hold the actual CIS/SCAP remediation content. You normally don’t run files inside them directly—`main.sh`/`main1.sh` call into them automatically. If you need a specific control, you can source the scripts manually:
+3. **Optional Helpers**
+   - `CPgoodies1.sh` — reusable cleanup routine (media purge, package removals, Firefox/PAM templates).
+   - `debloat.sh` — trims unwanted desktop software (invoke manually if desired).
+   - `lynis.sh` — runs a Lynis assessment for documentation.
+   - `CIS.sh` — executes the bundled CIS-CAT assessor (`Assessor-CLI`).
+
+4. **Ubuntu Version Folders (`ubuntu16/`, `ubuntu18/`, `ubuntu20/`)**
+   These directories hold the canonical CIS/SCAP content. The wrappers call them automatically, but you can trigger a specific level directly, for example:
    ```bash
    sudo bash Linux/Old-Ubuntu-Script/ubuntu18/ubuntu-scap-security-guides/cis-hardening/Canonical_Ubuntu_18.04_CIS_v1.0.0-harden.sh lvl1_workstation
    ```
-   Adjust the path/level (`lvl1_workstation`, `lvl2_workstation`, etc.) for your needs.
+   Adjust the level argument (`lvl1_workstation`, `lvl2_workstation`, etc.) as needed.
 
-4. **Configuration Payloads**
-   - `Linux/Old-Ubuntu-Script/common-password`, `pwquality.conf` — PAM/password quality templates copied by the CP scripts.
-   - `Linux/Old-Ubuntu-Script/autoconfig.js`, `mozilla.cfg` — Firefox autoconfig files.
-   - `Linux/Old-Ubuntu-Script/Ubuntu Manual Configuration.docx` — checklist for manual tasks.
+5. **Configuration Payloads**
+   - `common-password`, `pwquality.conf` — PAM/password templates installed during the CP goodies flow.
+   - `autoconfig.js`, `mozilla.cfg` — Firefox autoconfiguration (copied only when Firefox exists).
+   - `Ubuntu Manual Configuration.docx` — manual checklist retained from the legacy kit.
 
-> **Tip:** The legacy scripts assume root, network access to GitHub, and Firefox installed at `/usr/lib/firefox`. Review them before use on modern systems.
+> **Tip:** The wrappers now run entirely from the cloned repository. Ensure the tree stays intact on the host you are hardening so the helper scripts and payloads remain available.
 
 ---
 
@@ -129,6 +135,33 @@ After `Linux/script.sh` completes, you can optionally layer the older CyberPatri
    - Review DSC output for resources that required remediation.
   - Run `Test-DscConfiguration` to confirm the machine is converged.
   - Combine with the Group Policy templates in `Windows/CP-1-1/Windows10/<build>/` if you need a GUI-based policy import.
+
+---
+
+## Managing Local Users in Bulk (`Windows/ManageUsers.ps1`)
+
+Use this helper when you need to add multiple accounts to local groups quickly.
+
+1. **Requirements**
+   - Windows PowerShell 5.1 (built-in on Windows 10/11).
+   - Elevated console (Run as Administrator).
+
+2. **Execution**
+   ```powershell
+   Set-ExecutionPolicy Bypass -Scope Process -Force
+   powershell.exe -File Windows\ManageUsers.ps1
+   ```
+   One-liner to fetch only this script without cloning the repo:
+   ```powershell
+   irm https://raw.githubusercontent.com/BenWahlert/FHS-Cyber-Scripts/main/Windows/ManageUsers.ps1 -OutFile ManageUsers.ps1
+   ```
+
+3. **Workflow**
+   - Enter the local group name when prompted; the script creates it automatically if it does not exist.
+   - Provide one username per line (case-sensitive), pressing ENTER on an empty line to finish the list.
+   - For each entry the helper creates the user when missing (prompting for a password), enables password expiry, ensures membership, and removes any existing members not supplied. When targeting the builtin `Users` group it additionally deletes unlisted local accounts (excluding built-in protected accounts). The loop continues until you submit a blank group name or press `Ctrl+C`.
+
+> **Note:** The script checks for the `Microsoft.PowerShell.LocalAccounts` module and exits early with an error if the module is unavailable or the session is not elevated. Only local user accounts are removed during group synchronization; domain principals and nested groups are left untouched, and default system accounts in the `Users` group are preserved automatically.
 
 ---
 
