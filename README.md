@@ -64,7 +64,45 @@ Use this document as the field guide for choosing the right assets and executing
 
 4. **Post-run Tasks**
    - Review `/etc/modprobe.d/`, `/etc/sysctl.d/`, and `/etc/nftables.rules` to ensure values align with your environment.
-   - Reboot if kernel parameters or firewall services were enabled for the first time (`sudo reboot`).
+  - Reboot if kernel parameters or firewall services were enabled for the first time (`sudo reboot`).
+
+---
+
+## Running the Legacy CP Linux Toolkit (`Linux/CP-1-1/`)
+
+After `Linux/script.sh` completes, you can optionally layer the older CyberPatriot automation to mirror the original competition workflow.
+
+1. **Clone Legacy CP Content**  
+   The toolkit expects a working copy in `~/tmp/cp`. Run the provided wrapper to fetch it:
+   ```bash
+   sudo bash Linux/CP-1-1/main.sh
+   ```
+   This script:
+   - Ensures `~/tmp/cp` is populated with the upstream CP repository.
+   - Prompts for the detected Ubuntu version (16.04 or 18.04) and launches the corresponding CIS hardening script from `~/tmp/cp/CP/ubuntu*/...`.
+   - Offers to run `CPgoodies1.sh`, which deletes banned media, removes offensive packages, and copies Firefox/password templates.
+
+   For Ubuntu 20.04, run `sudo bash Linux/CP-1-1/main1.sh`, which adds UFW defaults before invoking the 20.04 hardener (`~/tmp/cp/CP/ubuntu20/UBUNTU2004_LBK.sh`).
+
+2. **Optional Helpers**
+   - `Linux/CP-1-1/CPgoodies1.sh` — extra cleanup (media purge, package removals, firewall updates).
+   - `Linux/CP-1-1/debloat.sh` — removes known unwanted packages (commented in `main1.sh`; run manually if needed).
+   - `Linux/CP-1-1/lynis.sh` — executes a Lynis audit for reporting.
+   - `Linux/CP-1-1/CIS.sh` — launches the CIS-CAT assessor (uses `Linux/CP-1-1/Assessor-CLI` bundle).
+
+3. **Ubuntu Version Folders (`ubuntu16/`, `ubuntu18/`, `ubuntu20/`)**
+   These directories hold the actual CIS/SCAP remediation content. You normally don’t run files inside them directly—`main.sh`/`main1.sh` call into them automatically. If you need a specific control, you can source the scripts manually:
+   ```bash
+   sudo bash Linux/CP-1-1/ubuntu18/ubuntu-scap-security-guides/cis-hardening/Canonical_Ubuntu_18.04_CIS_v1.0.0-harden.sh lvl1_workstation
+   ```
+   Adjust the path/level (`lvl1_workstation`, `lvl2_workstation`, etc.) for your needs.
+
+4. **Configuration Payloads**
+   - `Linux/CP-1-1/common-password`, `pwquality.conf` — PAM/password quality templates copied by the CP scripts.
+   - `Linux/CP-1-1/autoconfig.js`, `mozilla.cfg` — Firefox autoconfig files.
+   - `Linux/CP-1-1/Ubuntu Manual Configuration.docx` — checklist for manual tasks.
+
+> **Tip:** The legacy scripts assume root, network access to GitHub, and Firefox installed at `/usr/lib/firefox`. Review them before use on modern systems.
 
 ---
 
