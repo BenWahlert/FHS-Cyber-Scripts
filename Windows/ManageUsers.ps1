@@ -61,7 +61,7 @@ function Invoke-ManageUsers {
             $userEntries += $value
         }
 
-        $desiredUsers = [System.Collections.Generic.HashSet[string]]::new([StringComparer]::Ordinal)
+        $desiredUsers = [System.Collections.Generic.HashSet[string]]::new([System.StringComparer]::OrdinalIgnoreCase)
         foreach ($entry in $userEntries) {
             $trimmed = $entry.Trim()
             if ($trimmed.Length -eq 0) {
@@ -78,7 +78,7 @@ function Invoke-ManageUsers {
         }
 
         foreach ($userName in $desiredUsers) {
-            $localUser = Get-LocalUser | Where-Object { $_.Name -ceq $userName }
+            $localUser = Get-LocalUser -Name $userName -ErrorAction SilentlyContinue
 
             if (-not $localUser) {
                 Write-Host "Creating local user '$userName'." -ForegroundColor Yellow
@@ -90,7 +90,7 @@ function Invoke-ManageUsers {
 
                 try {
                     $localUser = New-LocalUser -Name $userName -Password $securePassword -PasswordNeverExpires:$false
-                    Write-Host "Created user '$userName'." -ForegroundColor Green
+                    Write-Host "Created user '$($localUser.Name)'." -ForegroundColor Green
                 }
                 catch {
                     Write-Error "Failed to create user '$userName'. $_"
@@ -105,21 +105,19 @@ function Invoke-ManageUsers {
                 Write-Error "Unable to enforce password expiry for '$($localUser.Name)'. $_"
             }
 
-            $memberMatch = Get-LocalGroupMember -Group $group.Name -ErrorAction SilentlyContinue | Where-Object {
-                $_.ObjectClass -eq 'User' -and ($_.Name.Split('\')[-1] -ceq $userName)
-            }
+            $memberMatch = Get-LocalGroupMember -Group $group.Name -Member $localUser.Name -ErrorAction SilentlyContinue
 
             if (-not $memberMatch) {
                 try {
-                    Add-LocalGroupMember -Group $group.Name -Member $userName
-                    Write-Host "Added '$userName' to '$groupName'." -ForegroundColor Green
+                    Add-LocalGroupMember -Group $group.Name -Member $localUser.Name
+                    Write-Host "Added '$($localUser.Name)' to '$groupName'." -ForegroundColor Green
                 }
                 catch {
                     Write-Error "Failed to add '$userName' to '$groupName'. $_"
                 }
             }
             else {
-                Write-Host "User '$userName' already in '$groupName'." -ForegroundColor Green
+                Write-Host "User '$($localUser.Name)' already in '$groupName'." -ForegroundColor Green
             }
         }
 
@@ -143,8 +141,8 @@ function Invoke-ManageUsers {
             }
         }
 
-        if ($group.Name -ceq 'Users') {
-            $protected = [System.Collections.Generic.HashSet[string]]::new([StringComparer]::Ordinal)
+        if ($group.Name -ieq 'Users') {
+            $protected = [System.Collections.Generic.HashSet[string]]::new([System.StringComparer]::OrdinalIgnoreCase)
             @('Administrator','Guest','DefaultAccount','WDAGUtilityAccount') | ForEach-Object { [void]$protected.Add($_) }
 
             foreach ($account in Get-LocalUser) {

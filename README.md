@@ -158,7 +158,7 @@ Use this helper when you need to add multiple accounts to local groups quickly.
 
 3. **Workflow**
    - Enter the local group name when prompted; the script creates it automatically if it does not exist.
-   - Provide one username per line (case-sensitive), pressing ENTER on an empty line to finish the list.
+   - Provide one username per line (matching is case-insensitive, consistent with Windows), pressing ENTER on an empty line to finish the list.
    - For each entry the helper creates the user when missing (prompting for a password), enables password expiry, ensures membership, and removes any existing members not supplied. When targeting the builtin `Users` group it additionally deletes unlisted local accounts (excluding built-in protected accounts). The loop continues until you submit a blank group name or press `Ctrl+C`.
 
 > **Note:** The script checks for the `Microsoft.PowerShell.LocalAccounts` module and exits early with an error if the module is unavailable or the session is not elevated. Only local user accounts are removed during group synchronization; domain principals and nested groups are left untouched, and default system accounts in the `Users` group are preserved automatically.
