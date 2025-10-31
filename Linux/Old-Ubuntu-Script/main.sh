@@ -17,7 +17,7 @@ cd ~/tmp/cp || exit
 
 
 
-git clone https://github.com/wen012235/CP.git
+#git clone https://github.com/wen012235/CP.git
 
 #!/usr/bin/env bash
 if [[ $(lsb_release -rs) == "16.04" ]]; then
