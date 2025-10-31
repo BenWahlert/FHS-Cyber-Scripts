@@ -14,7 +14,7 @@ irm https://raw.githubusercontent.com/BenWahlert/FHS-Cyber-Scripts/main/Windows/
 ```bash
 irm https://raw.githubusercontent.com/BenWahlert/FHS-Cyber-Scripts/main/Windows/CP-1-1/DomainController/main.ps1 | iex
 ```
-# Advanced Information - NOT IMPORTANT - JUST RUN THE COMMANDS ABOVE
+# Advanced Information
 
 This repository bundles the automation the Fairview High School Cyber team uses to harden lab hosts quickly. It houses two main families of tooling:
 
