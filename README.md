@@ -29,9 +29,10 @@ Use this document as the field guide for choosing the right assets and executing
 | Path | Purpose |
 | ---- | ------- |
 | `Linux/` | Bash remediation scripts. `script.sh` is the master runbook for Linux module lockdowns, AppArmor checks, nftables provisioning, and other CIS controls. |
+| `Linux/CP-1-1/` | Legacy CyberPatriot Linux automation (interactive `main.sh`, cleanup helpers, Ubuntu 16/18/20 SCAP content, CIS-CAT assessor bundle, and supporting configs). |
 | `Windows/CISDesktop.ps1` | PowerShell DSC configuration for Windows 10 (v1803+) that enforces CIS Level 1/2 password, audit, and policy settings. |
 | `Windows/services.ps1`, `Windows/main.ps1`, etc. | Supporting DSC resources referenced by `CISDesktop.ps1`. |
-| `Windows/CP-1-1/` | CyberPatriot (“CP”) automation. Contains Windows and Linux helper scripts, policy backups, and third-party assessor tooling. |
+| `Windows/CP-1-1/` | CyberPatriot Windows automation (Windows 10/Server/Domain Controller scripts, GPO backups, VDI prep, ScriptLauncher UI). |
 | `Windows/CP-1-1/Windows10/` | Windows 10 hardening scripts (`main.ps1`, `CPGoodies.ps1`, `services.ps1`, etc.) and Group Policy Object (GPO) backups for each Windows 10 version (folders named `1511`, `1607`, … `2004`). |
 
 > **Tip:** Most Windows scripts expect to be run from inside `~\Downloads\cp` after cloning this repository. Linux scripts assume root access on the local host.
@@ -137,21 +138,31 @@ Each numbered directory (`1511`, `1607`, `1703`, `1709`, `1803`, `1809`, `1903`,
 
 ## Windows/CP-1-1 Toolkit Map
 
-`Windows/CP-1-1` bundles everything the team uses during competitions. Highlights:
+`Windows/CP-1-1` bundles the Windows-side tooling we use during competitions. Highlights:
 
 | Item | Description |
 | ---- | ----------- |
-| `Windows10/` | Windows 10 hardening hub containing `main.ps1`, supporting scripts (`CPGoodies.ps1`, `services.ps1`, `FeaturesApps.ps1`, `harden.ps1`, `badprograms.ps1`), Firefox policy files, firewall exports, and the version-specific GPO backups listed above. |
-| `Server/` | Equivalent tooling for Windows Server 2016/2019, including server-focused scripts, firewall templates (`Firewall2016`, `Firewall2019`, `.wfw` exports), LGPO binaries, and GPO backups (`Server2016`, `Server2019`). |
-| `VDI/` | Workspace used by `main.ps1` for cloning Microsoft’s Virtual Desktop Optimization Tool (or legacy VDI optimization repo on older builds). |
-| `Assessor-CLI/` | CIS-CAT assessor bundle (Java CLI + data files) for generating CIS benchmark compliance reports. Run via `Windows/CP-1-1/CIS.sh` or execute the wrapped JAR directly. |
-| `ubuntu16/`, `ubuntu18/`, `ubuntu20/` | Ubuntu CIS hardening content aligned with each LTS release. The Linux `main.sh` script invokes these tree paths. |
-| `main.sh`, `main1.sh`, `CPgoodies1.sh`, `debloat.sh`, `lynis.sh`, `CIS.sh` | Bash helpers for Linux-based competition images. `main.sh` is the interactive entry point; `CPgoodies1.sh` performs extra cleanup; `debloat.sh`/`lynis.sh` remove bloat and run audits; `CIS.sh` launches the assessor. |
-| `autoconfig.js`, `mozilla.cfg`, `local-settings.js`, `pwquality.conf`, `common-password` | Configuration payloads (Firefox autoconfig, password quality settings, banned-password list) that the scripts copy into place on target machines. |
-| Documentation (`Ubuntu Manual Configuration.docx`, `finsihedcyberpatriot.inf`, etc.) | Reference notes and checklists packaged with the toolkit. |
+| `Windows10/` | Windows 10 hardening hub containing `main.ps1`, supporting scripts (`CPGoodies.ps1`, `services.ps1`, `FeaturesApps.ps1`, `harden.ps1`, `badprograms.ps1`, `ScriptLauncher.ps1`), Firefox policy files, firewall exports, and the version-specific GPO backups listed above. |
+| `Server/` | Windows Server 2016/2019 automation (PowerShell scripts, firewall templates, LGPO binaries, and GPO backups in `Server2016`/`Server2019`). |
+| `DomainController/` | Domain controller variant of the server toolkit with matching scripts, firewall exports, and policy backups. |
+| `VDI/` | Workspace used by `Windows10/main.ps1` for cloning Microsoft’s Virtual Desktop Optimization Tool (or the legacy VDI optimization repo for older builds). |
+| Documentation & templates (`finsihedcyberpatriot.inf`, `Windows10/Firewall/*`, etc.) | Security templates, firewall exports, and reference files applied during the Windows hardening process. |
 
 Keep this map handy when you need to locate a specific script or asset quickly during a hardening run.
 
 ***
 
+## Linux/CP-1-1 Toolkit Map
 
+The legacy CyberPatriot Linux kit now lives under `Linux/CP-1-1`. Use these assets when you need the older interactive workflow instead of `Linux/script.sh`.
+
+| Item | Description |
+| ---- | ----------- |
+| `main.sh`, `main1.sh` | Interactive entry points that clone the original CP repository into `~/tmp/cp`, prompt for Ubuntu version, and launch the appropriate CIS hardening scripts. `main1.sh` includes additional UFW tweaks and password policy resets. |
+| `CPgoodies1.sh`, `debloat.sh`, `lynis.sh`, `CIS.sh` | Optional helpers: `CPgoodies1.sh` performs cleanup and package removal, `debloat.sh` removes unwanted software, `lynis.sh` runs a Lynis audit, and `CIS.sh` executes the CIS-CAT assessor CLI. |
+| `Assessor-CLI/` | CIS-CAT assessor bundle (Java) used for compliance reporting. Referenced by `CIS.sh` if you run the assessor locally. |
+| `ubuntu16/`, `ubuntu18/`, `ubuntu20/` | Ubuntu-specific CIS/SCAP hardening content aligned with each LTS build, matching the paths expected by the CP scripts. |
+| `common-password`, `pwquality.conf`, `autoconfig.js`, `mozilla.cfg` | Configuration payloads that the CP scripts copy into `/etc/pam.d/common-password`, `/etc/security/pwquality.conf`, and Firefox directories. |
+| `Ubuntu Manual Configuration.docx` | Competition checklist covering manual steps that accompany the automated scripts. |
+
+***
