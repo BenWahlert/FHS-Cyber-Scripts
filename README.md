@@ -140,7 +140,7 @@ After `Linux/script.sh` completes, you can optionally layer the older CyberPatri
 
 ## Managing Local Users in Bulk (`Windows/ManageUsers.ps1`)
 
-Use this helper when you need to add multiple accounts to local groups quickly.
+Use this script to complete the user management section of the competition.
 
 1. **Requirements**
    - Windows PowerShell 5.1 (built-in on Windows 10/11).
