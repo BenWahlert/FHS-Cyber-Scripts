@@ -142,27 +142,50 @@ function Invoke-ManageUsers {
         }
 
         if ($group.Name -ieq 'Users') {
-            $protected = [System.Collections.Generic.HashSet[string]]::new([System.StringComparer]::OrdinalIgnoreCase)
-            @('Administrator','Guest','DefaultAccount','WDAGUtilityAccount') | ForEach-Object { [void]$protected.Add($_) }
-
-            foreach ($account in Get-LocalUser) {
-                if ($protected.Contains($account.Name)) {
-                    continue
-                }
-
-                if (-not $desiredUsers.Contains($account.Name)) {
-                    try {
-                        Remove-LocalUser -Name $account.Name
-                        Write-Host "Deleted local user '$($account.Name)'." -ForegroundColor Yellow
-                    }
-                    catch {
-                        Write-Error "Failed to delete local user '$($account.Name)'. $_"
-                    }
-                }
-            }
+            Disable-DefaultAccounts -DesiredUsers $desiredUsers
         }
 
         Write-Host "Finished processing '$groupName'. Provide another group or press ENTER to exit." -ForegroundColor Cyan
+    }
+}
+
+function Disable-DefaultAccounts {
+    param(
+        [Parameter(Mandatory)]
+        [System.Collections.Generic.HashSet[string]]$DesiredUsers
+    )
+
+    $builtIns = @{
+        'Administrator'      = $true
+        'Guest'              = $true
+        'DefaultAccount'     = $true
+        'WDAGUtilityAccount' = $true
+    }
+
+    foreach ($name in $builtIns.Keys) {
+        try {
+            Disable-LocalUser -Name $name -ErrorAction Stop
+            Write-Host "Disabled builtin account '$name'." -ForegroundColor Yellow
+        }
+        catch {
+            Write-Warning "Unable to disable builtin account '$name'. $_"
+        }
+    }
+
+    foreach ($account in Get-LocalUser) {
+        if ($builtIns.ContainsKey($account.Name)) {
+            continue
+        }
+
+        if (-not $DesiredUsers.Contains($account.Name)) {
+            try {
+                Remove-LocalUser -Name $account.Name
+                Write-Host "Deleted local user '$($account.Name)'." -ForegroundColor Yellow
+            }
+            catch {
+                Write-Error "Failed to delete local user '$($account.Name)'. $_"
+            }
+        }
     }
 }
 
