@@ -13,7 +13,7 @@
 .NOTES
     Run from an elevated PowerShell prompt. The repository is expected to be cloned
     locally, and this script should remain in the same folder as the other
-    Windows/CP-1-1/Windows10 scripts.
+    Windows/CP-1-1/Desktop scripts.
 #>
 
 Add-Type -AssemblyName System.Windows.Forms

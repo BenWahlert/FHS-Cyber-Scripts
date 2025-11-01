@@ -11,7 +11,7 @@ attrib +r +s C:\WINDOWS\system32\drivers\etc\hosts
 Write-Warning "investigating shady processes"
 Get-Process | Where-Object {$_.WorkingSet -gt 20000000} 
 
-Move-Item -Path ~\Downloads\cp\Windows10\Win10Firewall.wfw -Destination C:\
+Move-Item -Path ~\Downloads\cp\Desktop\Win10Firewall.wfw -Destination C:\
 netsh advfirewall import "C:\Win10Firewall.wfw"
 netsh advfirewall set allprofiles state on
 <#echo "Does the readme require any of these processes to be open? Press the number to allow the process through the firewall"
