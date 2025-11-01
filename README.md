@@ -4,7 +4,7 @@
 Run these in an administrator PowerShell session.
 ### Windows Desktop
 ```bash
-irm https://raw.githubusercontent.com/BenWahlert/FHS-Cyber-Scripts/main/Windows/CP-1-1/Windows10/main.ps1 | iex
+irm https://raw.githubusercontent.com/BenWahlert/FHS-Cyber-Scripts/main/Windows/CP-1-1/Desktop/main.ps1 | iex
 ```
 ### Windows Standalone Server
 ```bash
