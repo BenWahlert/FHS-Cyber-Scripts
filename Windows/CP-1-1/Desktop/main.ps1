@@ -68,23 +68,23 @@ Write-Output "Installing Firefox Configurations - Please Wait."
 Write-Output "Window will close after install is complete"
 If (Test-Path -Path $firefox64){
     #Copy-Item -Path .\Files\"FireFox Configuration Files"\defaults -Destination $firefox64 -Force -Recurse
-    Copy-Item -Path ~\Downloads\cp\Desktop\mozilla.cfg -Destination $firefox64 -Force
-    Copy-Item -Path ~\Downloads\cp\Desktop\local-settings.js -Destination "C:\Program Files\Mozilla Firefox\defaults\pref\" -Force 
+    Copy-Item -Path ~\Downloads\cp\Windows\CP-1-1\Desktop\mozilla.cfg -Destination $firefox64 -Force
+    Copy-Item -Path ~\Downloads\cp\Windows\CP-1-1\Desktop\local-settings.js -Destination "C:\Program Files\Mozilla Firefox\defaults\pref\" -Force 
     Write-Host "Firefox 64-Bit Configurations Installed"
 }Else {
     Write-Host "FireFox 64-Bit Is Not Installed"
 }
 If (Test-Path -Path $firefox32){
     #Copy-Item -Path .\Files\"FireFox Configuration Files"\defaults -Destination $firefox32 -Force -Recurse
-    Copy-Item -Path ~\Downloads\cp\Desktop\mozilla.cfg -Destination $firefox32 -Force
-    Copy-Item -Path ~\Downloads\cp\Desktop\local-settings.js -Destination "C:\Program Files (x86)\Mozilla Firefox\defaults\pref\" -Force 
+    Copy-Item -Path ~\Downloads\cp\Windows\CP-1-1\Desktop\mozilla.cfg -Destination $firefox32 -Force
+    Copy-Item -Path ~\Downloads\cp\Windows\CP-1-1\Desktop\local-settings.js -Destination "C:\Program Files (x86)\Mozilla Firefox\defaults\pref\" -Force 
     Write-Host "Firefox 32-Bit Configurations Installed"
 }Else {
     Write-Host "FireFox 32-Bit Is Not Installed"
 }  
-#copy-item -path ~\Downloads\cp\Desktop\local-settings.js -Destination "C:\Program Files\Mozilla Firefox\defaults\pref"
-#copy-item -path ~\Downloads\cp\Desktop\mozilla.cfg -Destination "C:\Program Files\Mozilla Firefox\"
-#copy-item -path ~\Downloads\cp\Desktop\blacklist.txt -Destination ~\Desktop\
+#copy-item -path ~\Downloads\cp\Windows\CP-1-1\Desktop\local-settings.js -Destination "C:\Program Files\Mozilla Firefox\defaults\pref"
+#copy-item -path ~\Downloads\cp\Windows\CP-1-1\Desktop\mozilla.cfg -Destination "C:\Program Files\Mozilla Firefox\"
+#copy-item -path ~\Downloads\cp\Windows\CP-1-1\Desktop\blacklist.txt -Destination ~\Desktop\
 #Get-Package -ProviderName "Programs" >> ~/Desktop/programs.rtf
 cls
 Write-Warning "This system has been hardened by Fairview Students.  Now continue down the checklist and get those points!"

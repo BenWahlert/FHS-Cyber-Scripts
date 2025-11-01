@@ -3,8 +3,8 @@ Unblock-File -Path .\services.ps1
 Set-ExecutionPolicy -ExecutionPolicy bypass
 get-service | Format-Table -Autosize
 
-Get-Content -Path ~\Downloads\cp\Desktop\badservices.txt | Stop-Service
-Get-Content -Path ~\Downloads\cp\Desktop\goodservices.txt | Start-Service
+Get-Content -Path ~\Downloads\cp\Windows\CP-1-1\Desktop\badservices.txt | Stop-Service
+Get-Content -Path ~\Downloads\cp\Windows\CP-1-1\Desktop\goodservices.txt | Start-Service
 	[Array]$Services =
 		'lmhosts', # TCP/IP NetBIOS Helper
 		#'wlidsvc', # Microsoft Account Sign-in Assistant
