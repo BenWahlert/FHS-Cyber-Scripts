@@ -11,9 +11,9 @@ $badServices = Get-Content -Path $badServicesPath | Where-Object { -not [string]
 $badServices | Stop-Service
 
 Foreach ($Service in $badServices) {
-		Set-Service -Name $Service -StartupType 'Disabled'
-		Stop-Service -Name $Service -Force
-	}
+	Set-Service -Name $Service -StartupType 'Disabled'
+	Stop-Service -Name $Service -Force
+}
 
 #Enable good services
 Get-Content -Path ~\Downloads\cp\Windows\CP-1-1\Desktop\goodservices.txt | Start-Service
