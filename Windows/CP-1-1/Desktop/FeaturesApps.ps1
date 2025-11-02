@@ -260,7 +260,7 @@ Get-AppxPackage Microsoft3DViewer | Remove-AppxPackage -AllUsers
 	'Microsoft.XboxGamingOverlay',
 	'Microsoft.Xbox.TCUI',
 	'Microsoft.XboxGameCallableUI',
-	'Microsoft.YourPhone',
+	'Microsoft.YourPhone'
 
 Foreach ($App in $Apps) {
 	Get-AppxPackage $App | Remove-AppxPackage -AllUsers -ErrorAction 'SilentlyContinue'
